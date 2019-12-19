@@ -1,12 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { createStore, applyMiddleware } from 'redux';
+import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';
+import PrivateRoute from './components/PrivateRoute';
+import reducer from './reducers/reducers';
+import LoginForm from './components/LoginForm';
+import ChefDashboard from './components/ChefDashboard';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const store = createStore(reducer, applyMiddleware(thunk));
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+
+function App() {
+  return (
+      <Router>
+        <div className="App">
+        <Route exact path='/' component={LoginForm} />
+        <PrivateRoute exact path='/chefdashboard' component={ChefDashboard} />
+        </div>
+    </Router>
+  );
+}
+
+ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
