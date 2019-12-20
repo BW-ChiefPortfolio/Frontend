@@ -8,6 +8,7 @@ import PrivateRoute from './components/PrivateRoute';
 import reducer from './reducers/reducers';
 import LoginForm from './components/LoginForm';
 import ChefDashboard from './components/ChefDashboard';
+import ChefSignUpForm from './components/ChefSignUpForm';
 
 const store = createStore(reducer, applyMiddleware(thunk));
 
@@ -18,6 +19,8 @@ function App() {
         <div className="App">
         <Route exact path='/' component={LoginForm} />
         <PrivateRoute exact path='/chefdashboard' component={ChefDashboard} />
+        {/* testing if the form is working... */}
+        <Route path ='/' component={ChefSignUpForm}/>
         </div>
     </Router>
   );
