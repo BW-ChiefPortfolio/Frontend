@@ -13,7 +13,9 @@ import { CHEF_LOGIN, CHEF_LOGOUT, FETCH_RECIPE_START, FETCH_RECIPE_SUCCESS,
                  name: '',
                  location: '',
                  contactEmail: '',
-                 recipes: []  // This just stores the ID of the recipe to pull down the chef's recipes
+                 recipes: [],  // This just stores the ID of the recipe to pull down the chef's recipes
+                 username: '',
+                 password: ''
              },
 
              recipes: {
@@ -27,6 +29,14 @@ import { CHEF_LOGIN, CHEF_LOGOUT, FETCH_RECIPE_START, FETCH_RECIPE_SUCCESS,
              isFetching: false,
              error: ''
             }
+
+
+            // Chef is going to login
+            // My recipes
+
+            // Guest logins
+            // goes to homepage
+            // Sees all reciepes, unless they filter it
 
 
 function reducer(state = initialState, action) {
