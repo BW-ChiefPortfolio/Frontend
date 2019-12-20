@@ -25,3 +25,18 @@ In the terminal, checkout to your personal branch again: git checkout [your pers
 Update your personal branch with the master: git pull origin master
 
 Continue coding!
+
+=================Summarized Version===============
+git checkout -b [yournamehere]
+git add .
+git commit -m "here goes the message"
+git push origin [your personal branch name here]
+git checkout master
+git fetch
+git pull origin master
+======Check for conflicts======
+git pull origin [your personal branch name]
+======Check for conflicts======
+git push origin master
+git checkout [your personal branch name]
+git pull origin master
