@@ -27,6 +27,7 @@ Update your personal branch with the master: git pull origin master
 Continue coding!
 
 =================Summarized Version===============
+
 git checkout -b [yournamehere]
 
 git add .
