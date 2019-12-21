@@ -1,69 +1,105 @@
 // WIP --- something to start
-import React, { useState } from 'react';
+//Update! --- I am experimenting with react hook form to create the sign up form... You must install it using yarn add react-hook-form;
+import React from 'react';
+import useForm from 'react-hook-form';
 
-const ChefSignUpForm = () => {
-    const [chef, setChef] = useState({ name: '', email: '', username: '', password: '', confirm: '' });
+const ChefSignUpForm = (prop) => {
+    const { register, errors, handleSubmit } = useForm({
+        validateCriteriaMode: "all"
+    });
+    const onSubmit = data => {
+        console.log('data : ', data);
 
-    console.log('chef,', chef)
+    };
 
-    const handleChange = e => {
-        setChef({ ...chef, [e.target.name]: e.target.value });
-    }
 
-    const handleSubmit = e => {
-        e.preventDefault();
-        setChef(chef);
-    }
     return (
-        // This is not finished yet --- I am using this as a starter point... 
+        // Updated the form by using react-hook-form... Not done, but it was simple to add this form. It is super resuable...
         <div>
+            <form onSubmit={handleSubmit(onSubmit)}>
+                <label htmlFor='firstName'>First Name: </label>
+                <input
+                    name='firstName'
+                    placeholder='First Name'
+                    ref={register({
+                        required: 'Required',
+                        maxLength: {
+                            value: 15,
+                            message: 'Max length is 15',
+                        },
+                    })}
+                />
+                <br />
+                {errors.firstName && errors.firstName.message}
+                <br />
 
-            <form onSubmit={handleSubmit}>
-                Name:
+                <label htmlFor='lastName'>Last Name: </label>
                 <input
-                    id='name'
-                    type='text'
-                    name='name'
-                    placeholder='Full Name'
-                    value={chef.name}
-                    onChange={handleChange}
+                    name='lastName'
+                    placeholder='Last Name'
+                    ref={register({
+                        required: 'Required',
+                        maxLength: {
+                            value: 15,
+                            message: 'Max length is 15',
+                        },
+                    })}
                 />
-                Email:
+                <br />
+                {errors.lastName && errors.lastName.message}
+                <br />
+
+                <label htmlFor='username'>Username: </label>
                 <input
-                    id='email'
-                    type='text'
-                    name='email'
-                    placeholder='Email'
-                    value={chef.email}
-                    onChange={handleChange}
-                />
-                Username:
-                <input
-                    id='username'
-                    type='text'
                     name='username'
-                    placeholder='Username'
-                    value={chef.username}
-                    onChange={handleChange}
+                    placeholder='username'
+                    type='text'
+                    ref={register({
+                        required: 'Required',
+                        maxLength: {
+                            value: 8,
+                            message: 'Max length is 8',
+                        },
+                    })}
                 />
-                Password:
+                <br />
+                {errors.username && errors.username.message}
+                <br />
+
+                <label htmlFor='email'>Email: </label>
                 <input
-                    id='password'
-                    type='password'
+                    name='email'
+                    placeholder='blah@gmail.com'
+                    type='text'
+                    ref={register({
+                        required: 'Required',
+                        pattern: {
+                            value: /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+                            message: 'Please provide a valid email',
+                        },
+                    })}
+                />
+                <br />
+                {errors.email && errors.email.message}
+                <br />
+
+                <label htmlFor='password'>Password: </label>
+                <input
                     name='password'
                     placeholder='Password'
-                    value={chef.password}
-                    onChange={handleChange}
-                />
-                Confirm Password:
-                <input
-                    id='conf-password'
                     type='password'
-                    name='conf-password'
-                    placeholder='Confirm Password'
+                    ref={register({
+                        required: true,
+                        minLength: 10,
+                    })}
                 />
-                <button name="signup">signup</button>
+                <br />
+                {errors.password && errors.password.types.required && (
+                    <p>Password Required!</p>
+                )}
+                <br />
 
+                <button type='submit'>Sign Up</button>
             </form>
         </div>
     );
