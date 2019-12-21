@@ -10,15 +10,15 @@ const ChefSignUpForm = () => {
         setChef({ ...chef, [e.target.name]: e.target.value });
     }
 
-    const signup = e => {
-        e.preventDeafault();
+    const handleSubmit = e => {
+        e.preventDefault();
         setChef(chef);
     }
     return (
         // This is not finished yet --- I am using this as a starter point... 
         <div>
 
-            <form onSubmit={signup}>
+            <form onSubmit={handleSubmit}>
                 Name:
                 <input
                     id='name'
