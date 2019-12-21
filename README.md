@@ -1,3 +1,6 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/81978fb5-f0d6-40dc-aa8e-d56b9346d910/deploy-status)](https://app.netlify.com/sites/frosty-shaw-74dc5f/deploys)
+
+
 =============== Git Flow ================
 
 Clone the project.
