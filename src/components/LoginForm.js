@@ -4,24 +4,27 @@ import { connect } from 'react-redux';
 import { chefLogin } from '../actions/actions';
 
 const LoginForm = () => {
-    const [credentials, setCredentials] = useState({username: '', password: ''});
+    const [credentials, setCredentials] = useState({ username: '', password: '' });
 
     const handleChange = e => {
 
         // This is not the redux state, this is just storing values to pass to login function
-        setCredentials({...credentials, [e.target.name]: e.target.value});
+        setCredentials({ ...credentials, [e.target.name]: e.target.value });
     }
 
     const login = e => {
         e.preventDefault();
         chefLogin(credentials);
-        
+
     }
 
     return (
         // NOTE: This is just placeholder stuff to get things setup
         // this is the page where the chef can login or signup
         <div>
+            <div>
+                <h2> Login </h2>
+            </div>
             <form onSubmit={login}>
                 Username:
                 <input
@@ -36,8 +39,8 @@ const LoginForm = () => {
                     name='password'
                     value={credentials.password}
                     onChange={handleChange}
-                 />
-                 <button>Login</button>
+                />
+                <button>Login</button>
             </form>
         </div>
 

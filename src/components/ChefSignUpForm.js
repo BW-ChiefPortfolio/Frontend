@@ -1,14 +1,16 @@
 // WIP --- something to start
-//Update! --- I am experimenting with react hook form to create the sign up form... You must install it using yarn add react-hook-form;
+//Update! --- I am experimenting with react hook form to create the sign up form... You must install it using yarn add react-hook-form....
+// The <br></br> Will be removed once we start styling.. they were used for temp styiling.
 import React from 'react';
 import useForm from 'react-hook-form';
 
-const ChefSignUpForm = (prop) => {
-    const { register, errors, handleSubmit } = useForm({
-        validateCriteriaMode: "all"
-    });
+const ChefSignUpForm = () => {
+    const { register, errors, handleSubmit } = useForm();
+    //when the form is submitted it will gather the data from the form the user inputed...
     const onSubmit = data => {
         console.log('data : ', data);
+        //submit the form and get an alert on what the user inputed... Remember [data] is what the user inputed.
+        alert(`User First Name: ${data.firstName} User Last Name: ${data.lastName} User Username: ${data.username} User Password: ${data.password}`)
 
     };
 
@@ -16,17 +18,16 @@ const ChefSignUpForm = (prop) => {
     return (
         // Updated the form by using react-hook-form... Not done, but it was simple to add this form. It is super resuable...
         <div>
+            <div>
+                <h2>Register as a Chef!</h2>
+            </div>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <label htmlFor='firstName'>First Name: </label>
                 <input
                     name='firstName'
                     placeholder='First Name'
                     ref={register({
-                        required: 'Required',
-                        maxLength: {
-                            value: 15,
-                            message: 'Max length is 15',
-                        },
+                        required: 'You must provide your First Name!',
                     })}
                 />
                 <br />
@@ -38,11 +39,7 @@ const ChefSignUpForm = (prop) => {
                     name='lastName'
                     placeholder='Last Name'
                     ref={register({
-                        required: 'Required',
-                        maxLength: {
-                            value: 15,
-                            message: 'Max length is 15',
-                        },
+                        required: 'You must provide your Last Name!',
                     })}
                 />
                 <br />
@@ -55,7 +52,7 @@ const ChefSignUpForm = (prop) => {
                     placeholder='username'
                     type='text'
                     ref={register({
-                        required: 'Required',
+                        required: 'You must provide a Username!',
                         maxLength: {
                             value: 8,
                             message: 'Max length is 8',
@@ -69,13 +66,13 @@ const ChefSignUpForm = (prop) => {
                 <label htmlFor='email'>Email: </label>
                 <input
                     name='email'
-                    placeholder='blah@gmail.com'
+                    placeholder='test@email.com'
                     type='text'
                     ref={register({
-                        required: 'Required',
+                        required: 'You must provide an Email',
                         pattern: {
                             value: /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
-                            message: 'Please provide a valid email',
+                            message: 'Please provide a valid Email!',
                         },
                     })}
                 />
@@ -89,14 +86,15 @@ const ChefSignUpForm = (prop) => {
                     placeholder='Password'
                     type='password'
                     ref={register({
-                        required: true,
-                        minLength: 10,
+                        required: 'You must provide a valid Password!',
+                        minLength: {
+                            value: 8,
+                            message: 'Your password must be 8 characters long',
+                        }
                     })}
                 />
                 <br />
-                {errors.password && errors.password.types.required && (
-                    <p>Password Required!</p>
-                )}
+                {errors.password && errors.password.message}
                 <br />
 
                 <button type='submit'>Sign Up</button>
