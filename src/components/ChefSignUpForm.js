@@ -23,6 +23,7 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import { Divider } from "@material-ui/core";
+import Box from "@material-ui/core/Box";
 
 //a theme for this form using Material UI
 const useStyles = makeStyles(theme => ({
@@ -35,7 +36,6 @@ const useStyles = makeStyles(theme => ({
   },
   mainWrapper: {
     background: "#3DB1FF",
-    height: "100vh",
     display: "flex",
     alignItems: "center",
     marginBottom: "1rem",
@@ -45,6 +45,19 @@ const useStyles = makeStyles(theme => ({
   logo: {
     marginTop: "1.5rem",
     marginBottom: "1.5rem"
+  },
+  innerForm: {
+    display: "flex",
+    justifyContent: "center",
+    boxShadow: "0 2px 4px 0 rgba(181,181,181,.7)",
+    borderTop: "1px solid #f1f1f5",
+    padding: "2rem",
+    background: "white",
+    flexDirection: "row-reverse",
+    marginBottom: "3rem"
+  },
+  signUpIntro: {
+    marginLeft: "2rem"
   }
 }));
 
@@ -65,144 +78,153 @@ const ChefSignUpForm = () => {
 
   return (
     <>
-    <div className={classes.mainWrapper}>
-    <img className={classes.logo} src={logo} alt="Logo" />
-      <Container
-        maxWidth="xs"
-        style={{
-          boxShadow: "0 2px 4px 0 rgba(181,181,181,.7)",
-          borderTop: "1px solid #f1f1f5",
-          padding: "2rem",
-          background: "white"
-        }}
-      >
-        <CssBaseline />
-        <Typography component="h1" variant="h5">
-          Register as a Chef!
-        </Typography>
-        <form onSubmit={handleSubmit(onSubmit)} className={classes.form}>
-          <Grid container spacing={2}>
-            <Grid item xs={12}>
-              {/* TextField holds both input and label --- [Ref is now used like inputRef && others change aswell] */}
-              <TextField
-                type="text"
-                name="firstName"
-                variant="outlined"
-                required
-                fullWidth
-                id="firstName"
-                label="First Name"
-                autoFocus
-                htmlFor="firstName"
-                inputRef={register}
-              />
-            </Grid>
-          </Grid>
-          <Grid container spacing={2}>
-            <Grid item xs={12}>
-              <TextField
-                type="text"
-                variant="outlined"
-                required
-                fullWidth
-                id="lastName"
-                label="Last Name"
-                name="lastName"
-                autoComplete="lname"
-                htmlFor="lastName"
-                inputRef={register}
-              />
-            </Grid>
-          </Grid>
-          <Grid container spacing={2}>
-            <Grid item xs={12}>
-              <TextField
-                type="text"
-                variant="outlined"
-                required
-                fullWidth
-                id="username"
-                label="Username"
-                name="username"
-                autoComplete="uname"
-                htmlFor="username"
-                inputRef={register}
-              />
-            </Grid>
-          </Grid>
-          <Grid container spacing={2}>
-            <Grid item xs={12}>
-              <TextField
-                type="text"
-                variant="outlined"
-                required
-                fullWidth
-                id="email"
-                label="Email Address"
-                name="email"
-                autoComplete="email"
-                htmlFor="email"
-                inputRef={register({
-                  required: "You must provide an Email",
-                  pattern: {
-                    value: /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
-                    message: "Please provide a valid Email!"
-                  }
-                })}
-              />
-              {/*Responsible for displaying the errors*/}
-              {errors.email && errors.email.message}
-            </Grid>
-          </Grid>
-          <Grid container spacing={2}>
-            <Grid item xs={12}>
-              <TextField
-                type="password"
-                variant="outlined"
-                required
-                fullWidth
-                name="password"
-                label="Password"
-                id="password"
-                autoComplete="current-password"
-                htmlFor="password"
-                inputRef={register({
-                  minLength: {
-                    value: 6,
-                    message: "Minimum Length is 6"
-                  }
-                })}
-              />
-              {/*Responsible for displaying the errors ----  Also, looking for patterns to add to the password to make it more secure [/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/] example for*/}
-              {errors.password && errors.password.message}
-            </Grid>
-          </Grid>
-          <br></br>
-          <FormControlLabel
-            control={<Checkbox color="primary" />}
-            label="You must be 18 years old to use our services!"
-          />
-          <Divider />
-          <Button
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-            type="submit"
+      <div className={classes.mainWrapper}>
+        <img className={classes.logo} src={logo} alt="Logo" />
+        <Box component="span" className={classes.innerForm}>
+          <Box className={classes.signUpIntro}>
+            <h2>Sign Up Today!</h2>
+            <p>
+              Do you have recipies that you would love to share! You came to the
+              right place.
+            </p>
+          </Box>
+          <Container
+            maxWidth="xs"
+            style={{
+              boxShadow: "0 2px 4px 0 rgba(181,181,181,.7)",
+              borderTop: "1px solid #f1f1f5",
+              padding: "2rem",
+              background: "white"
+            }}
           >
-            Sign Up
-          </Button>
-        </form>
-        <Grid container justify="flex-end">
-          <Grid item>
-            {/* now links to the login component [ Future addition: Will have a post request to chef dashboard when user signs up ] */}
-            <Link to="/login" variant="body2">
-              Already have an account? Sign in
-            </Link>
-          </Grid>
-        </Grid>
-      </Container>
-    </div>
+            <CssBaseline />
+            <Typography component="h1" variant="h5">
+              Register as a Chef!
+            </Typography>
+            <form onSubmit={handleSubmit(onSubmit)} className={classes.form}>
+              <Grid container spacing={2}>
+                <Grid item xs={12}>
+                  {/* TextField holds both input and label --- [Ref is now used like inputRef && others change aswell] */}
+                  <TextField
+                    type="text"
+                    name="firstName"
+                    variant="outlined"
+                    required
+                    fullWidth
+                    id="firstName"
+                    label="First Name"
+                    autoFocus
+                    htmlFor="firstName"
+                    inputRef={register}
+                  />
+                </Grid>
+              </Grid>
+              <Grid container spacing={2}>
+                <Grid item xs={12}>
+                  <TextField
+                    type="text"
+                    variant="outlined"
+                    required
+                    fullWidth
+                    id="lastName"
+                    label="Last Name"
+                    name="lastName"
+                    autoComplete="lname"
+                    htmlFor="lastName"
+                    inputRef={register}
+                  />
+                </Grid>
+              </Grid>
+              <Grid container spacing={2}>
+                <Grid item xs={12}>
+                  <TextField
+                    type="text"
+                    variant="outlined"
+                    required
+                    fullWidth
+                    id="username"
+                    label="Username"
+                    name="username"
+                    autoComplete="uname"
+                    htmlFor="username"
+                    inputRef={register}
+                  />
+                </Grid>
+              </Grid>
+              <Grid container spacing={2}>
+                <Grid item xs={12}>
+                  <TextField
+                    type="text"
+                    variant="outlined"
+                    required
+                    fullWidth
+                    id="email"
+                    label="Email Address"
+                    name="email"
+                    autoComplete="email"
+                    htmlFor="email"
+                    inputRef={register({
+                      required: "You must provide an Email",
+                      pattern: {
+                        value: /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+                        message: "Please provide a valid Email!"
+                      }
+                    })}
+                  />
+                  {/*Responsible for displaying the errors*/}
+                  {errors.email && errors.email.message}
+                </Grid>
+              </Grid>
+              <Grid container spacing={2}>
+                <Grid item xs={12}>
+                  <TextField
+                    type="password"
+                    variant="outlined"
+                    required
+                    fullWidth
+                    name="password"
+                    label="Password"
+                    id="password"
+                    autoComplete="current-password"
+                    htmlFor="password"
+                    inputRef={register({
+                      minLength: {
+                        value: 6,
+                        message: "Minimum Length is 6"
+                      }
+                    })}
+                  />
+                  {/*Responsible for displaying the errors ----  Also, looking for patterns to add to the password to make it more secure [/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/] example for*/}
+                  {errors.password && errors.password.message}
+                </Grid>
+              </Grid>
+              <br></br>
+              <FormControlLabel
+                control={<Checkbox color="primary" />}
+                label="You must be 18 years old to use our services!"
+              />
+              <Divider />
+              <Button
+                fullWidth
+                variant="contained"
+                color="primary"
+                className={classes.submit}
+                type="submit"
+              >
+                Sign Up
+              </Button>
+            </form>
+            <Grid container justify="flex-end">
+              <Grid item>
+                {/* now links to the login component [ Future addition: Will have a post request to chef dashboard when user signs up ] */}
+                <Link to="/login" variant="body2">
+                  Already have an account? Sign in
+                </Link>
+              </Grid>
+            </Grid>
+          </Container>
+        </Box>
+      </div>
     </>
   );
 };
