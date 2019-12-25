@@ -58,6 +58,11 @@ const useStyles = makeStyles(theme => ({
   },
   signUpIntro: {
     marginLeft: "2rem"
+  },
+  signUpIcons: {
+    display: "flex",
+    alignItems: "center",
+    marginTop: "1.5rem"
   }
 }));
 
@@ -82,11 +87,31 @@ const ChefSignUpForm = () => {
         <img className={classes.logo} src={logo} alt="Logo" />
         <Box component="span" className={classes.innerForm}>
           <Box className={classes.signUpIntro}>
-            <h2>Sign Up Today!</h2>
+            <h2>Welcome to Chef Portfolio!</h2>
             <p>
-              Do you have recipies that you would love to share! You came to the
-              right place.
+              It only takes a few minutes to start sharing your best recipes.
             </p>
+            <Box className={classes.signUpIcons}>
+              <img
+                src="https://img.icons8.com/office/40/000000/cook-male--v1.png"
+                alt="chef dashboard"
+              />
+              <p>Chef Dashboard: Have your very own dashboard!</p>
+            </Box>
+            <Box className={classes.signUpIcons}>
+              <img
+                src="https://img.icons8.com/color/40/000000/knowledge-sharing.png"
+                alt="share recipes"
+              />
+              <p>Share your recipes: Let others see your creations!</p>
+            </Box>
+            <Box className={classes.signUpIcons}>
+              <img
+                src="https://img.icons8.com/cute-clipart/40/000000/one-free.png"
+                alt="free!"
+              />
+              <p>100% Free: never have to pay a dime to use our website!</p>
+            </Box>
           </Box>
           <Container
             maxWidth="xs"
