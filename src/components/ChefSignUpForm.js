@@ -1,18 +1,21 @@
-// WIP --- something to start
-// I am experimenting with react hook form to create the sign up form... You must install it using yarn add react-hook-form....
-// Using Material UI to Style this form! [do not delete]
+//TODO Simplify all the code below. DRY!
+//TODO Research if styling can be added to a different file to minimize the lines of code used in each file.
 
-//If you have any question on how to use this form or add more features let me know. It is easy for things to break...
+//NOTE: I am experimenting with react hook form to create the sign up form... You must install it using yarn add react-hook-form....
+//NOTE: Using Material UI to Style this form! [do not delete]
 
-//other imports
+//NOTE: If you have any question on how to use this form or add more features let me know. It is easy for things to break...
+
+//NOTE: Other imports
 import React from "react";
 import useForm from "react-hook-form";
 import { Link } from "react-router-dom";
+import { history } from "react-router-dom";
 
-//Logo
+//NOTE: Logo
 import logo from "../images/logo.png";
 
-//Material UI
+//NOTE: Material UI
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
@@ -25,7 +28,7 @@ import Container from "@material-ui/core/Container";
 import { Divider } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
 
-//a theme for this form using Material UI
+//NOTE: A theme for this form using Material UI
 const useStyles = makeStyles(theme => ({
   form: {
     width: "100%",
@@ -40,6 +43,12 @@ const useStyles = makeStyles(theme => ({
     alignItems: "center",
     marginBottom: "1rem",
     flexDirection: "column"
+  },
+  mainContainer: {
+    boxShadow: "0 2px 4px 0 rgba(181,181,181,.7)",
+    borderTop: "1px solid #f1f1f5",
+    padding: "2rem",
+    background: "white"
   },
 
   logo: {
@@ -66,46 +75,49 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-//This is a simpler way to create forms with validation. It renders less when a user inputs into the form...
+//NOTE: This is a simpler way to create forms with validation. It renders less when a user inputs into the form...
 const ChefSignUpForm = () => {
   const { register, errors, handleSubmit } = useForm();
-  //when the form is submitted it will gather the data from the form the user inputed...
+  //NOTE: When the form is submitted it will gather the data from the form the user inputed...
   const onSubmit = data => {
     console.log("data : ", data);
-    //submit the form and get an alert on what the user inputed... Remember [data] is what the user inputed.
-    alert(
-      `Fname: ---> ${data.firstName}       lName ---> ${data.lastName}       uName ---> ${data.username}      email---> ${data.email}      password---> ${data.password}`
-    );
+    //NOTE: Submit the form and get an alert on what the user inputed... Remember [data] is what the user inputed.
+    // alert(
+    //   `Fname: ---> ${data.firstName}       lName ---> ${data.lastName}       uName ---> ${data.username}      email---> ${data.email}      password---> ${data.password}`
+    // );
   };
 
-  //invokes the styling defined in variable useStyle.
-  const classes = useStyles();
+  //FIXME Change the variable ChefSignUp to chefsignup... Makes it easier to understand.
+  //TODO Try to make code dry as possible.
+
+  //NOTE: Invokes the styling defined in variable useStyle.
+  const ChefSignUpStyle = useStyles();
 
   return (
-    <>
-      <div className={classes.mainWrapper}>
-        <img className={classes.logo} src={logo} alt="Logo" />
-        <Box component="span" className={classes.innerForm}>
-          <Box className={classes.signUpIntro}>
+    <React.Fragment>
+      <div className={ChefSignUpStyle.mainWrapper}>
+        <img className={ChefSignUpStyle.logo} src={logo} alt="Logo" />
+        <Box component="span" className={ChefSignUpStyle.innerForm}>
+          <Box className={ChefSignUpStyle.signUpIntro}>
             <h2>Welcome to Chef Portfolio!</h2>
             <p>
               It only takes a few minutes to start sharing your best recipes.
             </p>
-            <Box className={classes.signUpIcons}>
+            <Box className={ChefSignUpStyle.signUpIcons}>
               <img
                 src="https://img.icons8.com/office/40/000000/cook-male--v1.png"
                 alt="chef dashboard"
               />
               <p>Chef Dashboard: Have your very own dashboard!</p>
             </Box>
-            <Box className={classes.signUpIcons}>
+            <Box className={ChefSignUpStyle.signUpIcons}>
               <img
                 src="https://img.icons8.com/color/40/000000/knowledge-sharing.png"
                 alt="share recipes"
               />
               <p>Share your recipes: Let others see your creations!</p>
             </Box>
-            <Box className={classes.signUpIcons}>
+            <Box className={ChefSignUpStyle.signUpIcons}>
               <img
                 src="https://img.icons8.com/cute-clipart/40/000000/one-free.png"
                 alt="free!"
@@ -113,20 +125,15 @@ const ChefSignUpForm = () => {
               <p>100% Free: never have to pay a dime to use our website!</p>
             </Box>
           </Box>
-          <Container
-            maxWidth="xs"
-            style={{
-              boxShadow: "0 2px 4px 0 rgba(181,181,181,.7)",
-              borderTop: "1px solid #f1f1f5",
-              padding: "2rem",
-              background: "white"
-            }}
-          >
+          <Container maxWidth="xs" className={ChefSignUpStyle.mainContainer}>
             <CssBaseline />
             <Typography component="h1" variant="h5">
               Register as a Chef!
             </Typography>
-            <form onSubmit={handleSubmit(onSubmit)} className={classes.form}>
+            <form
+              onSubmit={handleSubmit(onSubmit)}
+              className={ChefSignUpStyle.form}
+            >
               <Grid container spacing={2}>
                 <Grid item xs={12}>
                   {/* TextField holds both input and label --- [Ref is now used like inputRef && others change aswell] */}
@@ -196,7 +203,7 @@ const ChefSignUpForm = () => {
                       }
                     })}
                   />
-                  {/*Responsible for displaying the errors*/}
+                  {/*NOTE: Responsible for displaying the errors*/}
                   {errors.email && errors.email.message}
                 </Grid>
               </Grid>
@@ -219,7 +226,7 @@ const ChefSignUpForm = () => {
                       }
                     })}
                   />
-                  {/*Responsible for displaying the errors ----  Also, looking for patterns to add to the password to make it more secure [/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/] example for*/}
+                  {/*NOTE: Responsible for displaying the errors ----  Also, looking for patterns to add to the password to make it more secure [/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/] example for*/}
                   {errors.password && errors.password.message}
                 </Grid>
               </Grid>
@@ -233,7 +240,7 @@ const ChefSignUpForm = () => {
                 fullWidth
                 variant="contained"
                 color="primary"
-                className={classes.submit}
+                className={ChefSignUpStyle.submit}
                 type="submit"
               >
                 Sign Up
@@ -241,7 +248,7 @@ const ChefSignUpForm = () => {
             </form>
             <Grid container justify="flex-end">
               <Grid item>
-                {/* now links to the login component [ Future addition: Will have a post request to chef dashboard when user signs up ] */}
+                {/*NOTE: Now links to the login component [ Future addition: Will have a post request to chef dashboard when user signs up ] */}
                 <Link to="/login" variant="body2">
                   Already have an account? Sign in
                 </Link>
@@ -250,7 +257,7 @@ const ChefSignUpForm = () => {
           </Container>
         </Box>
       </div>
-    </>
+    </React.Fragment>
   );
 };
 
