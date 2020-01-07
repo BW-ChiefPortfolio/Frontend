@@ -1,10 +1,7 @@
+//install: You must install react-hook-form.
+
 //TODO Simplify all the code below. DRY!
-//TODO Research if styling can be added to a different file to minimize the lines of code used in each file.
 
-//NOTE: I am experimenting with react hook form to create the sign up form... You must install it using yarn add react-hook-form....
-//NOTE: Using Material UI to Style this form! [do not delete]
-
-//NOTE: If you have any question on how to use this form or add more features let me know. It is easy for things to break...
 
 //NOTE: Other imports
 import React, { useState, useEffect } from "react";
@@ -74,6 +71,9 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     alignItems: "center",
     marginTop: "1.5rem"
+  },
+  links: {
+    textDecoration: "none"
   }
 }));
 
@@ -93,9 +93,6 @@ const ChefSignUpForm = (props) => {
     
   };
 
-  //FIXME Change the variable ChefSignUp to chefsignup... Makes it easier to understand.
-  //TODO Try to make code dry as possible.
-
   //NOTE: Invokes the styling defined in variable useStyle.
   const ChefSignUpStyle = useStyles();
 
@@ -103,11 +100,11 @@ const ChefSignUpForm = (props) => {
     <React.Fragment>
       <div className={ChefSignUpStyle.mainWrapper}>
         <img className={ChefSignUpStyle.logo} src={logo} alt="Logo" />
-        <Box component="span" className={ChefSignUpStyle.innerForm}>
+        <Box component="div" className={ChefSignUpStyle.innerForm}>
           <Box className={ChefSignUpStyle.signUpIntro}>
             <h2>Welcome to Chef Portfolio!</h2>
             <p>
-              It only takes a few minutes to start sharing your best recipes.
+              Isdasddadt only takes a few minutes to start sharing your best recipes.
             </p>
             <Box className={ChefSignUpStyle.signUpIcons}>
               <img
@@ -232,7 +229,7 @@ const ChefSignUpForm = (props) => {
                       }
                     })}
                   />
-                  {/*NOTE: Responsible for displaying the errors ----  Also, looking for patterns to add to the password to make it more secure [/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/] example for*/}
+                  {/*NOTE: Responsible for displaying the errors */}
                   {errors.password && errors.password.message}
                 </Grid>
               </Grid>
@@ -255,7 +252,7 @@ const ChefSignUpForm = (props) => {
             <Grid container justify="flex-end">
               <Grid item>
                 {/*NOTE: Now links to the login component [ Future addition: Will have a post request to chef dashboard when user signs up ] */}
-                <Link to="/login" variant="body2">
+                <Link className={ChefSignUpStyle.links} to="/login" variant="body2">
                   Already have an account? Sign in
                 </Link>
               </Grid>

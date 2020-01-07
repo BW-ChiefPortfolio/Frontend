@@ -62,6 +62,10 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     alignItems: "center",
     marginTop: "1.5rem"
+  },
+  links: {
+    textDecoration: "none",
+    color: "#515050"
   }
 }));
 const LoginForm = (props) => {
@@ -149,7 +153,7 @@ const LoginForm = (props) => {
           <Grid container justify="flex-end">
             <Grid item>
               {/*NOTE: Now links to the login component [ Future addition: Will have a post request to chef dashboard when user signs up ] */}
-              <Link to="/chefsignup" variant="body2">
+              <Link className={LoginFormStyle.links} to="/chefsignup" variant="body2">
                 Don't have an account? Sign Up
               </Link>
             </Grid>
