@@ -7,10 +7,12 @@
 //NOTE: If you have any question on how to use this form or add more features let me know. It is easy for things to break...
 
 //NOTE: Other imports
-import React from "react";
+import React, { useState, useEffect } from "react";
 import useForm from "react-hook-form";
 import { Link } from "react-router-dom";
 import { history } from "react-router-dom";
+import { connect } from 'react-redux';
+import { chefRegister } from '../actions/actions';
 
 //NOTE: Logo
 import logo from "../images/logo.png";
@@ -76,8 +78,9 @@ const useStyles = makeStyles(theme => ({
 }));
 
 //NOTE: This is a simpler way to create forms with validation. It renders less when a user inputs into the form...
-const ChefSignUpForm = () => {
+const ChefSignUpForm = (props) => {
   const { register, errors, handleSubmit } = useForm();
+
   //NOTE: When the form is submitted it will gather the data from the form the user inputed...
   const onSubmit = data => {
     console.log("data : ", data);
@@ -85,6 +88,9 @@ const ChefSignUpForm = () => {
     // alert(
     //   `Fname: ---> ${data.firstName}       lName ---> ${data.lastName}       uName ---> ${data.username}      email---> ${data.email}      password---> ${data.password}`
     // );
+    //setUserData({ username: data.username, password: data.password, email: data.email })
+    props.chefRegister(data);
+    
   };
 
   //FIXME Change the variable ChefSignUp to chefsignup... Makes it easier to understand.
@@ -261,4 +267,9 @@ const ChefSignUpForm = () => {
   );
 };
 
-export default ChefSignUpForm;
+const mapStateToProps = state => ({
+  newUser: state.user
+});
+
+export default connect(
+  mapStateToProps, { chefRegister })(ChefSignUpForm);

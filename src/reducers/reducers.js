@@ -1,5 +1,5 @@
 // Created and modified by Nathan Loveless 12/18/19
-import { CHEF_LOGIN, CHEF_LOGOUT, FETCH_RECIPE_START, FETCH_RECIPE_SUCCESS,
+import { CHEF_REGISTER, CHEF_LOGIN, CHEF_LOGOUT, FETCH_RECIPE_START, FETCH_RECIPE_SUCCESS,
          FETCH_RECIPE_FAILURE, CREATE_RECIPE_START, CREATE_RECIPE_SUCCESS, CREATE_RECIPE_FAILURE,
          EDIT_RECIPE_START, EDIT_RECIPE_SUCCESS, EDIT_RECIPE_FAILURE, DELETE_RECIPE_START, 
          DELETE_RECIPE_SUCCESS, DELETE_RECIPE_FAILURE } from '../actions/actions';
@@ -18,18 +18,21 @@ import { CHEF_LOGIN, CHEF_LOGOUT, FETCH_RECIPE_START, FETCH_RECIPE_SUCCESS,
                  password: ''
              },
 
-             recipes: {
+             recipes: [{
                  id: '',
                  title: '',
                  image: '',
                  mealType: '',
-                 Instructions: ''
-             },
+                 description: '',
+                 Instructions: '',
+                 ingredients: [{}],
+                 isFetching: false,
+                 error: ''
+             }],
 
              isFetching: false,
              error: ''
             }
-
 
             // Chef is going to login
             // My recipes
@@ -42,8 +45,10 @@ import { CHEF_LOGIN, CHEF_LOGOUT, FETCH_RECIPE_START, FETCH_RECIPE_SUCCESS,
 function reducer(state = initialState, action) {
     switch(action.type)
     {
+        case CHEF_REGISTER:
+            return { ...state, ...state.user, username: action.payload.username, password: action.payload.password }
         case CHEF_LOGIN:
-            return state;
+            return { ...state, ...state.user, username: action.payload.username, password: action.payload.password }
         case CHEF_LOGOUT:
             return state;
         case FETCH_RECIPE_START:

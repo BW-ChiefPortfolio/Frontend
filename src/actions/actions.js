@@ -2,6 +2,7 @@
 import axios from 'axios';
 
 //*** Reducer Types ***//
+export const CHEF_REGISTER = 'CHEF_REGISTER';
 export const CHEF_LOGIN = 'CHEF_LOGIN';
 export const CHEF_LOGOUT = 'CHEF_LOGOUT';
 export const FETCH_RECIPE_START = 'FETCH_RECIPE_START';
@@ -20,14 +21,28 @@ export const DELETE_RECIPE_FAILURE = 'DELETE_RECIPE_FAILURE';
 
 // Redux actions
 // These are currently just shells
-export const chefLogin = (credentials) => dispatch => {
+export const chefRegister = (data) => dispatch => {
+    console.log('nl: actions.js: chefRegister: ', data);
     axios
-    .post('http://localhost:xxxx/api/login', credentials)
+    .post('http://cpbackend.herokuapp.com/auth/register', { username: data.username, password: data.password })
+    .then(res => {
+        console.log('nl: actions.js: chefRegister: .post .then: ', res.data)
+        localStorage.setItem('token', res.data.payload);
+        dispatch({type: CHEF_REGISTER, payload: res.data});
+    })
+    .catch(err => console.log(err.message));
+}
+
+export const chefLogin = (data) => dispatch => {
+    console.log('nl: actions.js: chefLogin: ', data);
+    axios
+    .post('http://cpbackend.herokuapp.com/auth/login', { username: data.email, password: data.password })
     .then(res => {
         localStorage.setItem('token', res.data.payload);
         dispatch({type: CHEF_LOGIN, payload: res.data});
     })
     .catch(err => console.log(err.message));
+
 }
 
 export const chefLogout = () => dispatch => {

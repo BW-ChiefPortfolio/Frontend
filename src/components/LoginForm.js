@@ -64,11 +64,12 @@ const useStyles = makeStyles(theme => ({
     marginTop: "1.5rem"
   }
 }));
-const LoginForm = () => {
+const LoginForm = (props) => {
   const { register, errors, handleSubmit } = useForm();
   //NOTE: When the form is submitted it will gather the data from the form the user inputed...
   const onSubmit = data => {
     console.log("data : ", data);
+    props.chefLogin(data);
   };
 
   //NOTE: Invokes the styling defined in variable useStyle.
@@ -102,9 +103,9 @@ const LoginForm = () => {
                   inputRef={register({
                     required: "You must provide an Email",
                     pattern: {
-                      value: /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+                      /*{value: /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
                       message: "Please provide a valid Email!"
-                    }
+                    }*/}
                   })}
                 />
                 {/*NOTE: Responsible for displaying the errors*/}
@@ -158,4 +159,10 @@ const LoginForm = () => {
     </React.Fragment>
   );
 };
-export default LoginForm;
+
+const mapStateToProps = state => ({
+  user: state.user
+});
+
+export default connect(
+  mapStateToProps, { chefLogin })(LoginForm);
