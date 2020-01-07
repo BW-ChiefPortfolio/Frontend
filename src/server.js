@@ -4,7 +4,7 @@ export const userData = {
     name: 'Nathan Loveless',
     location: 'Northfield, VT',
     contactEmail: 'nathan.loveless@outlook.com',
-    recipes: [],
+    recipes: [1, 3, 4, 7],
     username: 'nathansl2003',
     password: 'password'
 }

@@ -52,11 +52,11 @@ function reducer(state = initialState, action) {
         case CHEF_LOGOUT:
             return state;
         case FETCH_RECIPE_START:
-            return state;
+            return { ...state, error: '', isFetching: true }
         case FETCH_RECIPE_SUCCESS:
-            return state;
+            return { ...state, recipes: action.payload, error: '', isFetching: false}
         case FETCH_RECIPE_FAILURE:
-            return state;
+            return { ...state, error: action.payload, isFetching: false}
         case CREATE_RECIPE_START:
             return state;
         case CREATE_RECIPE_SUCCESS:

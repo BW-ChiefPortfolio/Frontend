@@ -86,8 +86,8 @@ const ChefSignUpForm = (props) => {
   const onSubmit = (data, e) => {
     e.preventDefault();
     console.log("data : ", data);
-    props.chefRegister(data);
-    props.history.push('chefdashboard');
+    props.chefRegister(data, props);
+    //props.history.push('chefdashboard');
   };
 
   //NOTE: Invokes the styling defined in variable useStyle.

@@ -1,9 +1,11 @@
 // Created by Nathan Loveless modified by Nathan and Giovani 12/19/19
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { chefLogin } from "../actions/actions";
+import { chefLogin, fetchRecipes } from "../actions/actions";
 import useForm from "react-hook-form";
 import { Link } from "react-router-dom";
+import { userData, recipes } from '../server';
+
 
 //NOTE: Logo
 import logo from "../images/logo.png";
@@ -72,13 +74,16 @@ const useStyles = makeStyles(theme => ({
 
 const LoginForm = (props) => {
   const { register, errors, handleSubmit } = useForm();
+
+  // This is test code with Server.js
+const [recipies, setRecipes] = useState(recipes);
+const [user, setUser] = useState(userData);
+
   //NOTE: When the form is submitted it will gather the data from the form the user inputed...
   const onSubmit = (data, e) => {
     e.preventDefault();
     console.log("data : ", data);    
-    props.chefLogin(data, props);
-    props.history.push('/chefdashboard');
-    
+    props.chefLogin(user, props);    
   };
 
   //NOTE: Invokes the styling defined in variable useStyle.
@@ -170,8 +175,9 @@ const LoginForm = (props) => {
 };
 
 const mapStateToProps = state => ({
-  user: state.user
+  user: state.user,
+  recipes: state.recipes
 });
 
 export default connect(
-  mapStateToProps, { chefLogin })(LoginForm);
+  mapStateToProps, { chefLogin, fetchRecipes })(LoginForm);
