@@ -10,6 +10,7 @@ import reducer from './reducers/reducers';
 import LoginForm from './components/LoginForm';
 import ChefDashboard from './components/ChefDashboard';
 import ChefSignUpForm from './components/ChefSignUpForm';
+import GuestLandingForm from './components/GuestLandingForm';
 //import { userData, recipes } from './server'; /*** Test import only ***/
 
 
@@ -31,6 +32,7 @@ function App() {
         <Link to='/'> Home </Link>
         <Link to='/login'> Login </Link>
         <Link to='/chefsignup'> Chef Sign up </Link>
+        <Route exact path='/' component={ GuestLandingForm } />
         <Route path='/chefsignup' component={ChefSignUpForm} />
         <Route path='/login' component={LoginForm} />
         <PrivateRoute exact path='/chefdashboard' component={ChefDashboard} />

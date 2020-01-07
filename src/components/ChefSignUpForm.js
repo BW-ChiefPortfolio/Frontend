@@ -27,7 +27,7 @@ import Container from "@material-ui/core/Container";
 import { Divider } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
 
-//NOTE: A theme for this form using Material UI
+//// **** MATERIAL UI STYLING ****
 const useStyles = makeStyles(theme => ({
   form: {
     width: "100%",
@@ -76,21 +76,18 @@ const useStyles = makeStyles(theme => ({
     textDecoration: "none"
   }
 }));
+// **** END OF MATERIAL UI STYLING ****
 
 //NOTE: This is a simpler way to create forms with validation. It renders less when a user inputs into the form...
 const ChefSignUpForm = (props) => {
   const { register, errors, handleSubmit } = useForm();
 
   //NOTE: When the form is submitted it will gather the data from the form the user inputed...
-  const onSubmit = data => {
+  const onSubmit = (data, e) => {
+    e.preventDefault();
     console.log("data : ", data);
-    //NOTE: Submit the form and get an alert on what the user inputed... Remember [data] is what the user inputed.
-    // alert(
-    //   `Fname: ---> ${data.firstName}       lName ---> ${data.lastName}       uName ---> ${data.username}      email---> ${data.email}      password---> ${data.password}`
-    // );
-    //setUserData({ username: data.username, password: data.password, email: data.email })
     props.chefRegister(data);
-    
+    props.history.push('chefdashboard');
   };
 
   //NOTE: Invokes the styling defined in variable useStyle.

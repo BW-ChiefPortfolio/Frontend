@@ -21,7 +21,7 @@ export const DELETE_RECIPE_FAILURE = 'DELETE_RECIPE_FAILURE';
 
 // Redux actions
 // These are currently just shells
-export const chefRegister = (data) => dispatch => {
+export const chefRegister = (data, props) => dispatch => {
     console.log('nl: actions.js: chefRegister: ', data);
     axios
     .post('http://cpbackend.herokuapp.com/auth/register', { username: data.username, password: data.password })

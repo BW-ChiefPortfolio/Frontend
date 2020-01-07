@@ -17,7 +17,7 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 
-//NOTE: A theme for this form using Material UI
+// **** MATERIAL UI STYLING ****
 const useStyles = makeStyles(theme => ({
   form: {
     width: "100%",
@@ -68,12 +68,17 @@ const useStyles = makeStyles(theme => ({
     color: "#515050"
   }
 }));
+// **** END OF MATERIAL UI STYLING ****
+
 const LoginForm = (props) => {
   const { register, errors, handleSubmit } = useForm();
   //NOTE: When the form is submitted it will gather the data from the form the user inputed...
-  const onSubmit = data => {
-    console.log("data : ", data);
-    props.chefLogin(data);
+  const onSubmit = (data, e) => {
+    e.preventDefault();
+    console.log("data : ", data);    
+    props.chefLogin(data, props);
+    props.history.push('/chefdashboard');
+    
   };
 
   //NOTE: Invokes the styling defined in variable useStyle.
