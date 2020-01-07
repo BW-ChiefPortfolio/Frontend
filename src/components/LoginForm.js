@@ -33,7 +33,9 @@ const [user, setUser] = useState(userData);
   const onSubmit = (data, e) => {
     e.preventDefault();
     console.log("data : ", data);    
-    props.chefLogin(data={user, recipies}, props);    
+    props.chefLogin(data={user, recipies}, props);
+    props.fetchRecipes(data.recipies);
+    console.log('nl: LoginForm: onSubmit: ', props.recipies);
   };
 
   //NOTE: Invokes the styling defined in variable useStyle.

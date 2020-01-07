@@ -1,3 +1,5 @@
+import produce from 'immer';
+
 // Created and modified by Nathan Loveless 12/18/19
 import { CHEF_REGISTER, CHEF_LOGIN, CHEF_LOGOUT, FETCH_RECIPE_START, FETCH_RECIPE_SUCCESS,
          FETCH_RECIPE_FAILURE, CREATE_RECIPE_START, CREATE_RECIPE_SUCCESS, CREATE_RECIPE_FAILURE,
@@ -54,7 +56,7 @@ function reducer(state = initialState, action) {
         case FETCH_RECIPE_START:
             return { ...state, error: '', isFetching: true }
         case FETCH_RECIPE_SUCCESS:
-            return { ...state, recipes: action.payload, error: '', isFetching: false}
+            return {...state, ...state.recipies, recipies: action.payload }
         case FETCH_RECIPE_FAILURE:
             return { ...state, error: action.payload, isFetching: false}
         case CREATE_RECIPE_START:
@@ -78,8 +80,6 @@ function reducer(state = initialState, action) {
         default:
             return state;
     }
-
-
 }
 
 export default reducer;

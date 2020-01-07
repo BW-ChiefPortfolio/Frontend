@@ -45,7 +45,7 @@ export const chefLogin = (data, props) => dispatch => {
     console.log('nl: actions.js: chefLogin: TestCode: ', data);
     fetchRecipes(data, props);
 
-    // This is the real code we need eventually
+    //This is the real code we need eventually
     // axios
     // .post('http://cpbackend.herokuapp.com/auth/login', { username: data.email, password: data.password })
     // .then(res => {
@@ -60,10 +60,11 @@ export const chefLogout = () => dispatch => {
 
 }
 
-export const fetchRecipes = (data, props) => dispatch => {
+export const fetchRecipes = (data) => dispatch => {
     // Fetch recipes will either display ChefRecipes
     // or display all recipes if it is a guest
     // For testing we are just assuming they are logged in
+    console.log('nl: actions.js: fetchRecipes: TestCode: ', data);
     dispatch({ type: FETCH_RECIPE_START });
     dispatch({type: FETCH_RECIPE_SUCCESS, payload: data})
 
