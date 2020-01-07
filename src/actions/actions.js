@@ -25,8 +25,8 @@ export const DELETE_RECIPE_FAILURE = 'DELETE_RECIPE_FAILURE';
 // These are currently just shells
 export const chefRegister = (data, props) => dispatch => {
 
-    dispatch({type: CHEF_REGISTER, payload: data});
-    fetchRecipes(data, props);
+    dispatch({type: CHEF_REGISTER, payload: data.user});
+    fetchRecipes(data.recipies, props);
     
 
     // This is the real code we need eventually
@@ -60,18 +60,19 @@ export const chefLogout = () => dispatch => {
 
 }
 
-export const fetchRecipes = () => dispatch => {
+export const fetchRecipes = (data, props) => dispatch => {
     // Fetch recipes will either display ChefRecipes
     // or display all recipes if it is a guest
     // For testing we are just assuming they are logged in
     dispatch({ type: FETCH_RECIPE_START });
+    dispatch({type: FETCH_RECIPE_SUCCESS, payload: data})
 
-    axiosWithAuth()
-    .get("/post")
-    .then(res => {
-
-    })
-    .catch(err => console.log(err.message));
+    // axiosWithAuth()
+    // .get("/post")
+    // .then(res => {
+    //     dispatch({type: FETCH_RECIPE_SUCCESS, payload: res.data})
+    // })
+    // .catch(err => console.log(err.message));
 }
 
 export const createRecipe = () => dispatch => {
