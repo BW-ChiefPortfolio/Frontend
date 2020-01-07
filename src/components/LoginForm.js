@@ -10,69 +10,19 @@ import { userData, recipes } from '../server';
 //NOTE: Logo
 import logo from "../images/logo.png";
 
+import LoginFormStyles from "../styles/_LoginStyle";
+
 //NOTE: Material UI
-import Button from "@material-ui/core/Button";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import TextField from "@material-ui/core/TextField";
-import Grid from "@material-ui/core/Grid";
-import Typography from "@material-ui/core/Typography";
-import { makeStyles } from "@material-ui/core/styles";
-import Container from "@material-ui/core/Container";
+import {
+  Button,
+  CssBaseline,
+  TextField,
+  Grid,
+  Typography,
+  Container
+} from "@material-ui/core";
 
-// **** MATERIAL UI STYLING ****
-const useStyles = makeStyles(theme => ({
-  form: {
-    width: "100%",
-    marginTop: theme.spacing(3)
-  },
-  submit: {
-    margin: theme.spacing(3, 0, 2)
-  },
-  mainWrapper: {
-    background: "#3DB1FF",
-    display: "flex",
-    alignItems: "center",
-    marginBottom: "1rem",
-    flexDirection: "column",
-    height: "100vh"
-  },
-  mainContainer: {
-    boxShadow: "0 2px 4px 0 rgba(181,181,181,.7)",
-    borderTop: "1px solid #f1f1f5",
-    padding: "2rem",
-    background: "white"
-  },
-
-  logo: {
-    marginTop: "1.5rem",
-    marginBottom: "1.5rem"
-  },
-  innerForm: {
-    display: "flex",
-    justifyContent: "center",
-    boxShadow: "0 2px 4px 0 rgba(181,181,181,.7)",
-    borderTop: "1px solid #f1f1f5",
-    padding: "2rem",
-    background: "white",
-    flexDirection: "row-reverse",
-    marginBottom: "3rem"
-  },
-  signUpIntro: {
-    marginLeft: "2rem"
-  },
-  signUpIcons: {
-    display: "flex",
-    alignItems: "center",
-    marginTop: "1.5rem"
-  },
-  links: {
-    textDecoration: "none",
-    color: "#515050"
-  }
-}));
-// **** END OF MATERIAL UI STYLING ****
-
-const LoginForm = (props) => {
+const LoginForm = props => {
   const { register, errors, handleSubmit } = useForm();
 
   // This is test code with Server.js
@@ -87,7 +37,7 @@ const [user, setUser] = useState(userData);
   };
 
   //NOTE: Invokes the styling defined in variable useStyle.
-  const LoginFormStyle = useStyles();
+  const LoginFormStyle = LoginFormStyles();
 
   return (
     <React.Fragment>
@@ -119,7 +69,8 @@ const [user, setUser] = useState(userData);
                     pattern: {
                       /*{value: /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
                       message: "Please provide a valid Email!"
-                    }*/}
+                    }*/
+                    }
                   })}
                 />
                 {/*NOTE: Responsible for displaying the errors*/}
@@ -163,8 +114,13 @@ const [user, setUser] = useState(userData);
           <Grid container justify="flex-end">
             <Grid item>
               {/*NOTE: Now links to the login component [ Future addition: Will have a post request to chef dashboard when user signs up ] */}
-              <Link className={LoginFormStyle.links} to="/chefsignup" variant="body2">
-                Don't have an account? Sign Up
+              <Link
+                className={LoginFormStyle.links}
+                to="/chefsignup"
+                variant="body2"
+              >
+                Don't have an account?{" "}
+                <span className={LoginFormStyle.signUp}>Sign Up</span>
               </Link>
             </Grid>
           </Grid>
