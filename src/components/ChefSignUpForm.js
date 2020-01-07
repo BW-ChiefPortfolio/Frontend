@@ -1,100 +1,42 @@
 //install: You must install react-hook-form.
 
-//TODO Simplify all the code below. DRY!
-
-
 //NOTE: Other imports
 import React, { useState, useEffect } from "react";
 import useForm from "react-hook-form";
 import { Link } from "react-router-dom";
-import { history } from "react-router-dom";
-import { connect } from 'react-redux';
-import { chefRegister } from '../actions/actions';
+import { connect } from "react-redux";
+import { chefRegister } from "../actions/actions";
 
 //NOTE: Logo
 import logo from "../images/logo.png";
 
 //NOTE: Material UI
-import Button from "@material-ui/core/Button";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import TextField from "@material-ui/core/TextField";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Checkbox from "@material-ui/core/Checkbox";
-import Grid from "@material-ui/core/Grid";
-import Typography from "@material-ui/core/Typography";
-import { makeStyles } from "@material-ui/core/styles";
-import Container from "@material-ui/core/Container";
-import { Divider } from "@material-ui/core";
-import Box from "@material-ui/core/Box";
-
-//NOTE: A theme for this form using Material UI
-const useStyles = makeStyles(theme => ({
-  form: {
-    width: "100%",
-    marginTop: theme.spacing(3)
-  },
-  submit: {
-    margin: theme.spacing(3, 0, 2)
-  },
-  mainWrapper: {
-    background: "#3DB1FF",
-    display: "flex",
-    alignItems: "center",
-    marginBottom: "1rem",
-    flexDirection: "column"
-  },
-  mainContainer: {
-    boxShadow: "0 2px 4px 0 rgba(181,181,181,.7)",
-    borderTop: "1px solid #f1f1f5",
-    padding: "2rem",
-    background: "white"
-  },
-
-  logo: {
-    marginTop: "1.5rem",
-    marginBottom: "1.5rem"
-  },
-  innerForm: {
-    display: "flex",
-    justifyContent: "center",
-    boxShadow: "0 2px 4px 0 rgba(181,181,181,.7)",
-    borderTop: "1px solid #f1f1f5",
-    padding: "2rem",
-    background: "white",
-    flexDirection: "row-reverse",
-    marginBottom: "3rem"
-  },
-  signUpIntro: {
-    marginLeft: "2rem"
-  },
-  signUpIcons: {
-    display: "flex",
-    alignItems: "center",
-    marginTop: "1.5rem"
-  },
-  links: {
-    textDecoration: "none"
-  }
-}));
+import {
+  Button,
+  CssBaseline,
+  TextField,
+  FormControlLabel,
+  Checkbox,
+  Grid,
+  Typography,
+  Container,
+  Divider,
+  Box
+} from "@material-ui/core";
+import ChefSignUpStyles from "../styles/_SignUpStyle";
 
 //NOTE: This is a simpler way to create forms with validation. It renders less when a user inputs into the form...
-const ChefSignUpForm = (props) => {
+const ChefSignUpForm = props => {
   const { register, errors, handleSubmit } = useForm();
 
   //NOTE: When the form is submitted it will gather the data from the form the user inputed...
   const onSubmit = data => {
     console.log("data : ", data);
-    //NOTE: Submit the form and get an alert on what the user inputed... Remember [data] is what the user inputed.
-    // alert(
-    //   `Fname: ---> ${data.firstName}       lName ---> ${data.lastName}       uName ---> ${data.username}      email---> ${data.email}      password---> ${data.password}`
-    // );
-    //setUserData({ username: data.username, password: data.password, email: data.email })
     props.chefRegister(data);
-    
   };
 
-  //NOTE: Invokes the styling defined in variable useStyle.
-  const ChefSignUpStyle = useStyles();
+  //NOTE: Invokes the styling defined in variable useStyle. [To Style this component ]
+  const ChefSignUpStyle = ChefSignUpStyles();
 
   return (
     <React.Fragment>
@@ -104,7 +46,7 @@ const ChefSignUpForm = (props) => {
           <Box className={ChefSignUpStyle.signUpIntro}>
             <h2>Welcome to Chef Portfolio!</h2>
             <p>
-              Isdasddadt only takes a few minutes to start sharing your best recipes.
+              It only takes a few minutes to start sharing your best recipes.
             </p>
             <Box className={ChefSignUpStyle.signUpIcons}>
               <img
@@ -252,8 +194,13 @@ const ChefSignUpForm = (props) => {
             <Grid container justify="flex-end">
               <Grid item>
                 {/*NOTE: Now links to the login component [ Future addition: Will have a post request to chef dashboard when user signs up ] */}
-                <Link className={ChefSignUpStyle.links} to="/login" variant="body2">
-                  Already have an account? Sign in
+                <Link
+                  className={ChefSignUpStyle.links}
+                  to="/login"
+                  variant="body2"
+                >
+                  Already have an account?{" "}
+                  <span className={ChefSignUpStyle.signIn}>Sign in</span>
                 </Link>
               </Grid>
             </Grid>
@@ -268,5 +215,4 @@ const mapStateToProps = state => ({
   newUser: state.user
 });
 
-export default connect(
-  mapStateToProps, { chefRegister })(ChefSignUpForm);
+export default connect(mapStateToProps, { chefRegister })(ChefSignUpForm);
