@@ -8,7 +8,7 @@ import { connect } from "react-redux";
 import { chefRegister } from "../actions/actions";
 
 //NOTE: Logo
-import logo from "../images/logo.png";
+import logo from "../images/logov2.png";
 
 //NOTE: Material UI
 import {

@@ -8,7 +8,7 @@ import { userData, recipes } from '../server';
 
 
 //NOTE: Logo
-import logo from "../images/logo.png";
+import logo from "../images/logov2.png";
 
 import LoginFormStyles from "../styles/_LoginStyle";
 
