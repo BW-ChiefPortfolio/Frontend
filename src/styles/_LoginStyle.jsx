@@ -16,7 +16,7 @@ const LoginStyles = makeStyles(theme => ({
       alignItems: "center",
       marginBottom: "1rem",
       flexDirection: "column",
-      height: "100vh"
+      height: "100vh",
     },
     mainContainer: {
       boxShadow: "0 2px 4px 0 rgba(181,181,181,.7)",
@@ -26,7 +26,7 @@ const LoginStyles = makeStyles(theme => ({
     },
   
     logo: {
-      marginTop: "1.5rem",
+      marginTop: "4.5rem",
       marginBottom: "1.5rem"
     },
     innerForm: {

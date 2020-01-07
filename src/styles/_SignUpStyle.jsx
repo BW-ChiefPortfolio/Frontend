@@ -15,7 +15,8 @@ const ChefSignUpStyles = makeStyles(theme => ({
       display: "flex",
       alignItems: "center",
       marginBottom: "1rem",
-      flexDirection: "column"
+      flexDirection: "column",
+      height:"100vh",
     },
     mainContainer: {
       boxShadow: "0 2px 4px 0 rgba(181,181,181,.7)",
@@ -25,8 +26,8 @@ const ChefSignUpStyles = makeStyles(theme => ({
     },
   
     logo: {
-      marginTop: "1.5rem",
-      marginBottom: "1.5rem"
+      marginTop: "2.5rem",
+      marginBottom: "2.5rem"
     },
     innerForm: {
       display: "flex",
