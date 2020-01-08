@@ -33,8 +33,8 @@ const [user, setUser] = useState(userData);
   const onSubmit = (data, e) => {
     e.preventDefault();
     console.log("data : ", data);    
-    //props.chefLogin(data, props);
-    props.fetchRecipes();
+    props.chefLogin(data, props);
+    //props.fetchRecipes();
     console.log('nl: LoginForm: onSubmit: ', props);
   };
 

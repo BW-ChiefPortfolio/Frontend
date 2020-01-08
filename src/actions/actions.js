@@ -64,6 +64,7 @@ export const fetchRecipes = () => dispatch => {
     // console.log('nl: actions.js: fetchRecipes: TestCode: ', data);
     // dispatch({ type: FETCH_RECIPE_START });
     // dispatch({type: FETCH_RECIPE_SUCCESS, payload: data})
+    
     console.log('inside fetchRecipes: ');
     axios
     .get("http://cpbackend.herokuapp.com/recipes")
