@@ -25,7 +25,7 @@ const GuestLandingForm = () => {
         </div>
         <Paper elevation={5}>
         <Container maxWidth="lg" className={LandingPageStyle.recipesContainer}>
-          <p>This is where the recipes will be showcased!</p>
+          <p>This is where the recipes will be showcased! Cards!</p>
         </Container>
         </Paper>
       </Container>
