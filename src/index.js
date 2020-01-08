@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import { Link } from "react-router-dom";
 import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
@@ -13,6 +12,8 @@ import ChefSignUpForm from "./components/ChefSignUpForm";
 import GuestLandingForm from "./components/GuestLandingForm";
 //import { userData, recipes } from './server'; /*** Test import only ***/
 import Navigation from "./components/Navigation";
+import CreatePost from "./components/CreatePost";
+import EditPost from "./components/EditPost";
 
 const store = createStore(reducer, applyMiddleware(thunk));
 
@@ -32,6 +33,11 @@ function App() {
         <Route exact path="/" component={GuestLandingForm} />
         <Route path="/chefsignup" component={ChefSignUpForm} />
         <Route path="/login" component={LoginForm} />
+
+        {/* Maybe make it a PrivateRoute????*/}
+        <Route path="/create" component={CreatePost} />
+        <Route path="/edit" component={EditPost} />
+
         <PrivateRoute exact path="/chefdashboard" component={ChefDashboard} />
       </div>
     </Router>
