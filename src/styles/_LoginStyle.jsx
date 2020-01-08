@@ -19,8 +19,6 @@ const LoginStyles = makeStyles(theme => ({
     height: "100vh"
   },
   mainContainer: {
-    boxShadow: "0 2px 4px 0 rgba(181,181,181,.7)",
-    borderTop: "1px solid #f1f1f5",
     padding: "2rem",
     background: "white",
     marginTop: "1rem"
@@ -28,7 +26,6 @@ const LoginStyles = makeStyles(theme => ({
 
   logo: {
     marginTop: "4.5rem",
-    marginBottom: "1.5rem"
   },
   innerForm: {
     display: "flex",
