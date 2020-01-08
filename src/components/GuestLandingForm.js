@@ -1,7 +1,7 @@
 import React from "react";
 
 //NOTE: Material UI
-import { CssBaseline, Container } from "@material-ui/core";
+import { CssBaseline, Container, Paper } from "@material-ui/core";
 import LandingPageStyles from "../styles/_LandingPageStyles";
 
 const GuestLandingForm = () => {
@@ -11,7 +11,7 @@ const GuestLandingForm = () => {
       <CssBaseline />
       <Container maxWidth="xl" className={LandingPageStyle.headerContainer}>
         <h2 className={LandingPageStyle.subTitle}>
-          Check out all the Recipes!
+          Discover
         </h2>
       </Container>
       <Container maxWidth="lg">
@@ -23,9 +23,11 @@ const GuestLandingForm = () => {
             <p> Filter Goes Here </p>
           </div>
         </div>
+        <Paper elevation={5}>
         <Container maxWidth="lg" className={LandingPageStyle.recipesContainer}>
           <p>This is where the recipes will be showcased!</p>
         </Container>
+        </Paper>
       </Container>
     </React.Fragment>
   );

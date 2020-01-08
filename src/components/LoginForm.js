@@ -18,7 +18,8 @@ import {
   TextField,
   Grid,
   Typography,
-  Container
+  Container,
+  Paper
 } from "@material-ui/core";
 
 const LoginForm = props => {
@@ -42,10 +43,10 @@ const [user, setUser] = useState(userData);
 
   return (
     <React.Fragment>
+      <CssBaseline />
       <div className={LoginFormStyle.mainWrapper}>
         <img className={LoginFormStyle.logo} src={logo} alt="Logo" />
-        <Container maxWidth="xs" className={LoginFormStyle.mainContainer}>
-          <CssBaseline />
+        <Paper className={LoginFormStyle.mainContainer}>
           <Typography component="h1" variant="h5">
             Sign In
           </Typography>
@@ -101,7 +102,6 @@ const [user, setUser] = useState(userData);
                 {errors.password && errors.password.message}
               </Grid>
             </Grid>
-            <br></br>
             <Button
               fullWidth
               variant="contained"
@@ -125,7 +125,7 @@ const [user, setUser] = useState(userData);
               </Link>
             </Grid>
           </Grid>
-        </Container>
+        </Paper>
       </div>
     </React.Fragment>
   );

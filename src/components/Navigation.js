@@ -5,10 +5,12 @@ import { Link } from "react-router-dom";
 //logo import
 import logo from "../images/logov2.png";
 
-//Material UI Imports
+//Styles import
 import NavigationStyles from "../styles/_NavigationStyles";
 
 const Navigation = () => {
+
+  //Invokes the styles...
   const NavigationStyle = NavigationStyles();
 
   return (
