@@ -39,12 +39,9 @@ export const chefRegister = (data, props) => dispatch => {
 }
 
 export const chefLogin = (data, props) => dispatch => {
-    //dispatch({type: CHEF_LOGIN, payload: data});
     console.log('nl: actions.js: chefLogin: TestCode: ', data);
 
     //This is the real code we need eventually
-    // localStorage.setItem('token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QxdXNlcm5hbWUiLCJpZCI6NiwiaWF0IjoxNTc4NDMxOTkzLCJleHAiOjE1ODMxODM5OTN9.QkzU3lfkPhO5mDzzYqJW30XyEy0RtDjL2T6vsegeu6U');
-    // props.history.push('/chefdashboard');
     axios
     .post('https://cpbackend.herokuapp.com/auth/login', { username: data.email, password: data.password })
     .then(res => {
@@ -61,12 +58,7 @@ export const chefLogout = () => dispatch => {
 
 export const fetchRecipes = () => dispatch => {
     // Fetch recipes will either display ChefRecipes
-    // or display all recipes if it is a guest
-    // For testing we are just assuming they are logged in
-    // console.log('nl: actions.js: fetchRecipes: TestCode: ', data);
-    // dispatch({ type: FETCH_RECIPE_START });
-    // dispatch({type: FETCH_RECIPE_SUCCESS, payload: data})
-    
+    // or display all recipes if it is a guest    
     console.log('inside fetchRecipes: ');
 
     axiosWithAuth()

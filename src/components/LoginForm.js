@@ -31,8 +31,9 @@ const [user, setUser] = useState(userData);
   //NOTE: When the form is submitted it will gather the data from the form the user inputed...
   const onSubmit = (data, e) => {
     e.preventDefault();
-    console.log("data : ", data);    
-    props.chefLogin(data, props);
+    console.log("data : ", data); 
+    const credentials = { username: data.email, password: data.password }   
+    props.chefLogin(credentials, props);
     props.fetchRecipes();
     console.log('nl: LoginForm: onSubmit: ', props);
   };
