@@ -12,28 +12,40 @@ import { CHEF_REGISTER, CHEF_LOGIN, CHEF_LOGOUT, FETCH_RECIPE_START, FETCH_RECIP
          // unless they filter it.
          const initialState = {
              user: { 
-                 name: '',
+                 first_name: '',
+                 last_name: '',
                  location: '',
-                 contactEmail: '',
-                 recipes: [],  // This just stores the ID of the recipe to pull down the chef's recipes
+                 contact: '',
                  username: '',
-                 password: ''
+                 password: '',
+                 email_address: '',
+                 avatar_url: ''
+                 //recipes: [],  // This just stores the ID of the recipe to pull down the chef's recipes                 
              },
 
-             recipes: [{
-                 id: '',
+             recipe: {
                  title: '',
-                 image: '',
-                 mealType: '',
                  description: '',
-                 Instructions: '',
-                 ingredients: [{}],
-                 isFetching: false,
-                 error: ''
-             }],
+                 instructions: '',
+                 meal_type: '',
+                 chef_id: '',
+                 pic_url: ''
+             }
 
-             isFetching: false,
-             error: ''
+            //  recipes: [{
+            //      id: '',
+            //      title: '',
+            //      image: '',
+            //      mealType: '',
+            //      description: '',
+            //      Instructions: '',
+            //      ingredients: [{}],
+            //      isFetching: false,
+            //      error: ''
+            //  }],
+
+            //  isFetching: false,
+            //  error: ''
             }
 
             // Chef is going to login
@@ -45,17 +57,29 @@ import { CHEF_REGISTER, CHEF_LOGIN, CHEF_LOGOUT, FETCH_RECIPE_START, FETCH_RECIP
 
 
 function reducer(state = initialState, action) {
+    //produce(state, draft => {
     switch(action.type)
     {
         case CHEF_REGISTER:
-            return { ...state, ...state.user, username: action.payload.username, password: action.payload.password }
+            //return { ...state, ...state.user, username: action.payload.username, password: action.payload.password }
+            return { ...state, ...state.user,  user: action.payload }
+            // draft.user.username = action.payload.username;
+            // draft.user.password = action.payload.password;
+            // break;
         case CHEF_LOGIN:
+            // draft.user.username = action.payload.username;
+            // draft.user.password = action.payload.password;
+            // break;
             return { ...state, ...state.user, username: action.payload.username, password: action.payload.password }
         case CHEF_LOGOUT:
             return state;
         case FETCH_RECIPE_START:
             return { ...state, error: '', isFetching: true }
         case FETCH_RECIPE_SUCCESS:
+            // action.payload.foreach(item => {
+            //     draft.recipes.push(item);
+            // })
+            // break;
             return {...state, ...state.recipies, recipies: action.payload }
         case FETCH_RECIPE_FAILURE:
             return { ...state, error: action.payload, isFetching: false}
@@ -80,6 +104,7 @@ function reducer(state = initialState, action) {
         default:
             return state;
     }
+//})
 }
 
 export default reducer;

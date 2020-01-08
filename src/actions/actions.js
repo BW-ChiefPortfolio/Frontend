@@ -25,55 +25,53 @@ export const DELETE_RECIPE_FAILURE = 'DELETE_RECIPE_FAILURE';
 // These are currently just shells
 export const chefRegister = (data, props) => dispatch => {
 
-    dispatch({type: CHEF_REGISTER, payload: data.user});
-    fetchRecipes(data.recipies, props);
-    
+    console.log('nl: actions.js: chefRegister, input data: ', data);
 
     // This is the real code we need eventually
-    // axios
-    // .post('http://cpbackend.herokuapp.com/auth/register', { username: data.username, password: data.password })
-    // .then(res => {
-    //     localStorage.setItem('token', res.data.payload);
-    //     dispatch({type: CHEF_REGISTER, payload: res.data});
-    //     props.history.push('/chefdashboard');
-    // })
-    // .catch(err => console.log(err.message));
+     axios
+    .post('http://cpbackend.herokuapp.com/auth/register', data)
+    .then(res => {
+        localStorage.setItem('token', res.data.payload);
+        dispatch({type: CHEF_REGISTER, payload: res.data});
+        props.history.push('/chefdashboard');
+    })
+    .catch(err => console.log(err.message));
 }
 
 export const chefLogin = (data, props) => dispatch => {
-    dispatch({type: CHEF_REGISTER, payload: data});
+    //dispatch({type: CHEF_LOGIN, payload: data});
     console.log('nl: actions.js: chefLogin: TestCode: ', data);
-    fetchRecipes(data, props);
 
     //This is the real code we need eventually
-    // axios
-    // .post('http://cpbackend.herokuapp.com/auth/login', { username: data.email, password: data.password })
-    // .then(res => {
-    //     localStorage.setItem('token', res.data.payload);
-    //     dispatch({type: CHEF_LOGIN, payload: res.data});
-    //     props.history.push('/chefdashboard');
-    // })
-    // .catch(err => console.log(err.message));
+    axios
+    .post('http://cpbackend.herokuapp.com/auth/login', { username: data.email, password: data.password })
+    .then(res => {
+        localStorage.setItem('token', res.data.payload);
+        dispatch({type: CHEF_LOGIN, payload: res.data});
+        props.history.push('/chefdashboard');
+    })
+    .catch(err => console.log(err.message));
 }
 
 export const chefLogout = () => dispatch => {
 
 }
 
-export const fetchRecipes = (data) => dispatch => {
+export const fetchRecipes = () => dispatch => {
     // Fetch recipes will either display ChefRecipes
     // or display all recipes if it is a guest
     // For testing we are just assuming they are logged in
-    console.log('nl: actions.js: fetchRecipes: TestCode: ', data);
-    dispatch({ type: FETCH_RECIPE_START });
-    dispatch({type: FETCH_RECIPE_SUCCESS, payload: data})
-
-    // axiosWithAuth()
-    // .get("/post")
-    // .then(res => {
-    //     dispatch({type: FETCH_RECIPE_SUCCESS, payload: res.data})
-    // })
-    // .catch(err => console.log(err.message));
+    // console.log('nl: actions.js: fetchRecipes: TestCode: ', data);
+    // dispatch({ type: FETCH_RECIPE_START });
+    // dispatch({type: FETCH_RECIPE_SUCCESS, payload: data})
+    console.log('inside fetchRecipes: ');
+    axios
+    .get("http://cpbackend.herokuapp.com/recipes")
+    .then(res => {
+        dispatch({type: FETCH_RECIPE_SUCCESS, payload: res.data})
+        console.log('nl: actions.js: fetchRecipes: TestCode: ', res.data);
+    })
+    .catch(err => console.log(err.message));
 }
 
 export const createRecipe = () => dispatch => {

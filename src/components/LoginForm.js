@@ -26,16 +26,16 @@ const LoginForm = props => {
   const { register, errors, handleSubmit } = useForm();
 
   // This is test code with Server.js
-const [recipies, setRecipes] = useState(recipes);
+const [recipeData, setRecipeData] = useState(recipes);
 const [user, setUser] = useState(userData);
 
   //NOTE: When the form is submitted it will gather the data from the form the user inputed...
   const onSubmit = (data, e) => {
     e.preventDefault();
     console.log("data : ", data);    
-    props.chefLogin(data={user, recipies}, props);
-    props.fetchRecipes(data.recipies);
-    console.log('nl: LoginForm: onSubmit: ', props.recipies);
+    //props.chefLogin(data, props);
+    props.fetchRecipes();
+    console.log('nl: LoginForm: onSubmit: ', props);
   };
 
   //NOTE: Invokes the styling defined in variable useStyle.
