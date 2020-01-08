@@ -1,7 +1,34 @@
-import React from 'react';
+import React from "react";
+
+//NOTE: Material UI
+import { CssBaseline, Container } from "@material-ui/core";
+import LandingPageStyles from "../styles/_LandingPageStyles";
 
 const GuestLandingForm = () => {
-    return <div>This is the landing page</div>
-}
+  const LandingPageStyle = LandingPageStyles();
+  return (
+    <React.Fragment>
+      <CssBaseline />
+      <Container maxWidth="xl" className={LandingPageStyle.headerContainer}>
+        <h2 className={LandingPageStyle.subTitle}>
+          Check out all the Recipes!
+        </h2>
+      </Container>
+      <Container maxWidth="lg">
+        <div className={LandingPageStyle.innerContainer}>
+          <div className="title">
+            <h2>Recipes</h2>
+          </div>
+          <div className="filter">
+            <p> Filter Goes Here </p>
+          </div>
+        </div>
+        <Container maxWidth="lg" className={LandingPageStyle.recipesContainer}>
+          <p>This is where the recipes will be showcased!</p>
+        </Container>
+      </Container>
+    </React.Fragment>
+  );
+};
 
 export default GuestLandingForm;

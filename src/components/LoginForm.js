@@ -4,8 +4,7 @@ import { connect } from "react-redux";
 import { chefLogin, fetchRecipes } from "../actions/actions";
 import useForm from "react-hook-form";
 import { Link } from "react-router-dom";
-import { userData, recipes } from '../server';
-
+import { userData, recipes } from "../server";
 
 //NOTE: Logo
 import logo from "../images/logov2.png";
@@ -26,16 +25,16 @@ const LoginForm = props => {
   const { register, errors, handleSubmit } = useForm();
 
   // This is test code with Server.js
-const [recipies, setRecipes] = useState(recipes);
-const [user, setUser] = useState(userData);
+  const [recipies, setRecipes] = useState(recipes);
+  const [user, setUser] = useState(userData);
 
   //NOTE: When the form is submitted it will gather the data from the form the user inputed...
   const onSubmit = (data, e) => {
     e.preventDefault();
-    console.log("data : ", data);    
-    props.chefLogin(data={user, recipies}, props);
+    console.log("data : ", data);
+    props.chefLogin((data = { user, recipies }), props);
     props.fetchRecipes(data.recipies);
-    console.log('nl: LoginForm: onSubmit: ', props.recipies);
+    console.log("nl: LoginForm: onSubmit: ", props.recipies);
   };
 
   //NOTE: Invokes the styling defined in variable useStyle.
@@ -61,13 +60,13 @@ const [user, setUser] = useState(userData);
                   variant="outlined"
                   required
                   fullWidth
-                  id="email"
-                  label="Email Address"
-                  name="email"
-                  autoComplete="email"
-                  htmlFor="email"
+                  id="username"
+                  label="Username"
+                  name="username"
+                  autoComplete="username"
+                  htmlFor="username"
                   inputRef={register({
-                    required: "You must provide an Email",
+                    required: "You must provide a valid Username",
                     pattern: {
                       /*{value: /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
                       message: "Please provide a valid Email!"
@@ -76,7 +75,7 @@ const [user, setUser] = useState(userData);
                   })}
                 />
                 {/*NOTE: Responsible for displaying the errors*/}
-                {errors.email && errors.email.message}
+                {errors.username && errors.username.message}
               </Grid>
             </Grid>
             <Grid container spacing={2}>
@@ -137,5 +136,4 @@ const mapStateToProps = state => ({
   recipes: state.recipes
 });
 
-export default connect(
-  mapStateToProps, { chefLogin, fetchRecipes })(LoginForm);
+export default connect(mapStateToProps, { chefLogin, fetchRecipes })(LoginForm);
