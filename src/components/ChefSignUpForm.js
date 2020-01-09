@@ -124,6 +124,36 @@ const ChefSignUpForm = props => {
                   <TextField
                     type="text"
                     variant="outlined"
+                    fullWidth
+                    id="location"
+                    label="Location"
+                    name="location"
+                    autoComplete="location"
+                    htmlFor="location"
+                    inputRef={register}
+                  />
+                </Grid>
+              </Grid>
+              <Grid container spacing={2}>
+                <Grid item xs={12}>
+                  <TextField
+                    type="text"
+                    variant="outlined"
+                    fullWidth
+                    id="contact"
+                    label="Contact"
+                    name="contact"
+                    autoComplete="contact"
+                    htmlFor="contact"
+                    inputRef={register}
+                  />
+                </Grid>
+              </Grid>
+              <Grid container spacing={2}>
+                <Grid item xs={12}>
+                  <TextField
+                    type="text"
+                    variant="outlined"
                     required
                     fullWidth
                     id="username"
