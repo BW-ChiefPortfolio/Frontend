@@ -16,7 +16,6 @@ const ChefSignUpStyles = makeStyles(theme => ({
     alignItems: "center",
     marginBottom: "1rem",
     flexDirection: "column",
-    height: "100vh"
   },
   mainContainer: {
     boxShadow: "0 2px 4px 0 rgba(181,181,181,.7)",
