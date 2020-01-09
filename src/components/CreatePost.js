@@ -27,9 +27,10 @@ const CreatePost = (props) => {
 
     const newRecipe = {
       title: data.title,
-      description: '',
+      //Added this -giovani
+      description: data.description,
       instructions: data.instructions,
-      meal_type: data.mealtype,
+      meal_type: data.meal_type,
       chef_id: localStorage.getItem('id'),
       pic_url: ''
     }
@@ -62,10 +63,12 @@ const CreatePost = (props) => {
                   autoComplete="title"
                   htmlFor="text"
                   inputRef={register({
-                    required: "You must provide a title for your post"
+                    maxLength: {
+                      value: 20,
+                      message: "It looks like your title is too long."
+                    }
                   })}
                 />
-                {/*NOTE: Responsible for displaying the errors*/}
                 {errors.title && errors.title.message}
               </Grid>
             </Grid>
@@ -74,37 +77,13 @@ const CreatePost = (props) => {
                 <TextField
                   type="text"
                   variant="outlined"
-                  required
                   fullWidth
-                  id="mealtype"
-                  label="Meal Type"
-                  name="mealtype"
-                  htmlFor="mealtype"
-                  inputRef={register({
-                    required: "You must provide the Meal Type!"
-                  })}
-                />
-                {/*NOTE: Responsible for displaying the errors*/}
-                {errors.mealtype && errors.mealtype.message}
-              </Grid>
-            </Grid>
-            <Grid container spacing={2}>
-              <Grid item xs={12}>
-                <TextField
-                  type="text"
-                  variant="outlined"
-                  required
-                  fullWidth
-                  id="ingredients"
-                  label="Ingredients"
-                  name="ingredients"
-                  htmlFor="text"
-                  inputRef={register({
-                    required: "You must provide ingredients!"
-                  })}
-                />
-                {/*NOTE: Responsible for displaying the errors*/}
-                {errors.ingredients && errors.ingredients.message}
+                  id="description"
+                  label="Description"
+                  name="description"
+                  htmlFor="description"
+                  inputRef={register}
+                  />
               </Grid>
             </Grid>
             <Grid container spacing={2}>
@@ -125,6 +104,21 @@ const CreatePost = (props) => {
                 />
                 {/*NOTE: Responsible for displaying the errors*/}
                 {errors.instructions && errors.instructions.message}
+              </Grid>
+            </Grid>
+            {/* Made this field not required :& Added the create data flow */}
+            <Grid container spacing={2}>
+              <Grid item xs={12}>
+                <TextField
+                  type="text"
+                  variant="outlined"
+                  fullWidth
+                  id="meal_type"
+                  label="Meal Type"
+                  name="meal_type"
+                  htmlFor="meal_type"
+                  inputRef={register}
+                />
               </Grid>
             </Grid>
             <br></br>
