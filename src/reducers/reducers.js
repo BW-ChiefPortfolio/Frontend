@@ -12,6 +12,7 @@ import { CHEF_REGISTER, CHEF_LOGIN, CHEF_LOGOUT, FETCH_RECIPE_START, FETCH_RECIP
          // unless they filter it.
          const initialState = {
              user: { 
+                 id: '',
                  first_name: '',
                  last_name: '',
                  location: '',
@@ -62,13 +63,18 @@ function reducer(state = initialState, action) {
         case FETCH_RECIPE_START:
             return { ...state, error: '', isFetching: true }
         case FETCH_RECIPE_SUCCESS:
-               return {...state, recipes: [...state.recipes, action.payload]}  
+            const newArray = []
+            action.payload.forEach(item => {
+                newArray.push(item);
+            })
+               
+            return {...state, recipes: newArray};               
         case FETCH_RECIPE_FAILURE:
             return { ...state, error: action.payload, isFetching: false}
         case CREATE_RECIPE_START:
-            return state;
+            return { ...state, error: '', isFetching: true }
         case CREATE_RECIPE_SUCCESS:
-            return state;
+            return { ...state, recipes: [...state.recipes, action.payload]}
         case CREATE_RECIPE_FAILURE:
             return state;
         case EDIT_RECIPE_START:

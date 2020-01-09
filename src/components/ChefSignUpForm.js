@@ -32,20 +32,17 @@ const ChefSignUpForm = props => {
   //NOTE: When the form is submitted it will gather the data from the form the user inputed...
   const onSubmit = (data, e) => {
     e.preventDefault();
-    console.log('nl: ChefSignUpForm.js: onSubmit: ', data);
-    props.chefRegister( { 
-        //id: '',
-        first_name: data.firstName, 
-        last_name: data.lastName,
-       // location: '',
-        //contact: '',
-        username: data.username,        
-        email_address: data.email,
-        password: data.password
-        //avatar_url: ''
-      }, props);
-      
-      props.fetchRecipes(props.user.id);
+    props.chefRegister({
+      id: '',
+      firstName: data.firstName, 
+      lastName: data.lastName,
+      location: '',
+      contact: '',
+      username: data.username,        
+      email: data.email,
+      password: data.password,
+      avatar_url: ''
+  }, props);
   };
 
   //NOTE: Invokes the styling defined in variable useStyle. [To Style this component ]

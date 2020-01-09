@@ -14,8 +14,6 @@ const PrivateRoute = ({component: Component, ...otherComponents}) => {
     {...otherComponents}
     render={() => {
         if(localStorage.getItem('token')) {
-            //if(isLoggedIn) {
-            console.log('nl: PrivateRoute render: localStorage: ', localStorage.getItem('token'));
             return <Component />;
         }
         else {

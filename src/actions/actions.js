@@ -6,6 +6,7 @@ import { axiosWithAuth } from '../components/axiosWithAuth';
 //*** Reducer Types ***//
 export const CHEF_REGISTER = 'CHEF_REGISTER';
 export const CHEF_LOGIN = 'CHEF_LOGIN';
+export const CHEF_FETCH_DATA = 'CHEF_FETCH_DATA';
 export const CHEF_LOGOUT = 'CHEF_LOGOUT';
 export const FETCH_RECIPE_START = 'FETCH_RECIPE_START';
 export const FETCH_RECIPE_SUCCESS = 'FETCH_RECIPE_SUCCESS';
@@ -24,62 +25,84 @@ export const DELETE_RECIPE_FAILURE = 'DELETE_RECIPE_FAILURE';
 // Redux actions
 // These are currently just shells
 export const chefRegister = (data, props) => dispatch => {
-
-    console.log('nl: actions.js: chefRegister, input data: ',data);
-
-    // This is the real code we need eventually
      axios
-    .post('https://cpbackend.herokuapp.com/auth/register', data)
+    .post('https://cpbackend.herokuapp.com/auth/register', {
+        first_name: data.firstName, 
+        last_name: data.lastName,
+        username: data.username,        
+        email_address: data.email,
+        password: data.password
+    })
     .then(res => {
         localStorage.setItem('token', res.data.payload);
+        data.id = res.data;
         dispatch({type: CHEF_REGISTER, payload: data});
         props.history.push('/chefdashboard');
     })
-    .catch(err => console.log(err.message));
+    .catch(err => console.log(err.message));    
 }
 
 export const chefLogin = (data, props) => dispatch => {
-
-    //This is the real code we need eventually
+    console.log('NL: actions.js: chefLogin: data: ', data);
     axios
     .post('https://cpbackend.herokuapp.com/auth/login', { username: data.username, password: data.password })
     .then(res => {
         localStorage.setItem('token', res.data.payload);
+        localStorage.setItem('id', res.data.id)
+        localStorage.setItem('message', res.data.message);
         dispatch({type: CHEF_LOGIN, payload: res.data});
         props.history.push('/chefdashboard');
     })
     .catch(err => console.log(err.message));
 }
 
-export const chefLogout = () => dispatch => {
-    // This is not really logout yet, I was just testing trying to get a chef
-    // axiosWithAuth()
-    // .get('/auth/10')
-    // .then(res => {
-    //     console.log('NL: actions.js: chefLogin: GetAuth: ', res.data)
-    //     //dispatch({type: CHEF_LOGIN, payload: res.data});
-    //     //props.history.push('/chefdashboard');
-    // })
-    // .catch(err => console.log(err.message));
-}
-
-export const fetchRecipes = (id) => dispatch => {
-    // Fetch recipes will either display ChefRecipes
-    // or display all recipes if it is a guest
-      
-
+export const chefFetchData = () => dispatch => {
     axiosWithAuth()
-    .get("https://cpbackend.herokuapp.com/recipes")
+    .get('/auth/10')
     .then(res => {
-        res.data.map(item => (            
-        dispatch({type: FETCH_RECIPE_SUCCESS, payload: res.data})
-        ))        
     })
     .catch(err => console.log(err.message));
 }
 
-export const createRecipe = () => dispatch => {
+export const chefLogout = () => dispatch => {
+
+}
+
+export const fetchRecipes = () => dispatch => {
+    dispatch({type: FETCH_RECIPE_START})
+    // Fetch recipes will either display ChefRecipes
+    // or display all recipes if it is a guest    
+    if(localStorage.getItem('token')) {
+        axios
+        .get(`https://cpbackend.herokuapp.com/chefs/${localStorage.getItem('id')}/recipes`)
+        .then(res => {            
+            dispatch({type: FETCH_RECIPE_SUCCESS, payload: res.data}) 
+        })
+        .catch(err => console.log(err.message));
+    }
+
+    else {
+    axios
+        .get("https://cpbackend.herokuapp.com/recipes")
+        .then(res => {
+            
+            dispatch({type: FETCH_RECIPE_SUCCESS, payload: res.data})        
+        })
+        .catch(err => console.log(err.message));
+    }
+}
+
+export const createRecipe = (data, props) => dispatch => {
     dispatch({type: CREATE_RECIPE_START})
+    console.log('NL: actions.js: createRecipe: data: ', data);
+
+    axiosWithAuth()
+    .post('/recipes')
+    .then(res => {
+        dispatch({type:CREATE_RECIPE_SUCCESS, payload: data })
+        props.history.push('/chefdashboard');
+    })
+    .catch(err => console.log(err.message));
 }
 
 export const editRecipe = () => dispatch => {

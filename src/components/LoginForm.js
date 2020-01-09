@@ -1,7 +1,7 @@
 // Created by Nathan Loveless modified by Nathan and Giovani 12/19/19
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { chefLogin, fetchRecipes, chefLogout } from "../actions/actions";
+import { chefLogin, fetchRecipes, chefFetchData } from "../actions/actions";
 import useForm from "react-hook-form";
 import { Link } from "react-router-dom";
 import { userData, recipes } from "../server";
@@ -31,8 +31,7 @@ const LoginForm = props => {
     const credentials = { username: data.username, password: data.password }   
     props.chefLogin(credentials, props);
     props.fetchRecipes(props.user.id);
-    props.chefLogout();
-    console.log('nl: LoginForm: onSubmit: ', props);
+    props.chefFetchData();
   };
 
   //NOTE: Invokes the styling defined in variable useStyle.
@@ -134,4 +133,4 @@ const mapStateToProps = state => ({
   recipes: state.recipes
 });
 
-export default connect(mapStateToProps, { chefLogin, fetchRecipes, chefLogout })(LoginForm);
+export default connect(mapStateToProps, { chefLogin, fetchRecipes, chefFetchData })(LoginForm);
