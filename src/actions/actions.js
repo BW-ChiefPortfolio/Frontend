@@ -39,13 +39,13 @@ export const chefRegister = (data, props) => dispatch => {
 }
 
 export const chefLogin = (data, props) => dispatch => {
-    console.log('nl: actions.js: chefLogin: TestCode: ', data);
 
     //This is the real code we need eventually
     axios
-    .post('https://cpbackend.herokuapp.com/auth/login', { username: data.email, password: data.password })
+    .post('https://cpbackend.herokuapp.com/auth/login', { username: data.username, password: data.password })
     .then(res => {
         localStorage.setItem('token', res.data.payload);
+        console.log('NL: actions.js, chefLogin: ', res.data)
         dispatch({type: CHEF_LOGIN, payload: res.data});
         props.history.push('/chefdashboard');
     })
@@ -59,13 +59,12 @@ export const chefLogout = () => dispatch => {
 export const fetchRecipes = () => dispatch => {
     // Fetch recipes will either display ChefRecipes
     // or display all recipes if it is a guest    
-    console.log('inside fetchRecipes: ');
 
     axiosWithAuth()
     .get("https://cpbackend.herokuapp.com/recipes")
     .then(res => {
         dispatch({type: FETCH_RECIPE_SUCCESS, payload: res.data})
-        console.log('nl: actions.js: fetchRecipes: TestCode: ', res.data);
+        
     })
     .catch(err => console.log(err.message));
 }

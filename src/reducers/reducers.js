@@ -63,14 +63,8 @@ function reducer(state = initialState, action) {
         case CHEF_REGISTER:
             //return { ...state, ...state.user, username: action.payload.username, password: action.payload.password }
             return { ...state, ...state.user,  user: action.payload }
-            // draft.user.username = action.payload.username;
-            // draft.user.password = action.payload.password;
-            // break;
         case CHEF_LOGIN:
-            // draft.user.username = action.payload.username;
-            // draft.user.password = action.payload.password;
-            // break;
-            return { ...state, ...state.user, username: action.payload.username, password: action.payload.password }
+            return { ...state, ...state.user, user: action.payload }
         case CHEF_LOGOUT:
             return state;
         case FETCH_RECIPE_START:
