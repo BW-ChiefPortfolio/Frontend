@@ -76,6 +76,7 @@ export const fetchRecipes = () => dispatch => {
         axios
         .get(`https://cpbackend.herokuapp.com/chefs/${localStorage.getItem('id')}/recipes`)
         .then(res => {           
+            console.log('NL: actions.js: fetchRecipes: data: ', res.data);
             dispatch({type: FETCH_RECIPE_SUCCESS, payload: res.data}) 
         })
         .catch(err => console.log(err.message));
@@ -85,7 +86,7 @@ export const fetchRecipes = () => dispatch => {
     axios
         .get("https://cpbackend.herokuapp.com/recipes")
         .then(res => {
-
+            console.log('NL: actions.js: fetchRecipes: data: ', res.data);
             
             dispatch({type: FETCH_RECIPE_SUCCESS, payload: res.data})        
         })

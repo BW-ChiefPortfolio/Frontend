@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, BrowserRouter as Router, Route } from "react-router-dom";
 
 import { Card, CardContent } from "@material-ui/core";
 import RecipeListStyles from "../styles/_RecipeListStyle";
 import { connect } from "react-redux";
+import RecipeDetails from './RecipeDetails';
 
 const RecipeList = (props) => {
-  console.log('NL: RecipeList: Recipe data: ', props.recipes);
 
   const RecipeListStyle = RecipeListStyles();
 
     return (
         <React.Fragment>
+          
         {props.recipes.map(recipe => (
         <Card className={RecipeListStyle.recipeCardContainer}>
         <CardContent>
@@ -27,9 +28,11 @@ const RecipeList = (props) => {
           <p>{recipe.meal_type}</p>
         </div>
       </Link>
+      <Route exact path={`recipes-list/${recipe.title}`}  render={(props) => <RecipeDetails {...props} recipe={recipe} />} />
       </CardContent>
         </Card>
         ))}
+        
         </React.Fragment>
     )
 }
