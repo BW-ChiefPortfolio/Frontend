@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { CssBaseline } from "@material-ui/core";
 
 const ChefDashboard = props => {
-  console.log(props);
+  console.log('nl: ChefDashboard.js: ChefDashboard: ' , props);
   return (
     <React.Fragment>
       <CssBaseline />
@@ -19,6 +19,7 @@ const ChefDashboard = props => {
 };
 
 const mapStateToProps = state => ({
+  user: state.user,
   recipies: state.recipies
 });
 
