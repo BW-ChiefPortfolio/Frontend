@@ -15,6 +15,9 @@ import Navigation from "./components/Navigation";
 import CreatePost from "./components/CreatePost";
 import EditPost from "./components/EditPost";
 
+import RecipeList from "./components/RecipeList";
+// import RecipeCard from "./components/RecipeCard";
+
 const store = createStore(reducer, applyMiddleware(thunk));
 
 function App() {
@@ -37,6 +40,8 @@ function App() {
         {/* Maybe make it a PrivateRoute????*/}
         <Route path="/create" component={CreatePost} />
         <Route path="/edit" component={EditPost} />
+        <Route exact path="/recipes-list" component={RecipeList} />
+      {/* <Route path="/recipes-list/:id" component={RecipeCard} /> */}
 
         <PrivateRoute exact path="/chefdashboard" component={ChefDashboard} />
       </div>

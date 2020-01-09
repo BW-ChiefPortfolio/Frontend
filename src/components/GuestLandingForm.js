@@ -1,7 +1,8 @@
 import React from "react";
+import RecipeList from "../components/RecipeList";
 
 //NOTE: Material UI
-import { CssBaseline, Container, Paper } from "@material-ui/core";
+import { CssBaseline, Container, Paper, Card } from "@material-ui/core";
 import LandingPageStyles from "../styles/_LandingPageStyles";
 
 const GuestLandingForm = () => {
@@ -25,7 +26,7 @@ const GuestLandingForm = () => {
         </div>
         <Paper elevation={5}>
         <Container maxWidth="lg" className={LandingPageStyle.recipesContainer}>
-          <p>This is where the recipes will be showcased! Cards!</p>
+          <RecipeList/>
         </Container>
         </Paper>
       </Container>

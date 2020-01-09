@@ -15,8 +15,10 @@ const LandingPageStyles = makeStyles({
   },
   recipesContainer: {
     padding: "2rem",
-    height: "100vh",
-    marginBottom: "3rem"
+    marginBottom: "3rem",
+    display: "flex",
+    justifyContent: "space-between",
+    flexWrap: "wrap",
   },
   innerContainer: {
     display: "flex",
