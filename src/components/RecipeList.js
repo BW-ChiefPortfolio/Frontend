@@ -4,31 +4,16 @@ import { Link } from "react-router-dom";
 
 import { Card, CardContent } from "@material-ui/core";
 import RecipeListStyles from "../styles/_RecipeListStyle";
+import { connect } from "react-redux";
 
-const RecipeList = () => {
-
-    const [recipes, setRecipes] = useState([]);
-
-    useEffect(() => {
-        axios
-      .get('https://cpbackend.herokuapp.com/recipes')
-      .then((response) => {
-        console.log('response: ', response);
-
-        setRecipes(response.data)
-        console.log('response.data: ', response.data);
-      })
-
-      .catch(error => {
-        console.log('error : ', error);
-      })
-  }, []);
+const RecipeList = (props) => {
+  console.log('NL: RecipeList: Recipe data: ', props.recipes);
 
   const RecipeListStyle = RecipeListStyles();
 
     return (
         <React.Fragment>
-        {recipes.map(recipe => (
+        {props.recipes.map(recipe => (
         <Card className={RecipeListStyle.recipeCardContainer}>
         <CardContent>
         <Link className={RecipeListStyle.link}to={`recipes-list/${recipe.title}`}>
@@ -49,4 +34,8 @@ const RecipeList = () => {
     )
 }
 
-export default RecipeList;
+const mapStateToProps = state => ({ 
+  recipes: state.recipes
+});
+
+export default connect(mapStateToProps, { })(RecipeList);

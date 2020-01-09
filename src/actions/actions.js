@@ -71,11 +71,11 @@ export const chefLogout = () => dispatch => {
 export const fetchRecipes = () => dispatch => {
     dispatch({type: FETCH_RECIPE_START})
     // Fetch recipes will either display ChefRecipes
-    // or display all recipes if it is a guest    
+    // or display all recipes if it is a guest 
     if(localStorage.getItem('token')) {
         axios
         .get(`https://cpbackend.herokuapp.com/chefs/${localStorage.getItem('id')}/recipes`)
-        .then(res => {            
+        .then(res => {           
             dispatch({type: FETCH_RECIPE_SUCCESS, payload: res.data}) 
         })
         .catch(err => console.log(err.message));
@@ -85,6 +85,7 @@ export const fetchRecipes = () => dispatch => {
     axios
         .get("https://cpbackend.herokuapp.com/recipes")
         .then(res => {
+
             
             dispatch({type: FETCH_RECIPE_SUCCESS, payload: res.data})        
         })

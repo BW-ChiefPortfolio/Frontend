@@ -1,11 +1,14 @@
 import React from "react";
 import RecipeList from "../components/RecipeList";
+import { fetchRecipes } from "../actions/actions";
+import { connect } from "react-redux";
 
 //NOTE: Material UI
 import { CssBaseline, Container, Paper, Card } from "@material-ui/core";
 import LandingPageStyles from "../styles/_LandingPageStyles";
 
-const GuestLandingForm = () => {
+const GuestLandingForm = (props) => {
+  props.fetchRecipes();
   const LandingPageStyle = LandingPageStyles();
   return (
     <React.Fragment>
@@ -34,4 +37,6 @@ const GuestLandingForm = () => {
   );
 };
 
-export default GuestLandingForm;
+const mapStateToProps = state => ({ });
+
+export default connect(mapStateToProps, { fetchRecipes })(GuestLandingForm);
