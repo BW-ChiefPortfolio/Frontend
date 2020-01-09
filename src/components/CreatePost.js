@@ -16,13 +16,24 @@ import {
 } from "@material-ui/core";
 
 import LoginFormStyles from "../styles/_LoginStyle";
+import { createRecipe } from "../actions/actions";
+import { connect } from "react-redux";
 
-const CreatePost = () => {
+const CreatePost = (props) => {
   const { register, errors, handleSubmit } = useForm();
 
   const onSubmit = (data, e) => {
     e.preventDefault();
-    console.log("data : ", data);
+
+    const newRecipe = {
+      title: data.title,
+      description: '',
+      instructions: data.instructions,
+      meal_type: data.mealtype,
+      chef_id: localStorage.getItem('id'),
+      pic_url: ''
+    }
+    props.createRecipe(newRecipe, props)
   };
 
   //NOTE: Invokes the styling defined in variable useStyle.
@@ -133,4 +144,6 @@ const CreatePost = () => {
   );
 };
 
-export default CreatePost;
+const mapStateToProps = state => ({});
+
+export default connect(mapStateToProps, { createRecipe })(CreatePost);
