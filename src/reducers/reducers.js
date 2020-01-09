@@ -23,14 +23,7 @@ import { CHEF_REGISTER, CHEF_LOGIN, CHEF_LOGOUT, FETCH_RECIPE_START, FETCH_RECIP
                  //recipes: [],  // This just stores the ID of the recipe to pull down the chef's recipes                 
              },
 
-             recipe: {
-                 title: '',
-                 description: '',
-                 instructions: '',
-                 meal_type: '',
-                 chef_id: '',
-                 pic_url: ''
-             }
+             recipes: [],
 
             //  recipes: [{
             //      id: '',
@@ -61,7 +54,6 @@ function reducer(state = initialState, action) {
     switch(action.type)
     {
         case CHEF_REGISTER:
-            //return { ...state, ...state.user, username: action.payload.username, password: action.payload.password }
             return { ...state, ...state.user,  user: action.payload }
         case CHEF_LOGIN:
             return { ...state, ...state.user, user: action.payload }
@@ -70,11 +62,7 @@ function reducer(state = initialState, action) {
         case FETCH_RECIPE_START:
             return { ...state, error: '', isFetching: true }
         case FETCH_RECIPE_SUCCESS:
-            // action.payload.foreach(item => {
-            //     draft.recipes.push(item);
-            // })
-            // break;
-            return {...state, ...state.recipies, recipies: action.payload }
+               return {...state, recipes: [...state.recipes, action.payload]}  
         case FETCH_RECIPE_FAILURE:
             return { ...state, error: action.payload, isFetching: false}
         case CREATE_RECIPE_START:

@@ -25,14 +25,14 @@ export const DELETE_RECIPE_FAILURE = 'DELETE_RECIPE_FAILURE';
 // These are currently just shells
 export const chefRegister = (data, props) => dispatch => {
 
-    console.log('nl: actions.js: chefRegister, input data: ', data);
+    console.log('nl: actions.js: chefRegister, input data: ',data);
 
     // This is the real code we need eventually
      axios
     .post('https://cpbackend.herokuapp.com/auth/register', data)
     .then(res => {
         localStorage.setItem('token', res.data.payload);
-        dispatch({type: CHEF_REGISTER, payload: res.data});
+        dispatch({type: CHEF_REGISTER, payload: data});
         props.history.push('/chefdashboard');
     })
     .catch(err => console.log(err.message));
@@ -45,7 +45,6 @@ export const chefLogin = (data, props) => dispatch => {
     .post('https://cpbackend.herokuapp.com/auth/login', { username: data.username, password: data.password })
     .then(res => {
         localStorage.setItem('token', res.data.payload);
-        console.log('NL: actions.js, chefLogin: ', res.data)
         dispatch({type: CHEF_LOGIN, payload: res.data});
         props.history.push('/chefdashboard');
     })
@@ -53,18 +52,28 @@ export const chefLogin = (data, props) => dispatch => {
 }
 
 export const chefLogout = () => dispatch => {
-
+    // This is not really logout yet, I was just testing trying to get a chef
+    // axiosWithAuth()
+    // .get('/auth/10')
+    // .then(res => {
+    //     console.log('NL: actions.js: chefLogin: GetAuth: ', res.data)
+    //     //dispatch({type: CHEF_LOGIN, payload: res.data});
+    //     //props.history.push('/chefdashboard');
+    // })
+    // .catch(err => console.log(err.message));
 }
 
-export const fetchRecipes = () => dispatch => {
+export const fetchRecipes = (id) => dispatch => {
     // Fetch recipes will either display ChefRecipes
-    // or display all recipes if it is a guest    
+    // or display all recipes if it is a guest
+      
 
     axiosWithAuth()
     .get("https://cpbackend.herokuapp.com/recipes")
     .then(res => {
+        res.data.map(item => (            
         dispatch({type: FETCH_RECIPE_SUCCESS, payload: res.data})
-        
+        ))        
     })
     .catch(err => console.log(err.message));
 }

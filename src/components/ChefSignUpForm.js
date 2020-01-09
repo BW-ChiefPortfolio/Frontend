@@ -5,7 +5,7 @@ import React, { useState, useEffect } from "react";
 import useForm from "react-hook-form";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { chefRegister } from "../actions/actions";
+import { chefRegister, fetchRecipes } from "../actions/actions";
 
 //NOTE: Logo
 import logo from "../images/logov2.png";
@@ -33,13 +33,19 @@ const ChefSignUpForm = props => {
   const onSubmit = (data, e) => {
     e.preventDefault();
     console.log('nl: ChefSignUpForm.js: onSubmit: ', data);
-    props.chefRegister(
-      { first_name: data.firstName, 
-        last_name: data.lastName,  
-        username: data.username,
+    props.chefRegister( { 
+        //id: '',
+        first_name: data.firstName, 
+        last_name: data.lastName,
+       // location: '',
+        //contact: '',
+        username: data.username,        
         email_address: data.email,
-        password: data.password,
+        password: data.password
+        //avatar_url: ''
       }, props);
+      
+      props.fetchRecipes(props.user.id);
   };
 
   //NOTE: Invokes the styling defined in variable useStyle. [To Style this component ]
@@ -222,4 +228,4 @@ const mapStateToProps = state => ({
   newUser: state.user
 });
 
-export default connect(mapStateToProps, { chefRegister })(ChefSignUpForm);
+export default connect(mapStateToProps, { chefRegister, fetchRecipes })(ChefSignUpForm);
