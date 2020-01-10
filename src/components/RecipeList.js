@@ -1,8 +1,6 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import { Link, BrowserRouter as Router, Route } from "react-router-dom";
-
-import { Card, CardContent, Divider, Avatar, Button } from "@material-ui/core";
+import React  from "react";
+import { Link } from "react-router-dom";
+import { Card, CardContent, Divider, Avatar } from "@material-ui/core";
 import RecipeListStyles from "../styles/_RecipeListStyle";
 import { connect } from "react-redux";
 

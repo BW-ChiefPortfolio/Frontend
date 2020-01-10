@@ -1,11 +1,9 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import { CssBaseline } from '@material-ui/core';
+import React from 'react';
+import { CssBaseline } from "@material-ui/core";
 
 const RecipeDetails = (props) => {
-    // const [recipe, setRecipe] = useState({})
-    // setRecipe(props.recipe);
-    console.log("hi",props);
+
+    console.log(props);
     
     return (
       <React.Fragment>

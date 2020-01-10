@@ -3,7 +3,7 @@ import RecipeList from "../components/RecipeList"
 import { connect } from "react-redux";
 
 //NOTE: Material UI
-import { CssBaseline, Container, FormControl, InputLabel, Select, MenuItem } from "@material-ui/core";
+import { CssBaseline, Container } from "@material-ui/core";
 import LandingPageStyles from "../styles/_LandingPageStyles";
 
 const GuestLandingForm = (props) => {
