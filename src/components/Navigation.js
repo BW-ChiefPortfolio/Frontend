@@ -1,7 +1,6 @@
 //others
 import React from "react";
 import { Link } from "react-router-dom";
-import GuestLandingForm from './GuestLandingForm';
 
 //logo import
 import logo from "../images/logov2.png";

@@ -1,7 +1,7 @@
 //install: You must install react-hook-form.
 
 //NOTE: Other imports
-import React, { useState, useEffect } from "react";
+import React from "react";
 import useForm from "react-hook-form";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";

@@ -1,5 +1,3 @@
-import produce from 'immer';
-
 // Created and modified by Nathan Loveless 12/18/19
 import { CHEF_REGISTER, CHEF_LOGIN, CHEF_LOGOUT, FETCH_RECIPE_START, FETCH_RECIPE_SUCCESS,
          FETCH_RECIPE_FAILURE, CREATE_RECIPE_START, CREATE_RECIPE_SUCCESS, CREATE_RECIPE_FAILURE,
@@ -112,8 +110,8 @@ function reducer(state = initialState, action) {
                 // })
             //})
             //console.log('NL: reducers.js:, FETCH_RECIPE_SUCCESS: ', newRecipes)    
-            let newName = '';
-            let newMeasurement = '';
+            //let newName = '';
+            //let newMeasurement = '';
             //const newRecipes = [{}];
             // let newRecipe = [{
             //     ingredients: [{
@@ -124,7 +122,7 @@ function reducer(state = initialState, action) {
             let newRecipe = [];
             const newMealType = [];
             const newRecipeNames = [];
-            const combined = []
+            //const combined = []
             action.payload.forEach(recipe => {
                 newRecipe.push(recipe);
                 newMealType.push(recipe.meal_type);

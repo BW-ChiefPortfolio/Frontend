@@ -1,10 +1,9 @@
 // Created by Nathan Loveless modified by Nathan and Giovani 12/19/19
-import React, { useState } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import { chefLogin, fetchRecipes, chefFetchData } from "../actions/actions";
 import useForm from "react-hook-form";
 import { Link } from "react-router-dom";
-import { userData, recipes } from "../server";
 
 //NOTE: Logo
 import logo from "../images/logov2.png";
@@ -18,7 +17,6 @@ import {
   TextField,
   Grid,
   Typography,
-  Container,
   Paper
 } from "@material-ui/core";
 
