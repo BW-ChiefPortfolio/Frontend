@@ -27,11 +27,11 @@ const GuestLandingForm = (props) => {
             <p> Filter Goes Here </p>
           </div>
         </div>
-        <Paper elevation={5}>
+        <div className={LandingPageStyle.paperBG}elevation={5}>
         <Container maxWidth="lg" className={LandingPageStyle.recipesContainer}>
           <RecipeList/>
         </Container>
-        </Paper>
+        </div>
       </Container>
     </React.Fragment>
   );

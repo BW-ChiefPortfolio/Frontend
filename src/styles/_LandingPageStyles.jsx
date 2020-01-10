@@ -26,6 +26,9 @@ const LandingPageStyles = makeStyles({
     alignItems: "center",
     justifyContent: "space-between"
   },
+  paperBG: {
+    backgroundColor: "#f4f4f4",
+  },
   subTitle: {
     textTransform: "uppercase",
     fontSize: "3rem",

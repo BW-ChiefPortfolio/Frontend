@@ -5,7 +5,6 @@ import { makeStyles } from "@material-ui/core";
 const RecipeListStyle = makeStyles({
     recipeCardContainer: {
         width: "350px",
-        height: "350px",
         marginBottom: "1.5rem"
     },
     img: {
@@ -15,6 +14,14 @@ const RecipeListStyle = makeStyles({
     link: {
         textDecoration: "none",
         color: "black",
+    },
+    mealType: {
+        position: "absolute",
+        marginTop: "-175px",
+        padding: "10px",
+        background: "#d5a170",
+        textTransform: "uppercase",
+        fontSize: "12px",
     }
 });
 
