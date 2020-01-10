@@ -8,7 +8,6 @@ import { connect } from "react-redux";
 import RecipeDetails from './RecipeDetails';
 
 const RecipeList = props => {
-  console.log("NL: RecipeList: Recipe data: ", props.recipes);
 
   const RecipeListStyle = RecipeListStyles();
 

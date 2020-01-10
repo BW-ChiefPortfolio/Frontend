@@ -34,13 +34,13 @@ const ChefSignUpForm = props => {
     e.preventDefault();
     props.chefRegister({
       id: '',
-      firstName: data.firstName, 
-      lastName: data.lastName,
-      location: '',
-      contact: '',
+      first_name: data.firstName, 
+      last_name: data.lastName,
+      location: data.location,
+      contact: data.contact,
       username: data.username,        
-      email: data.email,
       password: data.password,
+      email_address: data.email,
       avatar_url: ''
   }, props);
   };
