@@ -5,22 +5,21 @@ import { Link, BrowserRouter as Router, Route } from "react-router-dom";
 import { Card, CardContent, Divider, Avatar, Button } from "@material-ui/core";
 import RecipeListStyles from "../styles/_RecipeListStyle";
 import { connect } from "react-redux";
-import RecipeDetails from './RecipeDetails';
 
 const RecipeList = props => {
-
   const RecipeListStyle = RecipeListStyles();
 
   return (
     <React.Fragment>
       {props.recipes.map(recipe => (
-        <div className={""} key={recipe.title}>
+        //Since id wasn't formatted in the server correctly it wont display correctly. Will need to use title, but my TL said that may not work.
+        <div className={""} key={recipe.id}>
           <Card className={RecipeListStyle.recipeCardContainer}>
             <CardContent>
-              <Avatar alt="Remy Sharp" src={recipe.avatar_url} />
+              <Avatar alt="user_avatar" src={recipe.avatar_url} />
               <Link
                 className={RecipeListStyle.link}
-                to={`recipes-list/${recipe.title}`}
+                to={`recipes-list/${recipe.id}`}
               >
                 <h2>{recipe.title}</h2>
                 <Divider />

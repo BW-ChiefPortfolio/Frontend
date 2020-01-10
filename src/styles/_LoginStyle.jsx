@@ -51,6 +51,17 @@ const LoginStyles = makeStyles(theme => ({
   },
   signUp: {
     color: "#3F51B5"
+  },
+
+  //This styles will be moved to another file later. EditPostStyles.js
+  topText: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+  select: {
+    marginRight: "1rem",
   }
+  
 }));
 export default LoginStyles;

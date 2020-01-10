@@ -12,19 +12,13 @@ where the recipes are stored for each Chef.*/
 
 import React from 'react';
 
+
+
 const Delete = (props) => {
     //Starter code (example)
-    // let recipesId = props.match.params.id;
 
-    //Enables the certain post of recepi to be deleted.
-    const onDelete = () => {
-        //Starter code (example)
-        // let recipesId = details.id;
-
-        /* axios.delete here */
-    };
     return (
-        <button onClick={onDelete}>Delete</button>
+          <button>Delete</button>
     )
 }
 
