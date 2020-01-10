@@ -16,7 +16,7 @@ import CreatePost from "./components/CreatePost";
 import EditPost from "./components/EditPost";
 
 import RecipeList from "./components/RecipeList";
-// import RecipeCard from "./components/RecipeCard";
+import RecipeDetails from "./components/RecipeDetails";
 
 const store = createStore(reducer, applyMiddleware(thunk));
 
@@ -41,7 +41,8 @@ function App() {
         <Route path="/create" component={CreatePost} />
         <Route path="/edit" component={EditPost} />
         <Route exact path="/recipes-list" component={RecipeList} />
-      {/* <Route path="/recipes-list/:id" component={RecipeDetailes} /> */}
+        {/* Added the render here for details to work...*/}
+        <Route path="/recipes-list/:id" render={props=> (<RecipeDetails {...props}/>)} /> 
 
         <PrivateRoute exact path="/chefdashboard" component={ChefDashboard} />
       </div>

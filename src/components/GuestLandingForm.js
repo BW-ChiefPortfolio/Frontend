@@ -4,19 +4,17 @@ import { fetchRecipes } from "../actions/actions";
 import { connect } from "react-redux";
 
 //NOTE: Material UI
-import { CssBaseline, Container, Paper, Card } from "@material-ui/core";
+import { CssBaseline, Container, FormControl, InputLabel, Select, MenuItem } from "@material-ui/core";
 import LandingPageStyles from "../styles/_LandingPageStyles";
 
-const GuestLandingForm = (props) => {
+const GuestLandingForm = props => {
   props.fetchRecipes();
   const LandingPageStyle = LandingPageStyles();
   return (
     <React.Fragment>
       <CssBaseline />
       <Container maxWidth="xl" className={LandingPageStyle.headerContainer}>
-        <h2 className={LandingPageStyle.subTitle}>
-          Discover
-        </h2>
+        <h2 className={LandingPageStyle.subTitle}>Discover</h2>
       </Container>
       <Container maxWidth="lg">
         <div className={LandingPageStyle.innerContainer}>
@@ -24,19 +22,22 @@ const GuestLandingForm = (props) => {
             <h2>Recipes</h2>
           </div>
           <div className="filter">
-            <p> Filter Goes Here </p>
+            Filter
           </div>
         </div>
-        <div className={LandingPageStyle.paperBG}elevation={5}>
-        <Container maxWidth="lg" className={LandingPageStyle.recipesContainer}>
-          <RecipeList/>
-        </Container>
+        <div className={LandingPageStyle.paperBG} elevation={5}>
+          <Container
+            maxWidth="lg"
+            className={LandingPageStyle.recipesContainer}
+          >
+            <RecipeList />
+          </Container>
         </div>
       </Container>
     </React.Fragment>
   );
 };
 
-const mapStateToProps = state => ({ });
+const mapStateToProps = state => ({});
 
 export default connect(mapStateToProps, { fetchRecipes })(GuestLandingForm);
