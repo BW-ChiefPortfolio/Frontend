@@ -41,7 +41,7 @@ function App() {
         <Route path="/create" component={CreatePost} />
         <Route path="/edit" component={EditPost} />
         <Route exact path="/recipes-list" component={RecipeList} />
-      {/* <Route path="/recipes-list/:id" component={RecipeCard} /> */}
+      {/* <Route path="/recipes-list/:id" component={RecipeDetailes} /> */}
 
         <PrivateRoute exact path="/chefdashboard" component={ChefDashboard} />
       </div>
