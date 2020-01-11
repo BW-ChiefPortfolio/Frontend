@@ -23,7 +23,9 @@ const GuestLandingForm = (props) => {
             <h2>Recipes</h2>
           </div>
           <div className="filter">
-            Filter
+            {/*Basic Select (DROPDOWNS) */}
+          <select name="" id=""></select>
+          <select name="" id=""></select>
           </div>
         </div>
         <div className={LandingPageStyle.paperBG} elevation={5}>
@@ -38,6 +40,7 @@ const GuestLandingForm = (props) => {
     </React.Fragment>
   );
 };
+
 
 // By: <Chef>         <By Chef Name>
 //     <Meal Type>    <Types of Meals>
