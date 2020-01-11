@@ -22,7 +22,10 @@ const RecipeListStyle = makeStyles({
         background: "#d5a170",
         textTransform: "uppercase",
         fontSize: "12px",
-    }
+    },
+    edit: {
+        textDecoration: "none",
+    },
 });
 
 export default RecipeListStyle;

@@ -32,6 +32,21 @@ const LandingPageStyles = makeStyles({
   subTitle: {
     textTransform: "uppercase",
     fontSize: "3rem",
+  },
+  edit: {
+    textDecoration: "none",
+    marginRight: "1rem",
+    backgroundColor: "#f4f4f4",
+    color: "black",
+    padding: "5px",
+    border: "2px solid black",
+  },
+  create: {
+    textDecoration: "none",
+    backgroundColor: "#f4f4f4",
+    color: "black",
+    padding: "5px",
+    border: "2px solid black",
   }
 });
 
