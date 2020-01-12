@@ -1,16 +1,21 @@
 // Created and modifed by Nathan Loveless 12/20/19
 //*** NOTE:  THIS IS A TEST DATA FILE ONLY ***/
 export const userData = {
-    name: 'Nathan Loveless',
+    id: '10',
+    first_name: 'Nathan',
+    last_name: 'Loveless',
     location: 'Northfield, VT',
-    contactEmail: 'nathan.loveless@outlook.com',
-    recipes: [1, 3, 4, 7],
+    contact: 'https://www.linkedin.com/in/nathanloveless/',
     username: 'nathansl2003',
-    password: 'password'
+    password: 'password',
+    email_address: 'nathansl2003@yahoo.com',
+    //chefRecipes: [1, 3, 4, 7],
+    avatar_url: ''
 }
 
 export const recipes = [{ 
-    id: 0,
+    id: '0',
+    chefId: '10',
     title: 'Egg-in-a-Hole with Spinach & Bacon',
     image: './images/egginhole.JPG',
     mealType: 'Breakfast',
@@ -70,7 +75,8 @@ export const recipes = [{
     error: '' 
 },
 { 
-    id: 1,
+    id: '1',
+    chefId: '10',
     title: 'Quick Pastrami Hash & Eggs',
     image: './images/quickpastramihasheggs.JPG',
     mealType: 'Breakfast',
@@ -136,7 +142,8 @@ export const recipes = [{
     error: '' 
 },
 { 
-    id: 2,
+    id: '2',
+    chefId: '10',
     title: 'Broccoli, Beef & Potato Hotdish',
     image: './images/brocbeefpothotdish.JPG',
     mealType: 'Lunch',
@@ -245,7 +252,8 @@ export const recipes = [{
     error: '' 
 },
 { 
-    id: 3,
+    id: '3',
+    chefId: '10',
     title: 'Healthy Green Bean Casserole',
     image: './images/healthygreenbeencasserole.JPG',
     mealType: 'Lunch',
@@ -305,7 +313,8 @@ export const recipes = [{
     error: '' 
 },
 { 
-    id: 4,
+    id: '4',
+    chefId: '10',
     title: 'Parmesan-Crusted Chicken Tenders',
     image: './images/parmesancrustedchickentenders.JPG',
     mealType: 'Dinner',
@@ -371,7 +380,8 @@ export const recipes = [{
     error: '' 
 },
 { 
-    id: 5,
+    id: '5',
+    chefId: '10',
     title: 'Roasted Chickens',
     image: './images/roastedchickens.JPG',
     mealType: 'Dinner',
@@ -425,7 +435,8 @@ export const recipes = [{
     error: '' 
 },
 { 
-    id: 6,
+    id: '6',
+    chefId: '10',
     title: 'Pork Chops au Poivre',
     image: './images/porkchopsaupoivre.JPG',
     mealType: 'Dinner',
@@ -485,7 +496,8 @@ export const recipes = [{
     error: '' 
 },
 { 
-    id: 7,
+    id: '7',
+    chefId: '10',
     title: 'Oven-Barbecued Pork Chops',
     image: './images/ovenbarbecuedporkchops.JPG',
     mealType: 'Dinner',
@@ -545,7 +557,8 @@ export const recipes = [{
     error: '' 
 },
 { 
-    id: 8,
+    id: '8',
+    chefId: '10',
     title: 'Apricot-Bulgur Pudding Cake with Custard Sauce',
     image: './images/apricotbulgurpuddingcake.JPG',
     mealType: 'Dessert',
@@ -611,7 +624,8 @@ export const recipes = [{
     error: '' 
 },
 { 
-    id: 9,
+    id: '9',
+    chefId: '10',
     title: 'Greek Yogurt Cheesecake with Ouzo-Poached Figs',
     image: './images/greekyogurtcheesecake.JPG',
     mealType: 'Dessert',

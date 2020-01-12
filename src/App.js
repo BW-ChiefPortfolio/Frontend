@@ -24,8 +24,9 @@ function App(props) {
       // We need to gather some information here for filtering.
     // Specifically we need chef names, recipe names (we just need to sort A-Z, Z-A), ingredients, and meal-types
     // This one will give us our recipe names and meal-types
-    props.fetchRecipes();
-    props.chefFetchData();
+    //props.chefFetchData();
+    //props.fetchRecipes(props.recipeIndex);
+   
   
     return (
       <Router>
@@ -48,6 +49,8 @@ function App(props) {
     );
   }
 
-  const mapStateToProps = state => ({});
+  const mapStateToProps = state => ({
+    recipeIndex: state.user.recipes
+  });
 
 export default connect(mapStateToProps, { fetchRecipes, chefFetchData })(App);

@@ -1,6 +1,7 @@
 // Created and modified by Nathan Loveless 12/18/19
 import axios from 'axios';
 import { axiosWithAuth } from '../components/axiosWithAuth';
+import { recipes, userData } from '../server';
 
 
 //*** Reducer Types ***//
@@ -8,11 +9,10 @@ export const CHEF_REGISTER = 'CHEF_REGISTER';
 export const CHEF_LOGIN = 'CHEF_LOGIN';
 export const CHEF_FETCH_DATA = 'CHEF_FETCH_DATA';
 export const CHEF_FETCH_DATA_LOGGEDIN = 'CHEF_FETCH_DATA_LOGGEDIN';
-export const FETCH_INGREDIENTS = 'FETCH_INGREDIENTS';
-export const FETCH_MEASUREMENTS = 'FETCH_MEASUREMENTS';
 export const CHEF_LOGOUT = 'CHEF_LOGOUT';
 export const FETCH_RECIPE_START = 'FETCH_RECIPE_START';
 export const FETCH_RECIPE_SUCCESS = 'FETCH_RECIPE_SUCCESS';
+export const FETCH_RECIPE_SUCCESS_GUEST = 'FETCH_RECIPE_SUCCESS_GUEST'
 export const FETCH_RECIPE_FAILURE = 'FETCH_RECIPE_FAILURE';
 export const CREATE_RECIPE_START = 'CREATE_RECIPE_START';
 export const CREATE_RECIPE_SUCCESS = 'CREATE_RECIPE_SUCCESS';
@@ -26,7 +26,7 @@ export const DELETE_RECIPE_FAILURE = 'DELETE_RECIPE_FAILURE';
 //*** END Reducer Types ***//
 
 // Redux actions
-// These are currently just shells
+// **** START OF REAL API DATA ****
 export const chefRegister = (data, props) => dispatch => {
      axios
     .post('https://cpbackend.herokuapp.com/auth/register', {
@@ -60,25 +60,33 @@ export const chefLogin = (data, props) => dispatch => {
     })
     .catch(err => console.log(err.message));
 }
+// **** END OF REAL API DATA ****
 
+// **** START OF DUMMY DATA BACKEND IS NOT WORKING ****
 export const chefFetchData = () => dispatch => {
-    if(localStorage.getItem('token')) {
+    //if(localStorage.getItem('token')) {
         axios
         .get(`https://cpbackend.herokuapp.com/chefs/${localStorage.getItem('id')}`)
         .then(res => {           
+            //console.log('NL: actions.js: chefFetchData: Authed: ', res.data);
+            // Note since we are using real auth, but fake recipe data, I have to add some things 
+            // that the backend doesn't so I can use the fake data.
+            const userObj = {
+                first_name: res.data[0].first_name,
+                last_name: res.data[0].last_name,
+                username: res.data[0].username,
+                password: res.data[0].password,
+                email_address: res.data[0].email_address,
+                id: userData.id,
+                contact: userData.contact,
+                location: userData.location,
+                avatar_url: userData.avatar_url,
+                chefRecipes: userData.chefRecipes
+            }
+            dispatch({type: CHEF_FETCH_DATA_LOGGEDIN, payload: userObj});
             
-            dispatch({type: CHEF_FETCH_DATA_LOGGEDIN, payload: res.data}) 
         })
-        .catch(err => console.log(err.message));
-    }
-    else {
-        axios
-        .get('https://cpbackend.herokuapp.com/chefs/')
-        .then(res => {
-            dispatch({type: CHEF_FETCH_DATA, payload: res.data});
-        })
-        .catch(err => console.log(err.message));
-    }    
+        .catch(err => console.log(err.message));   
 }
 
 export const chefLogout = () => dispatch => {
@@ -86,49 +94,12 @@ export const chefLogout = () => dispatch => {
 }
 
 export const fetchRecipes = () => dispatch => {
-    dispatch({type: FETCH_RECIPE_START})
-    // Fetch recipes will either display ChefRecipes
-    // or display all recipes if it is a guest
-    // First we need to get the ingredients!
-
-    // INGREDIENTS
-    axios
-    .get("https://cpbackend.herokuapp.com/recipes/ingredients")
-    .then(res => {        
-        //console.log('NL: actions.js: fetchRecipes: Ingredients: ', ingredients);
-        dispatch({type: FETCH_INGREDIENTS, payload: res.data});     
-    })
-    .catch(err => console.log(err.message));
-
-
-    // MEASUREMENTS
-    axios
-    .get("https://cpbackend.herokuapp.com/recipes/measurement")
-    .then(res => {
-        dispatch({type: FETCH_MEASUREMENTS, payload: res.data});
-        //console.log('NL: actions.js: fetchRecipes: Measurements: ', measurements);
-    })
-    .catch(err => console.log(err.message));
-
-    // RECIPES
-    if(localStorage.getItem('token')) {
-        axios
-        .get(`https://cpbackend.herokuapp.com/chefs/${localStorage.getItem('id')}/recipes`)
-        .then(res => {               
-            dispatch({type: FETCH_RECIPE_SUCCESS, payload: res.data}) 
-        })
-        .catch(err => console.log(err.message));
+     if(localStorage.getItem('token')) {
+        dispatch({type: FETCH_RECIPE_SUCCESS, payload: recipes})
     }
-
     else {
-    axios
-        .get("https://cpbackend.herokuapp.com/recipes")
-        .then(res => {        
-        //let newData = [{ measurements: measurements, ingredients: ingredients, recipes: res.data}]
-        //console.log('NL: actions.js: fetchRecipes: Recipes: ', newData);
-            dispatch({type: FETCH_RECIPE_SUCCESS, payload: res.data})        
-        })
-        .catch(err => console.log(err.message));
+        console.log('inside fetchRecipes no-auth: ')
+            dispatch({type: FETCH_RECIPE_SUCCESS_GUEST, payload: recipes})    
     }
 }
 

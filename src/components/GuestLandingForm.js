@@ -1,12 +1,15 @@
 import React from "react";
 import RecipeList from "../components/RecipeList"
 import { connect } from "react-redux";
+import { fetchRecipes } from '../actions/actions';
 
 //NOTE: Material UI
 import { CssBaseline, Container } from "@material-ui/core";
 import LandingPageStyles from "../styles/_LandingPageStyles";
 
 const GuestLandingForm = (props) => {
+
+props.fetchRecipes();
 
   console.log('NL: GuestLandingForm.js: GuestLandingForm: ', props);
 
@@ -56,4 +59,4 @@ const mapStateToProps = state => ({
   measurements: state.measurements
  });
 
-export default connect(mapStateToProps, {})(GuestLandingForm);
+export default connect(mapStateToProps, {fetchRecipes})(GuestLandingForm);
