@@ -28,8 +28,9 @@ const LoginForm = props => {
     e.preventDefault();
     const credentials = { username: data.username, password: data.password }   
     props.chefLogin(credentials, props);
-    props.fetchRecipes(props.user.id);
     props.chefFetchData();
+    props.fetchRecipes();
+    
   };
 
   //NOTE: Invokes the styling defined in variable useStyle.

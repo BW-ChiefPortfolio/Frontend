@@ -27,13 +27,14 @@ const CreatePost = (props) => {
 
     const newRecipe = {
       title: data.title,
-      //Added this -giovani
       description: data.description,
       instructions: data.instructions,
       meal_type: data.meal_type,
       chef_id: localStorage.getItem('id'),
-      pic_url: ''
+      pic_url: 'https://images.pexels.com/photos/461198/pexels-photo-461198.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'
     }
+
+    console.log('NL: CreatePost.js: onSubmit: input data: ', data);
     props.createRecipe(newRecipe, props)
   };
 
