@@ -9,14 +9,8 @@ import { CssBaseline, Container } from "@material-ui/core";
 import LandingPageStyles from "../styles/_LandingPageStyles";
 
 const ChefDashboard = props => {
-<<<<<<< HEAD
   console.log('nl: ChefDashboard.js: ChefDashboard: UserData: ' , props)
   const LandingPageStyle = LandingPageStyles();
-=======
-  
-
-  console.log('NL: ChefDashboard.js: Recipes: ', props);
->>>>>>> e7194535d6bf93cdb510533e9d02642baeca8285
   return (
     <React.Fragment>
       <CssBaseline />

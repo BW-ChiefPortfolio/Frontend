@@ -11,8 +11,6 @@ const GuestLandingForm = (props) => {
 
 props.fetchRecipes();
 
-  console.log('NL: GuestLandingForm.js: GuestLandingForm: ', props);
-
   const LandingPageStyle = LandingPageStyles();
   return (
     <React.Fragment>

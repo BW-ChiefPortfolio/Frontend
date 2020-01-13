@@ -48,7 +48,6 @@ export const chefRegister = (data, props) => dispatch => {
 }
 
 export const chefLogin = (data, props) => dispatch => {
-    console.log('NL: actions.js: chefLogin: data: ', data);
     axios
     .post('https://cpbackend.herokuapp.com/auth/login', { username: data.username, password: data.password })
     .then(res => {
@@ -106,14 +105,8 @@ export const fetchRecipes = () => dispatch => {
 export const createRecipe = (data, props) => dispatch => {
     dispatch({type: CREATE_RECIPE_START})
     console.log('NL: actions.js: createRecipe: data: ', data);
-
-    axiosWithAuth()
-    .post('/recipes')
-    .then(res => {
-        dispatch({type:CREATE_RECIPE_SUCCESS, payload: data })
-        props.history.push('/chefdashboard');
-    })
-    .catch(err => console.log(err.message));
+    dispatch({type:CREATE_RECIPE_SUCCESS, payload: data })
+    props.history.push('/chefdashboard');
 }
 
 export const editRecipe = () => dispatch => {

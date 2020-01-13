@@ -24,17 +24,35 @@ const CreatePost = (props) => {
 
   const onSubmit = (data, e) => {
     e.preventDefault();
-
     const newRecipe = {
+      id: Date.now(),
+      chefId: localStorage.getItem('id'),
       title: data.title,
+      image: 'https://images.pexels.com/photos/461198/pexels-photo-461198.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+      mealType: data.meal_type,
       description: data.description,
       instructions: data.instructions,
-      meal_type: data.meal_type,
-      chef_id: localStorage.getItem('id'),
-      pic_url: 'https://images.pexels.com/photos/461198/pexels-photo-461198.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'
+      ingredients: []
     }
 
-    console.log('NL: CreatePost.js: onSubmit: input data: ', data);
+    // gather the ingredients and put them in the newRecipe array
+    const ing1 = { ingredient: data.ingredient1, quantity: data.amount1, measurement: data.unit1, notes: data.notes1}
+    const ing2 = { ingredient: data.ingredient2, quantity: data.amount2, measurement: data.unit2, notes: data.notes2}
+    const ing3 = { ingredient: data.ingredient3, quantity: data.amount3, measurement: data.unit3, notes: data.notes3}
+    const ing4 = { ingredient: data.ingredient4, quantity: data.amount4, measurement: data.unit4, notes: data.notes4}
+    const ing5 = { ingredient: data.ingredient5, quantity: data.amount5, measurement: data.unit5, notes: data.notes5}
+
+    if(data.ingredient1 !== '')
+      newRecipe.ingredients.push(ing1);
+    if(data.ingredient2 !== '')
+      newRecipe.ingredients.push(ing2);
+    if(data.ingredient3 !== '')
+      newRecipe.ingredients.push(ing3);
+    if(data.ingredient4 !== '')
+      newRecipe.ingredients.push(ing4);
+    if(data.ingredient5 !== '')
+    newRecipe.ingredients.push(ing5);
+
     props.createRecipe(newRecipe, props)
   };
 
@@ -118,6 +136,256 @@ const CreatePost = (props) => {
                   label="Meal Type"
                   name="meal_type"
                   htmlFor="meal_type"
+                  inputRef={register}
+                />
+              </Grid>
+            </Grid>
+            <Grid container spacing={2}>
+              <Grid item xs={1}>
+                <TextField
+                  type="text"
+                  variant="outlined"
+                  fullWidth                
+                  id="amount1"
+                  label="amount"
+                  name="amount1"
+                  htmlFor="amount1"
+                  inputRef={register}
+                />
+                </Grid>
+                <Grid item xs={1}>
+                <TextField
+                  type="text"
+                  variant="outlined"
+                  fullWidth               
+                  id="unit1"
+                  label="unit"
+                  name="unit1"
+                  htmlFor="unit1"
+                  inputRef={register}
+                />
+                </Grid>
+                <Grid item xs={3}>
+                <TextField
+                  type="text"
+                  variant="outlined"
+                  fullWidth
+                  id="ingredient1"
+                  label="ingredient"
+                  name="ingredient1"
+                  htmlFor="ingredient1"
+                  inputRef={register}
+                />
+                </Grid>
+                <Grid item xs={7}>
+                <TextField
+                  type="text"
+                  variant="outlined"
+                  fullWidth                  
+                  id="notes1"
+                  label="notes"
+                  name="notes"
+                  htmlFor="notes"
+                  inputRef={register}
+                />
+              </Grid>
+            </Grid>
+            <Grid container spacing={2}>
+              <Grid item xs={1}>
+                <TextField
+                  type="text"
+                  variant="outlined"
+                  fullWidth                
+                  id="amount2"
+                  label="amount"
+                  name="amount2"
+                  htmlFor="amount2"
+                  inputRef={register}
+                />
+                </Grid>
+                <Grid item xs={1}>
+                <TextField
+                  type="text"
+                  variant="outlined"
+                  fullWidth               
+                  id="unit2"
+                  label="unit"
+                  name="unit2"
+                  htmlFor="unit2"
+                  inputRef={register}
+                />
+                </Grid>
+                <Grid item xs={3}>
+                <TextField
+                  type="text"
+                  variant="outlined"
+                  fullWidth
+                  id="ingredient2"
+                  label="ingredient"
+                  name="ingredient2"
+                  htmlFor="ingredient2"
+                  inputRef={register}
+                />
+                </Grid>
+                <Grid item xs={7}>
+                <TextField
+                  type="text"
+                  variant="outlined"
+                  fullWidth                  
+                  id="notes2"
+                  label="notes"
+                  name="notes2"
+                  htmlFor="notes2"
+                  inputRef={register}
+                />
+              </Grid>
+            </Grid>
+            <Grid container spacing={2}>
+              <Grid item xs={1}>
+                <TextField
+                  type="text"
+                  variant="outlined"
+                  fullWidth                
+                  id="amount3"
+                  label="amount"
+                  name="amount3"
+                  htmlFor="amount3"
+                  inputRef={register}
+                />
+                </Grid>
+                <Grid item xs={1}>
+                <TextField
+                  type="text"
+                  variant="outlined"
+                  fullWidth               
+                  id="unit3"
+                  label="unit"
+                  name="unit3"
+                  htmlFor="unit3"
+                  inputRef={register}
+                />
+                </Grid>
+                <Grid item xs={3}>
+                <TextField
+                  type="text"
+                  variant="outlined"
+                  fullWidth
+                  id="ingredient3"
+                  label="ingredient"
+                  name="ingredient3"
+                  htmlFor="ingredient3"
+                  inputRef={register}
+                />
+                </Grid>
+                <Grid item xs={7}>
+                <TextField
+                  type="text"
+                  variant="outlined"
+                  fullWidth                  
+                  id="notes3"
+                  label="notes"
+                  name="notes3"
+                  htmlFor="notes3"
+                  inputRef={register}
+                />
+              </Grid>
+            </Grid>
+            <Grid container spacing={2}>
+              <Grid item xs={1}>
+                <TextField
+                  type="text"
+                  variant="outlined"
+                  fullWidth                
+                  id="amount4"
+                  label="amount"
+                  name="amount4"
+                  htmlFor="amount4"
+                  inputRef={register}
+                />
+                </Grid>
+                <Grid item xs={1}>
+                <TextField
+                  type="text"
+                  variant="outlined"
+                  fullWidth               
+                  id="unit4"
+                  label="unit"
+                  name="unit4"
+                  htmlFor="unit4"
+                  inputRef={register}
+                />
+                </Grid>
+                <Grid item xs={3}>
+                <TextField
+                  type="text"
+                  variant="outlined"
+                  fullWidth
+                  id="ingredient4"
+                  label="ingredient"
+                  name="ingredient4"
+                  htmlFor="ingredient4"
+                  inputRef={register}
+                />
+                </Grid>
+                <Grid item xs={7}>
+                <TextField
+                  type="text"
+                  variant="outlined"
+                  fullWidth                  
+                  id="notes4"
+                  label="notes"
+                  name="notes4"
+                  htmlFor="notes4"
+                  inputRef={register}
+                />
+              </Grid>
+            </Grid>
+            <Grid container spacing={2}>
+              <Grid item xs={1}>
+                <TextField
+                  type="text"
+                  variant="outlined"
+                  fullWidth                
+                  id="amount5"
+                  label="amount"
+                  name="amount5"
+                  htmlFor="amount5"
+                  inputRef={register}
+                />
+                </Grid>
+                <Grid item xs={1}>
+                <TextField
+                  type="text"
+                  variant="outlined"
+                  fullWidth               
+                  id="unit5"
+                  label="unit"
+                  name="unit5"
+                  htmlFor="unit5"
+                  inputRef={register}
+                />
+                </Grid>
+                <Grid item xs={3}>
+                <TextField
+                  type="text"
+                  variant="outlined"
+                  fullWidth
+                  id="ingredient5"
+                  label="ingredient"
+                  name="ingredient5"
+                  htmlFor="ingredient5"
+                  inputRef={register}
+                />
+                </Grid>
+                <Grid item xs={7}>
+                <TextField
+                  type="text"
+                  variant="outlined"
+                  fullWidth                  
+                  id="notes5"
+                  label="notes"
+                  name="notes5"
+                  htmlFor="notes5"
                   inputRef={register}
                 />
               </Grid>

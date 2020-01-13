@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 
 const RecipeList = props => {
   const RecipeListStyle = RecipeListStyles();
+  console.log('NL: RecipeList.js: RecipeList: recipes: ', props.chefRecipes)
 
   return (
     <React.Fragment>
@@ -24,7 +25,7 @@ const RecipeList = props => {
                 <br></br>
                 <div className={""}>
                   <img
-                    className={RecipeListStyle.img}
+                    className={RecipeListStyle.img}                    
                     src="https://images.pexels.com/photos/461198/pexels-photo-461198.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
                     alt={recipe.title}
                   />

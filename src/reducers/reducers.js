@@ -81,7 +81,9 @@ function reducer(state = initialState, action) {
         case CREATE_RECIPE_START:
             return { ...state, error: '', isFetching: true }
         case CREATE_RECIPE_SUCCESS:
-            return { ...state, recipes: [...state.recipes, action.payload]}
+            console.log('NL: reducers.js: CREATE_RECIPE_SUCCESS: ', action.payload)
+            //return { ...state, ...state.chefRecipes, ...state.chefRecipes.ingredients, ingredients: action.payload}
+            return {  ...state, chefRecipes: { ...state.chefRecipes, ingredients: action.payload } }
         case CREATE_RECIPE_FAILURE:
             return state;
         case EDIT_RECIPE_START:
