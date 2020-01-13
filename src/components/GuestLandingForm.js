@@ -9,7 +9,9 @@ import LandingPageStyles from "../styles/_LandingPageStyles";
 
 const GuestLandingForm = (props) => {
 
-props.fetchRecipes();
+console.log('*****INSIDE GUESTLANDINGFORM*****')
+console.log('NL: GuestLandingForm.js: GuestLandingForm: props: ', props);
+//props.fetchRecipes();
 
   const LandingPageStyle = LandingPageStyles();
   return (
@@ -54,7 +56,6 @@ const mapStateToProps = state => ({
   recipes: state.recipes,
   chefs: state.chefNames,
   ingredients: state.ingredients,
-  measurements: state.measurements
  });
 
 export default connect(mapStateToProps, {fetchRecipes})(GuestLandingForm);

@@ -1,10 +1,11 @@
 // Created and modified by Nathan Loveless 12/18/19
 import axios from 'axios';
 import { axiosWithAuth } from '../components/axiosWithAuth';
-import { recipes, userData } from '../server';
+import { recipes, userData, ingredients } from '../serveralt';
 
 
 //*** Reducer Types ***//
+export const INIT_LOCAL_DATA = 'INIT_LOCAL_DATA';
 export const CHEF_REGISTER = 'CHEF_REGISTER';
 export const CHEF_LOGIN = 'CHEF_LOGIN';
 export const CHEF_FETCH_DATA = 'CHEF_FETCH_DATA';
@@ -12,11 +13,13 @@ export const CHEF_FETCH_DATA_LOGGEDIN = 'CHEF_FETCH_DATA_LOGGEDIN';
 export const CHEF_LOGOUT = 'CHEF_LOGOUT';
 export const FETCH_RECIPE_START = 'FETCH_RECIPE_START';
 export const FETCH_RECIPE_SUCCESS = 'FETCH_RECIPE_SUCCESS';
+export const FETCH_FILTERED_RECIPES = 'FETCH_FILTERED_RECIPES'
 export const FETCH_RECIPE_SUCCESS_GUEST = 'FETCH_RECIPE_SUCCESS_GUEST'
 export const FETCH_RECIPE_FAILURE = 'FETCH_RECIPE_FAILURE';
 export const CREATE_RECIPE_START = 'CREATE_RECIPE_START';
 export const CREATE_RECIPE_SUCCESS = 'CREATE_RECIPE_SUCCESS';
 export const CREATE_RECIPE_FAILURE = 'CREATE_RECIPE_FAILURE';
+export const CREATE_INGREDIENT_SUCCESS = 'CREATE_INGREDIENT_SUCCESS';
 export const EDIT_RECIPE_START = 'EDIT_RECIPE_START';
 export const EDIT_RECIPE_SUCCESS = 'EDIT_RECIPE_SUCCESS';
 export const EDIT_RECIPE_FAILURE = 'EDIT_RECIPE_FAILURE';
@@ -62,6 +65,10 @@ export const chefLogin = (data, props) => dispatch => {
 // **** END OF REAL API DATA ****
 
 // **** START OF DUMMY DATA BACKEND IS NOT WORKING ****
+export const initLocalData = () => dispatch => {
+    console.log('INSIDE INIT LOCAL DATA');
+    dispatch({type: INIT_LOCAL_DATA, payload: { recipes, ingredients }});
+}
 export const chefFetchData = () => dispatch => {
     //if(localStorage.getItem('token')) {
         axios
@@ -92,20 +99,27 @@ export const chefLogout = () => dispatch => {
 
 }
 
+export const fetchFilteredRecipes = () => dispatch => {
+    if(localStorage.getItem('token')) {
+        console.log('*****INSIDE ACTIONS: fetchFilteredRecipes AUTH*****')
+        dispatch({type: FETCH_FILTERED_RECIPES})
+    }
+}
+
 export const fetchRecipes = () => dispatch => {
-     if(localStorage.getItem('token')) {
-        dispatch({type: FETCH_RECIPE_SUCCESS, payload: recipes})
-    }
-    else {
-        console.log('inside fetchRecipes no-auth: ')
-            dispatch({type: FETCH_RECIPE_SUCCESS_GUEST, payload: recipes})    
-    }
+    console.log('*****INSIDE ACTIONS: fetchRecipes NO-AUTH*****')
+        dispatch({type: FETCH_RECIPE_SUCCESS_GUEST, payload: { recipes, ingredients }})    
 }
 
 export const createRecipe = (data, props) => dispatch => {
     dispatch({type: CREATE_RECIPE_START})
     console.log('NL: actions.js: createRecipe: data: ', data);
-    dispatch({type:CREATE_RECIPE_SUCCESS, payload: data })
+    dispatch({type:CREATE_RECIPE_SUCCESS, payload: data.newRecipe });
+    
+    data.newIngredients.map(ingredient => {
+        dispatch({type: CREATE_INGREDIENT_SUCCESS, payload: ingredient }) 
+    })
+      
     props.history.push('/chefdashboard');
 }
 

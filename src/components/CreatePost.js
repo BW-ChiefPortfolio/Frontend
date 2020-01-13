@@ -31,29 +31,29 @@ const CreatePost = (props) => {
       image: 'https://images.pexels.com/photos/461198/pexels-photo-461198.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
       mealType: data.meal_type,
       description: data.description,
-      instructions: data.instructions,
-      ingredients: []
+      instructions: data.instructions
     }
 
     // gather the ingredients and put them in the newRecipe array
-    const ing1 = { ingredient: data.ingredient1, quantity: data.amount1, measurement: data.unit1, notes: data.notes1}
-    const ing2 = { ingredient: data.ingredient2, quantity: data.amount2, measurement: data.unit2, notes: data.notes2}
-    const ing3 = { ingredient: data.ingredient3, quantity: data.amount3, measurement: data.unit3, notes: data.notes3}
-    const ing4 = { ingredient: data.ingredient4, quantity: data.amount4, measurement: data.unit4, notes: data.notes4}
-    const ing5 = { ingredient: data.ingredient5, quantity: data.amount5, measurement: data.unit5, notes: data.notes5}
+    const ing1 = { recipe_id: newRecipe.id, ingredient: data.ingredient1, quantity: data.amount1, measurement: data.unit1, notes: data.notes1}
+    const ing2 = { recipe_id: newRecipe.id,ingredient: data.ingredient2, quantity: data.amount2, measurement: data.unit2, notes: data.notes2}
+    const ing3 = { recipe_id: newRecipe.id,ingredient: data.ingredient3, quantity: data.amount3, measurement: data.unit3, notes: data.notes3}
+    const ing4 = { recipe_id: newRecipe.id,ingredient: data.ingredient4, quantity: data.amount4, measurement: data.unit4, notes: data.notes4}
+    const ing5 = { recipe_id: newRecipe.id,ingredient: data.ingredient5, quantity: data.amount5, measurement: data.unit5, notes: data.notes5}
 
+    const newIngredients = [];
     if(data.ingredient1 !== '')
-      newRecipe.ingredients.push(ing1);
+      newIngredients.push(ing1);
     if(data.ingredient2 !== '')
-      newRecipe.ingredients.push(ing2);
+      newIngredients.push(ing2);
     if(data.ingredient3 !== '')
-      newRecipe.ingredients.push(ing3);
+      newIngredients.push(ing3);
     if(data.ingredient4 !== '')
-      newRecipe.ingredients.push(ing4);
+      newIngredients.push(ing4);
     if(data.ingredient5 !== '')
-    newRecipe.ingredients.push(ing5);
+      newIngredients.push(ing5);
 
-    props.createRecipe(newRecipe, props)
+    props.createRecipe({newRecipe, newIngredients}, props)
   };
 
   //NOTE: Invokes the styling defined in variable useStyle.

@@ -1,7 +1,7 @@
 // Created by Nathan Loveless modified by Nathan and Giovani 12/19/19
 import React from "react";
 import { connect } from "react-redux";
-import { chefLogin, fetchRecipes, chefFetchData } from "../actions/actions";
+import { chefLogin, chefFetchData, fetchFilteredRecipes } from "../actions/actions";
 import useForm from "react-hook-form";
 import { Link } from "react-router-dom";
 
@@ -29,7 +29,6 @@ const LoginForm = props => {
     const credentials = { username: data.username, password: data.password }   
     props.chefLogin(credentials, props);
     props.chefFetchData();
-    props.fetchRecipes();
     
   };
 
@@ -132,4 +131,4 @@ const mapStateToProps = state => ({
   recipes: state.recipes
 });
 
-export default connect(mapStateToProps, { chefLogin, fetchRecipes, chefFetchData })(LoginForm);
+export default connect(mapStateToProps, { chefLogin, fetchFilteredRecipes, chefFetchData })(LoginForm);

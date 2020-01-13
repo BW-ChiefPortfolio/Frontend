@@ -7,9 +7,13 @@ import RecipeList from "../components/RecipeList"
 //NOTE: Material UI
 import { CssBaseline, Container } from "@material-ui/core";
 import LandingPageStyles from "../styles/_LandingPageStyles";
+import { fetchFilteredRecipes } from "../actions/actions";
+
 
 const ChefDashboard = props => {
+  console.log('*****INSIDE CHEFDASHBOARD*****')
   console.log('nl: ChefDashboard.js: ChefDashboard: UserData: ' , props)
+  props.fetchFilteredRecipes();
   const LandingPageStyle = LandingPageStyles();
   return (
     <React.Fragment>
@@ -45,7 +49,8 @@ const ChefDashboard = props => {
 
 const mapStateToProps = state => ({
   user: state.user,
-  recipes: state.chefRecipes
+  recipes: state.recipes,
+  ingredients: state.ingredients
 });
 
-export default connect(mapStateToProps, { })(ChefDashboard);
+export default connect(mapStateToProps, { fetchFilteredRecipes })(ChefDashboard);

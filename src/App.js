@@ -10,7 +10,7 @@ import Navigation from "./components/Navigation";
 import CreatePost from "./components/CreatePost";
 import EditPost from "./components/EditPost";
 import { connect } from "react-redux";
-import { fetchRecipes, chefFetchData } from "./actions/actions";
+import { fetchRecipes, chefFetchData, initLocalData } from "./actions/actions";
 
 import RecipeList from "./components/RecipeList";
 
@@ -26,7 +26,7 @@ function App(props) {
     // This one will give us our recipe names and meal-types
     //props.chefFetchData();
     //props.fetchRecipes(props.recipeIndex);
-   
+    props.initLocalData();
   
     return (
       <Router>
@@ -53,4 +53,4 @@ function App(props) {
     recipeIndex: state.user.recipes
   });
 
-export default connect(mapStateToProps, { fetchRecipes, chefFetchData })(App);
+export default connect(mapStateToProps, { fetchRecipes, chefFetchData, initLocalData })(App);

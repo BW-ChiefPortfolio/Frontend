@@ -1,9 +1,9 @@
 // Created and modified by Nathan Loveless 12/18/19
-import { CHEF_REGISTER, CHEF_LOGIN, CHEF_LOGOUT, FETCH_RECIPE_START, FETCH_RECIPE_SUCCESS,
+import { INIT_LOCAL_DATA, CHEF_REGISTER, CHEF_LOGIN, CHEF_LOGOUT, FETCH_RECIPE_START, FETCH_RECIPE_SUCCESS,
          FETCH_RECIPE_FAILURE, CREATE_RECIPE_START, CREATE_RECIPE_SUCCESS, CREATE_RECIPE_FAILURE,
          EDIT_RECIPE_START, EDIT_RECIPE_SUCCESS, EDIT_RECIPE_FAILURE, DELETE_RECIPE_START, 
          DELETE_RECIPE_SUCCESS, DELETE_RECIPE_FAILURE, CHEF_FETCH_DATA, CHEF_FETCH_DATA_LOGGEDIN,
-         FETCH_RECIPE_SUCCESS_GUEST } from '../actions/actions';
+         FETCH_RECIPE_SUCCESS_GUEST, CREATE_INGREDIENT_SUCCESS, FETCH_FILTERED_RECIPES } from '../actions/actions';
 
          // The user: (The Chef) and the recipes are being stored together in the store.
          // This means that if a Chef is logged in only his recipes are stored in the reciepes object
@@ -22,36 +22,43 @@ import { CHEF_REGISTER, CHEF_LOGIN, CHEF_LOGOUT, FETCH_RECIPE_START, FETCH_RECIP
                  avatar_url: ''           
              },
 
-             chefRecipes: [{
+             recipes: [{
                  id: '',
                  chefId: '',
                  title: '',
                  image: '',
                  mealType: '',
                  description: '',
-                 instructions: '',
-                 ingredients: [{
-                     ingredient: '',
-                     quantity: '',
-                     measurement: '',
-                     notes: ''
-                 }]
+                 instructions: '',                 
              }],
 
-            currentRecipe: [],
-            ingredients: [],
-            measurements: [],
-            recipeNames: [],
-            mealTypes: [],
-            chefNames: [],
+             ingredients: [{
+                recipe_id: '',
+                ingredient: '',
+                quantity: '',
+                measurement: '',
+                notes: ''
+            }],
+            
+            filteredRecipes: [{}],
+
+            //currentRecipe: [],
+            //recipeNames: [],
+           // mealTypes: [],
+            //chefNames: [],
              isFetching: false,
              error: ''
             }
+
+            
 
 function reducer(state = initialState, action) {
     //produce(state, draft => {
     switch(action.type)
     {
+        case INIT_LOCAL_DATA:
+            console.log('INSIDE REDUCER: INIT_LOCAL_DATA: ', action.payload);
+        return { ...state, recipes: action.payload.recipes, ingredients: action.payload.ingredients};
         case CHEF_REGISTER:
             return { ...state, ...state.user,  user: action.payload }
         case CHEF_LOGIN:
@@ -68,22 +75,26 @@ function reducer(state = initialState, action) {
             return state;
         case FETCH_RECIPE_START:
             return { ...state, error: '', isFetching: true }
-        case FETCH_RECIPE_SUCCESS:            
-            const filteredRecipes = action.payload.filter(function(item) {
-                    return state.user.id !== item.chefId;
+        case FETCH_FILTERED_RECIPES:
+            console.log('*****INSIDE REDUCERS: FETCH_FILTERED_RECIPES (AUTH)*****') 
+            console.log(state.recipes);       
+            const recipeFilter = state.recipes.filter(function(item) {
+                    return parseInt(state.user.id) === parseInt(item.chefId);
                     });
-            return { ...state, chefRecipes: filteredRecipes};
-        case FETCH_RECIPE_SUCCESS_GUEST: 
-                    console.log(action.payload);
-            return { ...state, chefRecipes: action.payload};
+            return { ...state, filteredRecipes: recipeFilter };
+        //case FETCH_RECIPE_SUCCESS:    
+            
+        case FETCH_RECIPE_SUCCESS_GUEST:
+            console.log('*****INSIDE REDUCERS: FETCH_RECIPE_SUCCESS)GUEST (NO-AUTH)*****')     
+        return { ...state, recipes: action.payload.recipes, ingredients: action.payload.ingredients};
         case FETCH_RECIPE_FAILURE:
             return { ...state, error: action.payload, isFetching: false}
         case CREATE_RECIPE_START:
             return { ...state, error: '', isFetching: true }
         case CREATE_RECIPE_SUCCESS:
-            console.log('NL: reducers.js: CREATE_RECIPE_SUCCESS: ', action.payload)
-            //return { ...state, ...state.chefRecipes, ...state.chefRecipes.ingredients, ingredients: action.payload}
-            return {  ...state, chefRecipes: { ...state.chefRecipes, ingredients: action.payload } }
+            return { ...state, recipes: [ ...state.recipes, action.payload] };
+        case CREATE_INGREDIENT_SUCCESS:
+            return { ...state, ingredients: [ ...state.ingredients, action.payload] };
         case CREATE_RECIPE_FAILURE:
             return state;
         case EDIT_RECIPE_START:

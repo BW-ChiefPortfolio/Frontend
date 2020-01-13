@@ -6,11 +6,23 @@ import { connect } from "react-redux";
 
 const RecipeList = props => {
   const RecipeListStyle = RecipeListStyles();
-  console.log('NL: RecipeList.js: RecipeList: recipes: ', props.chefRecipes)
+ //console.log('NL: RecipeList.js: RecipeList: recipes: ', props.chefRecipes)
+ console.log('*****INSIDE RECIPELIST*****')
+ console.log('NL: RecipeList.js: RecipeList: ingredients: ', props)
+
+ let recipes = [];
+
+ if(localStorage.getItem('token')) {
+   recipes = props.filteredRecipes;
+ }
+
+ else{
+   recipes = props.recipes;
+ }
 
   return (
     <React.Fragment>
-      {props.recipes.map(recipe => (
+      {recipes.map(recipe => (
         //Since id wasn't formatted in the server correctly it wont display correctly. Will need to use title, but my TL said that may not work.
         <div className={""} key={recipe.id}>
           <Card className={RecipeListStyle.recipeCardContainer}>
@@ -46,7 +58,9 @@ const RecipeList = props => {
 };
 
 const mapStateToProps = state => ({
-  recipes: state.chefRecipes
+  recipes: state.recipes,
+  ingredients: state.ingredients,
+  filteredRecipes: state.filteredRecipes
 });
 
 export default connect(mapStateToProps, {})(RecipeList);
