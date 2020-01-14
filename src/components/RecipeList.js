@@ -16,7 +16,7 @@ const RecipeList = props => {
    recipes = props.filteredRecipes;
  }
 
- else{
+ else {
    recipes = props.recipes;
  }
 

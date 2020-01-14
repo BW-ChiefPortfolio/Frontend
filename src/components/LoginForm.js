@@ -44,8 +44,7 @@ const LoginForm = props => {
           <Typography component="h1" variant="h5">
             Sign In
           </Typography>
-          <form
-            onSubmit={handleSubmit(onSubmit)}
+          <form onSubmit={handleSubmit(onSubmit)}
             className={LoginFormStyle.form}
           >
             <Grid container spacing={2}>

@@ -29,6 +29,9 @@ const Navigation = () => {
           <Link className={NavigationStyle.link} to="/">
             Home
           </Link>
+          <Link className={NavigationStyle.link} to="chefdashboard">
+            Dashboard
+          </Link>
           <Link className={NavigationStyle.link} to="/login">
             Login
           </Link>
