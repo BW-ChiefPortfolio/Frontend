@@ -14,9 +14,9 @@ export const userData = {
 
 export const recipes = [{ 
     id: '0',
-    chefId: '0',
+    chefId: '10',
     title: 'Egg-in-a-Hole with Spinach & Bacon',
-    image: './images/egginhole.JPG',
+    image: '/images/egginhole.JPG',
     mealType: 'Breakfast',
     description: 'When you make this cute breakfast-for-dinner recipe, also known as toad-in-a-hole or a one-eyed jack, you can vary it by using kale or even Swiss chard in place of the spinach.',
     instructions: 'Preheat oven to 425°F. Coat a large baking sheet with cooking spray. Cook bacon in a large cast-iron skillet over medium heat until crisp, 7 to 9 minutes. Drain on paper towels. Pour the bacon fat into a small heatproof bowl. If necessary, add oil to make 2 tablespoons. Meanwhile, heat 1 tablespoon oil in a large saucepan over medium heat. Add garlic and cook, stirring, about 30 seconds. Add spinach by the handful and cook, stirring, until wilted, about 5 minutes. Transfer to a colander; press out excess liquid. Return the spinach to the pan and season with vinegar, ¼ teaspoon pepper and salt. Cut a 3½-inch hole in the middle of each slice of bread. (Save the rounds for another use, if desired.) Heat 1 tablespoon of the reserved bacon fat in the skillet over medium-high heat. Cook 2 slices of bread, pressing with a spatula, until lightly browned, 1 to 3 minutes per side. Transfer to the prepared baking sheet. Repeat with the remaining fat and bread. Fill each hole with spinach. Make a deep well in the spinach and break an egg into each well. Bake, rotating the baking sheet 180 degrees about halfway through, 10 to 14 minutes for soft-set yolks. Serve sprinkled with crumbled bacon and the remaining ¼ teaspoon pepper.',
@@ -125,6 +125,7 @@ export const recipes = [{
 ]
 
 export const ingredients = [{
+        id: '0',
         recipe_id: '0', 
         ingredient: 'Bacon',
         quantity: '3',
@@ -132,6 +133,7 @@ export const ingredients = [{
         notes: '',
     },
     {
+        id: '1',
         recipe_id: '0', 
         ingredient: 'Extra-Virgin Olive Oil',
         quantity: '1',
@@ -139,6 +141,7 @@ export const ingredients = [{
         notes: 'Plus more if needed',
     },
     {
+        id: '2',
         recipe_id: '0', 
         ingredient: 'Garlic Clove',
         quantity: '3',
@@ -146,6 +149,7 @@ export const ingredients = [{
         notes: '',
     },
     {
+        id: '3',
         recipe_id: '0', 
         ingredient: 'Spinach',
         quantity: '1',
@@ -153,6 +157,7 @@ export const ingredients = [{
         notes: '(about 16 cups) tough stems removed)',
     },
     {
+        id: '4',
         recipe_id: '0', 
         ingredient: 'Red Wine Vinegar',
         quantity: '1',
@@ -160,6 +165,7 @@ export const ingredients = [{
         notes: '',
     },
     {
+        id: '5',
         recipe_id: '0', 
         ingredient: 'Black Pepper, Ground',
         quantity: '1/2',
@@ -167,6 +173,7 @@ export const ingredients = [{
         notes: 'divided to 1/4 tsp',
     },
     {
+        id: '6',
         recipe_id: '0', 
         ingredient: 'Salt',
         quantity: '1/4',
@@ -174,6 +181,7 @@ export const ingredients = [{
         notes: '',
     },
     {
+        id: '7',
         recipe_id: '0', 
         ingredient: 'Country-Style Whole Wheat Bread',
         quantity: '4',
@@ -181,6 +189,7 @@ export const ingredients = [{
         notes: '3/4 - 1 inch thick',
     },
     {
+        id: '8',
         recipe_id: '1',
         ingredient: 'Extra-Virgin Olive Oil',
         quantity: '2',
@@ -188,6 +197,7 @@ export const ingredients = [{
         notes: '',
     },
     {
+        id: '9',
         recipe_id: '1',
         ingredient: 'Potato',
         quantity: '18',
@@ -195,6 +205,7 @@ export const ingredients = [{
         notes: 'Peeled or unpeeled, diced, cooked',
     },
     {
+        id: '10',
         recipe_id: '1',
         ingredient: 'Onion',
         quantity: '1',
@@ -202,6 +213,7 @@ export const ingredients = [{
         notes: 'quartered, thinly sliced',
     },
     {
+        id: '11',
         recipe_id: '1',
         ingredient: 'Bell Pepper, Green',
         quantity: '1',
@@ -209,6 +221,7 @@ export const ingredients = [{
         notes: 'diced',
     },
     {
+        id: '12',
         recipe_id: '1',
         ingredient: 'Paprika',
         quantity: '1',
@@ -216,6 +229,7 @@ export const ingredients = [{
         notes: '',
     },
     {
+        id: '13',
         recipe_id: '1',
         ingredient: 'Salt',
         quantity: '1/4',
@@ -223,6 +237,7 @@ export const ingredients = [{
         notes: 'divided 1/8 tsp',
     },
     {
+        id: '14',
         recipe_id: '1',
         ingredient: 'Black Pepper, Ground',
         quantity: '1/4',
@@ -230,6 +245,7 @@ export const ingredients = [{
         notes: 'divided 1/8 tsp',
     },
     {
+        id: '15',
         recipe_id: '1',
         ingredient: 'Pastrami',
         quantity: '5',
@@ -237,6 +253,7 @@ export const ingredients = [{
         notes: 'Sliced, diced (about 1 generous cup)',
     },
     {
+        id: '16',
         recipe_id: '1',
         ingredient: 'Egg',
         quantity: '4',
@@ -244,6 +261,7 @@ export const ingredients = [{
         notes: '',
     },
     {
+        id: '17',
         recipe_id: '2',
         ingredient: 'Broccoli',
         quantity: '1 1/2',
@@ -251,6 +269,7 @@ export const ingredients = [{
         notes: 'Cut into 1-inch florets (about 6 cups)',
     },    
     {
+        id: '18',
         recipe_id: '2',
         ingredient: 'Canola Oil',
         quantity: '2',
@@ -258,6 +277,7 @@ export const ingredients = [{
         notes: 'Divided 1 Tbsp',
     },
     {
+        id: '19',
         recipe_id: '2',
         ingredient: 'Ground Beef, 95% Lean',
         quantity: '1 1/2',
@@ -265,6 +285,7 @@ export const ingredients = [{
         notes: '',
     },
     {
+        id: '20',
         recipe_id: '2',
         ingredient: 'Onion',
         quantity: '1',
@@ -272,6 +293,7 @@ export const ingredients = [{
         notes: 'Chopped',
     },
     {
+        id: '21',
         recipe_id: '2',
         ingredient: 'Worcestershire Sauce',
         quantity: '2',
@@ -279,6 +301,7 @@ export const ingredients = [{
         notes: '',
     },
     {
+        id: '22',
         recipe_id: '2',
         ingredient: 'Garlic Powder',
         quantity: '1',
@@ -286,6 +309,7 @@ export const ingredients = [{
         notes: '',
     },
     {
+        id: '23',
         recipe_id: '2',
         ingredient: 'Salt',
         quantity: '1 1/4',
@@ -293,6 +317,7 @@ export const ingredients = [{
         notes: 'Divided',
     },
     {
+        id: '24',
         recipe_id: '2',
         ingredient: 'Milk, Lowfat',
         quantity: '4',
@@ -300,6 +325,7 @@ export const ingredients = [{
         notes: '',
     },
     {
+        id: '25',
         recipe_id: '2',
         ingredient: 'Cornstarch',
         quantity: '1/3',
@@ -307,6 +333,7 @@ export const ingredients = [{
         notes: '',
     },
     {
+        id: '26',
         recipe_id: '2',
         ingredient: 'Cheddar Cheese, Sharp, Shredded',
         quantity: '2',
@@ -314,6 +341,7 @@ export const ingredients = [{
         notes: 'Preferably orange',
     },
     {
+        id: '27',
         recipe_id: '2',
         ingredient: 'Tumeric, Ground',
         quantity: '1/4',
@@ -321,6 +349,7 @@ export const ingredients = [{
         notes: '',
     },
     {
+        id: '28',
         recipe_id: '2',
         ingredient: 'Hash Browns, shredded, Frozen',
         quantity: '4',
@@ -328,6 +357,7 @@ export const ingredients = [{
         notes: 'Or precooked shredded potatoes, (see Note)',
     },
     {
+        id: '29',
         recipe_id: '2',
         ingredient: 'Egg',
         quantity: '1',
@@ -335,6 +365,7 @@ export const ingredients = [{
         notes: 'Lightly beaten',
     },
     {
+        id: '30',
         recipe_id: '2',
         ingredient: 'Black Pepper, Ground',
         quantity: '1/2',
@@ -342,6 +373,7 @@ export const ingredients = [{
         notes: '',
     },
     {
+        id: '31',
         recipe_id: '2',
         ingredient: 'Canola Oil',
         quantity: '2',
@@ -349,6 +381,7 @@ export const ingredients = [{
         notes: 'Or olive oil cooking spray',
     },
     {
+        id: '32',
         recipe_id: '2',
         ingredient: 'Hungarian Paprika',
         quantity: '1/4',
@@ -356,6 +389,7 @@ export const ingredients = [{
         notes: 'Preferably hot',
     },
     {
+        id: '33',
         recipe_id: '3',
         ingredient: 'Green Beans',
         quantity: '2 1/2',
@@ -363,6 +397,7 @@ export const ingredients = [{
         notes: 'Trimmed and cut into 1- to 2-inch pieces (about 8 cups)',
     },
     {
+        id: '34',
         recipe_id: '3',
         ingredient: 'Extra-Virgin Olive Oil',
         quantity: '3',
@@ -370,6 +405,7 @@ export const ingredients = [{
         notes: 'Divided',
     },
     {
+        id: '35',
         recipe_id: '3',
         ingredient: 'Onion',
         quantity: '1',
@@ -377,6 +413,7 @@ export const ingredients = [{
         notes: 'Thinly Sliced',
     },
     {
+        id: '36',
         recipe_id: '3',
         ingredient: 'All-Purpose Flour',
         quantity: '3',
@@ -384,6 +421,7 @@ export const ingredients = [{
         notes: '',
     },
     {
+        id: '37',
         recipe_id: '3',
         ingredient: 'Salt',
         quantity: '3/4',
@@ -391,6 +429,7 @@ export const ingredients = [{
         notes: '',
     },
     {
+        id: '38',
         recipe_id: '3',
         ingredient: 'Black Pepper, Ground',
         quantity: '1/4',
@@ -398,6 +437,7 @@ export const ingredients = [{
         notes: 'Or white',
     },
     {
+        id: '39',
         recipe_id: '3',
         ingredient: 'Milk, Low-Fat',
         quantity: '2 1/2',
@@ -405,6 +445,7 @@ export const ingredients = [{
         notes: 'Or white',
     },
     {
+        id: '40',
         recipe_id: '3',
         ingredient: 'Breadcrumbs, Whole Wheat',
         quantity: '1 1/2',
@@ -412,6 +453,7 @@ export const ingredients = [{
         notes: '(See Tips) or ½ cup shredded or crumbled cheese',
     },
     {
+        id: '41',
         recipe_id: '4',
         ingredient: 'Canola Oil',
         quantity: '2',
@@ -419,6 +461,7 @@ export const ingredients = [{
         notes: 'Or olive oil cooking spray',
     },
     {
+        id: '42',
         recipe_id: '4',
         ingredient: 'All-Purpose Flour',
         quantity: '1/4',
@@ -426,6 +469,7 @@ export const ingredients = [{
         notes: '',
     },
     {
+        id: '43',
         recipe_id: '4',
         ingredient: 'Egg',
         quantity: '2',
@@ -433,6 +477,7 @@ export const ingredients = [{
         notes: '',
     },
     {
+        id: '44',
         recipe_id: '4',
         ingredient: 'Breadcrumbs',
         quantity: '1',
@@ -440,6 +485,7 @@ export const ingredients = [{
         notes: 'Preferably whole-wheat (see Note)',
     },
     {
+        id: '45',
         recipe_id: '4',
         ingredient: 'Chicken Tenders',
         quantity: '1',
@@ -447,6 +493,7 @@ export const ingredients = [{
         notes: '',
     },
     {
+        id: '46',
         recipe_id: '4',
         ingredient: 'Italian Seasoning',
         quantity: '1',
@@ -454,6 +501,7 @@ export const ingredients = [{
         notes: '',
     },
     {
+        id: '47',
         recipe_id: '4',
         ingredient: 'Garlic Powder',
         quantity: '1',
@@ -461,6 +509,7 @@ export const ingredients = [{
         notes: '',
     },
     {
+        id: '48',
         recipe_id: '4',
         ingredient: 'Salt',
         quantity: '1/4',
@@ -468,6 +517,7 @@ export const ingredients = [{
         notes: '',
     },
     {
+        id: '49',
         recipe_id: '4',
         ingredient: 'Marinara Sauce',
         quantity: '1',
@@ -475,6 +525,7 @@ export const ingredients = [{
         notes: 'Heated',
     },
     {
+        id: '50',
         recipe_id: '5',
         ingredient: 'Whole Chicken',
         quantity: '10',
@@ -482,6 +533,7 @@ export const ingredients = [{
         notes: '5 lbs each',
     },
     {
+        id: '51',
         recipe_id: '5',
         ingredient: 'Kosher Salt',
         quantity: '1',
@@ -489,6 +541,7 @@ export const ingredients = [{
         notes: '',
     },
     {
+        id: '52',
         recipe_id: '5',
         ingredient: 'Black Pepper, Ground',
         quantity: '1',
@@ -496,6 +549,7 @@ export const ingredients = [{
         notes: '',
     },
     {
+        id: '53',
         recipe_id: '5',
         ingredient: 'Onion',
         quantity: '1/2',
@@ -503,6 +557,7 @@ export const ingredients = [{
         notes: '1 cup chopped',
     },
     {
+        id: '54',
         recipe_id: '5',
         ingredient: 'Celery',
         quantity: '1',
@@ -510,6 +565,7 @@ export const ingredients = [{
         notes: 'Chopped',
     },
     {
+        id: '55',
         recipe_id: '5',
         ingredient: 'Carrots',
         quantity: '1',
@@ -517,6 +573,7 @@ export const ingredients = [{
         notes: 'Chopped',
     },
     {
+        id: '56',
         recipe_id: '5',
         ingredient: 'Extra-Virgin Olive Oil  ',
         quantity: '2',
@@ -524,6 +581,7 @@ export const ingredients = [{
         notes: '',
     },
     {
+        id: '57',
         recipe_id: '6',
         ingredient: 'Black Pepper, Course Ground',
         quantity: '1',
@@ -531,6 +589,7 @@ export const ingredients = [{
         notes: '',
     },
     {
+        id: '58',
         recipe_id: '6',
         ingredient: 'Salt',
         quantity: '1/2',
@@ -538,6 +597,7 @@ export const ingredients = [{
         notes: 'Divided',
     },
     {
+        id: '59',
         recipe_id: '6',
         ingredient: 'Pork Chops, Boneless',
         quantity: '16',
@@ -545,6 +605,7 @@ export const ingredients = [{
         notes: '1/2 inch thick, trimmed',
     },
     {
+        id: '60',
         recipe_id: '6',
         ingredient: 'All-Purpose Flour',
         quantity: '3',
@@ -552,6 +613,7 @@ export const ingredients = [{
         notes: '',
     },
     {
+        id: '61',
         recipe_id: '6',
         ingredient: 'Extra-Virgin Olive Oil',
         quantity: '2',
@@ -559,6 +621,7 @@ export const ingredients = [{
         notes: '',
     },
     {
+        id: '62',
         recipe_id: '6',
         ingredient: 'Shallot',
         quantity: '1',
@@ -566,6 +629,7 @@ export const ingredients = [{
         notes: 'Minced',
     },
     {
+        id: '63',
         recipe_id: '6',
         ingredient: 'Brandy',
         quantity: '1/2',
@@ -573,6 +637,7 @@ export const ingredients = [{
         notes: '',
     },
     {
+        id: '64',
         recipe_id: '6',
         ingredient: 'Sour Cream, Reduced Fat',
         quantity: '1/4',
@@ -580,6 +645,7 @@ export const ingredients = [{
         notes: '',
     },
     {
+        id: '65',
         recipe_id: '7',
         ingredient: 'Rib Chops, Bone-in',
         quantity: '1 3/4',
@@ -587,6 +653,7 @@ export const ingredients = [{
         notes: '¾-inch-thick pork trimmed of fat',
     },
     {
+        id: '66',
         recipe_id: '7',
         ingredient: 'Salt',
         quantity: '1/4',
@@ -594,6 +661,7 @@ export const ingredients = [{
         notes: '',
     },
     {
+        id: '67',
         recipe_id: '7',
         ingredient: 'Black Pepper, Ground',
         quantity: '1/4',
@@ -601,6 +669,7 @@ export const ingredients = [{
         notes: '',
     },
     {
+        id: '68',
         recipe_id: '7',
         ingredient: 'Canola Oil',
         quantity: '3',
@@ -608,6 +677,7 @@ export const ingredients = [{
         notes: 'Divided',
     },
     {
+        id: '69',
         recipe_id: '7',
         ingredient: 'Onion',
         quantity: '1',
@@ -615,6 +685,7 @@ export const ingredients = [{
         notes: 'Diced',
     },
     {
+        id: '70',
         recipe_id: '7',
         ingredient: 'Garlic Clove',
         quantity: '1',
@@ -622,6 +693,7 @@ export const ingredients = [{
         notes: 'Minced',
     },
     {
+        id: '71',
         recipe_id: '7',
         ingredient: 'Orange Juice',
         quantity: '1/3',
@@ -629,6 +701,7 @@ export const ingredients = [{
         notes: 'Minced',
     },
     {
+        id: '72',
         recipe_id: '7',
         ingredient: 'Barbecue Sauce',
         quantity: '1/2',
@@ -636,6 +709,7 @@ export const ingredients = [{
         notes: '(see tip)',
     },
     {
+        id: '73',
         recipe_id: '8',
         ingredient: 'Apricots, Dried, Chopped',
         quantity: '1/2',
@@ -643,6 +717,7 @@ export const ingredients = [{
         notes: '',
     },
     {
+        id: '74',
         recipe_id: '8',
         ingredient: 'Sugar',
         quantity: '1/3',
@@ -650,6 +725,7 @@ export const ingredients = [{
         notes: '',
     },
     {
+        id: '75',
         recipe_id: '8',
         ingredient: 'Orange Zest',
         quantity: '1',
@@ -657,6 +733,7 @@ export const ingredients = [{
         notes: 'Slivered',
     },
     {
+        id: '76',
         recipe_id: '8',
         ingredient: 'Water',
         quantity: '1',
@@ -664,6 +741,7 @@ export const ingredients = [{
         notes: '',
     },
     {
+        id: '77',
         recipe_id: '8',
         ingredient: 'Bulgur',
         quantity: '1/2',
@@ -671,6 +749,7 @@ export const ingredients = [{
         notes: '',
     },
     {
+        id: '78',
         recipe_id: '8',
         ingredient: 'Egg',
         quantity: '2',
@@ -678,6 +757,7 @@ export const ingredients = [{
         notes: 'Seperated',
     },
     {
+        id: '79',
         recipe_id: '8',
         ingredient: 'Milk, Low-Fat',
         quantity: '2/3',
@@ -685,6 +765,7 @@ export const ingredients = [{
         notes: 'Seperated',
     },
     {
+        id: '80',
         recipe_id: '8',
         ingredient: 'Brown Sugar',
         quantity: '2',
@@ -692,6 +773,7 @@ export const ingredients = [{
         notes: 'Seperated',
     },
     {
+        id: '81',
         recipe_id: '8',
         ingredient: 'Pistachios, Toasted, Finely Chopped',
         quantity: '1/2',
@@ -699,6 +781,7 @@ export const ingredients = [{
         notes: 'Preferably Salted',
     },
     {
+        id: '82',
         recipe_id: '9',
         ingredient: 'Melba Toasts, Plain',
         quantity: '15',
@@ -706,6 +789,7 @@ export const ingredients = [{
         notes: '(About 4 ounces; not Melba “snacks”)',
     },
     {
+        id: '83',
         recipe_id: '9',
         ingredient: 'Walnut, Halves',
         quantity: '1/3',
@@ -713,6 +797,7 @@ export const ingredients = [{
         notes: '',
     },
     {
+        id: '84',
         recipe_id: '9',
         ingredient: 'Extra-Virgin Olive Oil',
         quantity: '2',
@@ -720,6 +805,7 @@ export const ingredients = [{
         notes: '',
     },
     {
+        id: '85',
         recipe_id: '9',
         ingredient: 'Sugar',
         quantity: '1 1/3',
@@ -727,6 +813,7 @@ export const ingredients = [{
         notes: '',
     },
     {
+        id: '86',
         recipe_id: '9',
         ingredient: 'Cream Cheese, Reduced Fat',
         quantity: '14',
@@ -734,6 +821,7 @@ export const ingredients = [{
         notes: '',
     },
     {
+        id: '87',
         recipe_id: '9',
         ingredient: 'Greek Yogurt, Non-Fat, Plain',
         quantity: '2 1/2',
@@ -741,6 +829,7 @@ export const ingredients = [{
         notes: 'Or low-fat, (see Ingredient Note)',
     },
     {
+        id: '88',
         recipe_id: '9',
         ingredient: 'Egg',
         quantity: '7',
@@ -748,6 +837,7 @@ export const ingredients = [{
         notes: 'Whites only',
     },
     {
+        id: '89',
         recipe_id: '9',
         ingredient: 'Cinnamon, Ground',
         quantity: '1',
@@ -755,6 +845,7 @@ export const ingredients = [{
         notes: '',
     },
     {
+        id: '90',
         recipe_id: '9',
         ingredient: 'Figs, Dried, Whole',
         quantity: '16',
@@ -762,6 +853,7 @@ export const ingredients = [{
         notes: '',
     },
     {
+        id: '91',
         recipe_id: '9',
         ingredient: 'Water, Warm',
         quantity: '2',
@@ -769,6 +861,7 @@ export const ingredients = [{
         notes: '',
     },
     {
+        id: '92',
         recipe_id: '9',
         ingredient: 'Ouzo',
         quantity: '1/2',
@@ -776,6 +869,7 @@ export const ingredients = [{
         notes: 'Mavrodaphne or port wine (see Ingredient Note)',
     },
     {
+        id: '93',
         recipe_id: '9',
         ingredient: 'Rose Geranium Leaves',
         quantity: '2',
@@ -783,6 +877,7 @@ export const ingredients = [{
         notes: 'Plus more for garnish (optional; see Ingredient Note)',
     },
     {
+        id: '94',
         recipe_id: '9',
         ingredient: 'Cinnamon Stick',
         quantity: '1',
@@ -790,6 +885,7 @@ export const ingredients = [{
         notes: '',
     },
     {
+        id: '95',
         recipe_id: '9',
         ingredient: 'Orange Zest',
         quantity: '3',

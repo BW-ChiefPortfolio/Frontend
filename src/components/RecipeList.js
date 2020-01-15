@@ -38,7 +38,7 @@ const RecipeList = props => {
                 <div className={""}>
                   <img
                     className={RecipeListStyle.img}                    
-                    src="https://images.pexels.com/photos/461198/pexels-photo-461198.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+                    src={recipe.image} /*"https://images.pexels.com/photos/461198/pexels-photo-461198.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"*/
                     alt={recipe.title}
                   />
                   <p className={RecipeListStyle.mealType}> {recipe.meal_type} </p>

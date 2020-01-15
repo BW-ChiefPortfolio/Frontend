@@ -35,11 +35,11 @@ const CreatePost = (props) => {
     }
 
     // gather the ingredients and put them in the newRecipe array
-    const ing1 = { recipe_id: newRecipe.id, ingredient: data.ingredient1, quantity: data.amount1, measurement: data.unit1, notes: data.notes1}
-    const ing2 = { recipe_id: newRecipe.id,ingredient: data.ingredient2, quantity: data.amount2, measurement: data.unit2, notes: data.notes2}
-    const ing3 = { recipe_id: newRecipe.id,ingredient: data.ingredient3, quantity: data.amount3, measurement: data.unit3, notes: data.notes3}
-    const ing4 = { recipe_id: newRecipe.id,ingredient: data.ingredient4, quantity: data.amount4, measurement: data.unit4, notes: data.notes4}
-    const ing5 = { recipe_id: newRecipe.id,ingredient: data.ingredient5, quantity: data.amount5, measurement: data.unit5, notes: data.notes5}
+    const ing1 = { id: Date.now() + 1, recipe_id: newRecipe.id, ingredient: data.ingredient1, quantity: data.amount1, measurement: data.unit1, notes: data.notes1}
+    const ing2 = { id: Date.now() + 2, recipe_id: newRecipe.id,ingredient: data.ingredient2, quantity: data.amount2, measurement: data.unit2, notes: data.notes2}
+    const ing3 = { id: Date.now() + 3, recipe_id: newRecipe.id,ingredient: data.ingredient3, quantity: data.amount3, measurement: data.unit3, notes: data.notes3}
+    const ing4 = { id: Date.now() + 4, recipe_id: newRecipe.id,ingredient: data.ingredient4, quantity: data.amount4, measurement: data.unit4, notes: data.notes4}
+    const ing5 = { id: Date.now() + 5, recipe_id: newRecipe.id,ingredient: data.ingredient5, quantity: data.amount5, measurement: data.unit5, notes: data.notes5}
 
     const newIngredients = [];
     if(data.ingredient1 !== '')

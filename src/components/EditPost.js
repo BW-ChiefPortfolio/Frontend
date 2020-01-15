@@ -21,30 +21,33 @@ import {
 import useForm from "react-hook-form";
 import LoginFormStyles from "../styles/_LoginStyle";
 import { connect } from "react-redux";
-import { editRecipe, editIngredient } from '../actions/actions';
+import { editRecipe, editIngredient, deleteRecipe, deleteIngredient } from '../actions/actions';
 
 import Delete from "./Delete";
 
 const EditPost = (props) => {
   const { register, errors, handleSubmit } = useForm();
-  //const [editedRecipe, setEditedRecipe] = useState({id: '', chefId: '', title: '', description: '', instructions: '', mealType: ''});
-  //const [editedRecipe, setEditedRecipe] = useState({});
-    const [editedRecipe, setEditedRecipe] = useState({});
-const [editedIngredients1, setEditedIngredients1] = useState({});
-const [editedIngredients2, setEditedIngredients2] = useState({});
-const [editedIngredients3, setEditedIngredients3] = useState({});
-const [editedIngredients4, setEditedIngredients4] = useState({});
-const [editedIngredients5, setEditedIngredients5] = useState({});
+  const [editedRecipe, setEditedRecipe] = useState({});
+  const [editedIngredients1, setEditedIngredients1] = useState({});
+  const [editedIngredients2, setEditedIngredients2] = useState({});
+  const [editedIngredients3, setEditedIngredients3] = useState({});
+  const [editedIngredients4, setEditedIngredients4] = useState({});
+  const [editedIngredients5, setEditedIngredients5] = useState({});
 
 
 
 
   const onSubmit = (data, e) => {
     console.log('NL: EditPost.js: onSubmit data: ', data);
-    editRecipe(editedRecipe);
-    editIngredient({ editedIngredients1, editedIngredients2, editedIngredients3, editedIngredients4, editedIngredients5});
-
+    console.log('NL: EditPost.js: onSubmit editedRecipe: ', editedRecipe);
+    props.editRecipe(editedRecipe, props);
+    props.editIngredient([editedIngredients1, editedIngredients2, editedIngredients3, editedIngredients4, editedIngredients5], props);
   };
+
+  const onDeleteRecipe = e => {
+    props.deleteRecipe(editedRecipe, props);
+    props.deleteIngredient([editedIngredients1, editedIngredients2, editedIngredients3, editedIngredients4, editedIngredients5], props);
+  }
 
   const handleRecipeChange = e => {
     const { name, value } = e.target;
@@ -85,6 +88,11 @@ const [editedIngredients5, setEditedIngredients5] = useState({});
     const temp = {...editedIngredients5};
     temp[name] = value;
     setEditedIngredients5(temp);
+  }
+
+  const deleteRecipe = e => {
+    props.deleteRecipe(editedRecipe, props);
+    props.deleteIngredient([editedIngredients1, editedIngredients2, editedIngredients3, editedIngredients4, editedIngredients5], props);
   }
  
   const handleRecipeLoad =  e => {
@@ -133,7 +141,8 @@ const [editedIngredients5, setEditedIngredients5] = useState({});
               </select>
 
               {/* This the delete button. Visit Delete.js to work on it.*/}
-              <Delete />
+              {/*<Delete recipe={editedRecipe} ingredients={[editedIngredients1, editedIngredients2, editedIngredients3, editedIngredients4, editedIngredients5]} />*/}
+            <button onClick={onDeleteRecipe}>Delete</button>
             </div>
           </div>
           <form onSubmit={handleSubmit(onSubmit)} className="">
@@ -153,7 +162,7 @@ const [editedIngredients5, setEditedIngredients5] = useState({});
                   onChange={handleRecipeChange}
                   inputRef={register({
                     maxLength: {
-                      value: 20,
+                      value: 30,
                       message: "It looks like your title is too long."
                     }
                   })}
@@ -206,9 +215,9 @@ const [editedIngredients5, setEditedIngredients5] = useState({});
                   type="text"
                   variant="outlined"
                   fullWidth
-                  id="meal_type"
+                  id="mealType"
                   label="Meal Type"
-                  name="meal_type"
+                  name="mealType"
                   value={editedRecipe.mealType || ''}
                   htmlFor="meal_type"
                   onChange={handleRecipeChange}
@@ -529,4 +538,4 @@ const mapStateToProps = state => ({
   user: state.userData
 });
 
-export default connect(mapStateToProps, {editRecipe, editIngredient})(EditPost);
+export default connect(mapStateToProps, {editRecipe, editIngredient, deleteRecipe, deleteIngredient })(EditPost);

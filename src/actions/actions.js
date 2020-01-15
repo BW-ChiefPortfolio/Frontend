@@ -26,6 +26,7 @@ export const EDIT_RECIPE_FAILURE = 'EDIT_RECIPE_FAILURE';
 export const DELETE_RECIPE_START = 'DELETE_RECIPE_START';
 export const DELETE_RECIPE_SUCCESS = 'DELETE_RECIPE_SUCCESS';
 export const DELETE_RECIPE_FAILURE = 'DELETE_RECIPE_FAILURE';
+export const DELETE_INGREDIENT_SUCCESS = 'DELETE_INGREDIENT_SUCCESS';
 export const EDIT_INGREDIENT_SUCCESS = 'EDIT_INGREDIENT_SUCCESS';
 //*** END Reducer Types ***//
 
@@ -119,20 +120,33 @@ export const createRecipe = (data, props) => dispatch => {
     
     data.newIngredients.map(ingredient => {
         dispatch({type: CREATE_INGREDIENT_SUCCESS, payload: ingredient }) 
-    })
+    })    
       
     props.history.push('/chefdashboard');
 }
 
-export const editRecipe = (data) => dispatch => {
+export const editRecipe = (editedRecipe, props) => dispatch => {
     dispatch({type: EDIT_RECIPE_START});
-    dispatch({type: EDIT_RECIPE_SUCCESS, payload: data})
+    dispatch({type: EDIT_RECIPE_SUCCESS, payload: editedRecipe})    
+    props.history.push('/chefdashboard');
 }
 
-export const editIngredient = (data) => dispatch => {
-    dispatch({type: EDIT_INGREDIENT_SUCCESS, payload: data})
+export const editIngredient = (data, props) => dispatch => {
+    data.forEach(ingredient => {
+        dispatch({type: EDIT_INGREDIENT_SUCCESS, payload: ingredient})
+    })
+    props.history.push('/chefdashboard');
 }
 
-export const deleteRecipe = () => dispatch => {
+export const deleteRecipe = (editedRecipe, props) => dispatch => {
     dispatch({type: DELETE_RECIPE_START});
+    dispatch({type: DELETE_RECIPE_SUCCESS, payload: editedRecipe})    
+    props.history.push('/chefdashboard');
+}
+
+export const deleteIngredient = (data, props) => dispatch => {
+    data.forEach(ingredient => {
+        dispatch({type: DELETE_INGREDIENT_SUCCESS, payload: ingredient})
+    })
+    props.history.push('/chefdashboard');
 }

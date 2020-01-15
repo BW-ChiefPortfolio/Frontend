@@ -17,6 +17,7 @@ import React from 'react';
 const Delete = (props) => {
     //Starter code (example)
 
+
     return (
           <button>Delete</button>
     )
