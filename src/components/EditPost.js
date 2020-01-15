@@ -21,13 +21,15 @@ import {
 import useForm from "react-hook-form";
 import LoginFormStyles from "../styles/_LoginStyle";
 import { connect } from "react-redux";
-import { editRecipe } from '../actions/actions';
+import { editRecipe, editIngredient } from '../actions/actions';
 
 import Delete from "./Delete";
 
 const EditPost = (props) => {
   const { register, errors, handleSubmit } = useForm();
-  const [editedRecipe, setEditedRecipe] = useState({});
+  //const [editedRecipe, setEditedRecipe] = useState({id: '', chefId: '', title: '', description: '', instructions: '', mealType: ''});
+  //const [editedRecipe, setEditedRecipe] = useState({});
+    const [editedRecipe, setEditedRecipe] = useState({});
 const [editedIngredients1, setEditedIngredients1] = useState({});
 const [editedIngredients2, setEditedIngredients2] = useState({});
 const [editedIngredients3, setEditedIngredients3] = useState({});
@@ -35,58 +37,68 @@ const [editedIngredients4, setEditedIngredients4] = useState({});
 const [editedIngredients5, setEditedIngredients5] = useState({});
 
 
+
+
   const onSubmit = (data, e) => {
     console.log('NL: EditPost.js: onSubmit data: ', data);
+    editRecipe(editedRecipe);
+    editIngredient({ editedIngredients1, editedIngredients2, editedIngredients3, editedIngredients4, editedIngredients5});
 
   };
 
+  const handleRecipeChange = e => {
+    const { name, value } = e.target;
+    const temp = {...editedRecipe};
+    temp[name] = value
+    setEditedRecipe(temp);
+  }
+
+  const handleIngredientChange1 = e => {
+    const {name, value } = e.target;
+    const temp = {...editedIngredients1};
+    temp[name] = value;
+    setEditedIngredients1(temp);
+  }
+
+  const handleIngredientChange2 = e => {
+    const {name, value } = e.target;
+    const temp = {...editedIngredients2};
+    temp[name] = value;
+    setEditedIngredients2(temp);
+  }
+
+  const handleIngredientChange3 = e => {
+    const {name, value } = e.target;
+    const temp = {...editedIngredients3};
+    temp[name] = value;
+    setEditedIngredients3(temp);
+  }
+  const handleIngredientChange4 = e => {
+    const {name, value } = e.target;
+    const temp = {...editedIngredients4};
+    temp[name] = value;
+    setEditedIngredients4(temp);
+  }
+
+  const handleIngredientChange5 = e => {
+    const {name, value } = e.target;
+    const temp = {...editedIngredients5};
+    temp[name] = value;
+    setEditedIngredients5(temp);
+  }
+ 
   const handleRecipeLoad =  e => {
     const selectedRecipe = props.filteredRecipes.filter(function (recipe) { return e.target.value === recipe.title});
     console.log('NL: EditPost.js: handleRecipeLoad: selectedRecipe: ', selectedRecipe);
-    const newRecipe =  { id: selectedRecipe[0].id, chefId: selectedRecipe[0].chefId, title: selectedRecipe[0].title, description: selectedRecipe[0].description, instructions: selectedRecipe[0].instructions, mealType: selectedRecipe[0].mealType}
-    console.log('NL: EditPost.js: handleRecipeLoad: newRecipe: ', newRecipe);
-
-
     setEditedRecipe(selectedRecipe[0]);
-    console.log('NL: EditPost.js: handleRecipeLoad: editedRecipe: ', editedRecipe);
 
-    // editedRecipe.ChefId = selectedRecipe[0].ChefId;
-    // editedRecipe.id = selectedRecipe[0].id;
-    // editedRecipe.title = selectedRecipe[0].title;
-    // editedRecipe.description = selectedRecipe[0].description;
-    // editedRecipe.instructions = selectedRecipe[0].instructions;
-    // editedRecipe.mealType = selectedRecipe[0].mealType;
-    // console.log('NL: EditPost.js: handleRecipeLoad: editedRecipe: ', editedRecipe);
+    const selectedIngredients = props.ingredients.filter(function (ingredient) { return selectedRecipe[0].id === ingredient.recipe_id})
 
-
-
-
-    // const selectedIngredients = props.ingredients.filter(function (ingredient) { console.log('NL: EditPost.js: handleRecipeLoad: ingredient.recipe_id: ', ingredient.recipe_id, "editedRecipe.id", editedRecipe.id); return editedRecipe.id === ingredient.recipe_id})
-    // console.log('NL: EditPost.js: handleRecipeLoad: editedRecipe.id: ', editedRecipe.id)
-    // console.log('NL: EditPost.js: handleRecipeLoad: selectedIngredients: ', selectedIngredients);
-
-
-
-
-    // setEditedIngredients1(selectedIngredients[0]);
-    // setEditedIngredients2(selectedIngredients[1]);
-    // setEditedIngredients3(selectedIngredients[2]);
-    // setEditedIngredients4(selectedIngredients[3]);
-    // setEditedIngredients5(selectedIngredients[4]);
-    // setEditedIngredients(selectedIngredients);
-    // console.log('NL: EditPost.js: handleRecipeLoad: selectedIngredients: ', selectedIngredients);
-    // console.log('NL: EditPost.js: handleRecipeLoad: editedIngredients: ', editedIngredients);
-
-    // if(selectedIngredients[0].title !== '')
-    //   editedIngredients[0] = selectedIngredients[0];
-    //   if(selectedIngredients[1].title !== '')
-    //   editedIngredients[1] = selectedIngredients[1];
-    //   if(selectedIngredients[2].title !== '')
-    //   editedIngredients[2] = selectedIngredients[2];
-    //   if(selectedIngredients[3].title !== '')
-    //   editedIngredients[3] = selectedIngredients[3];
-    //   if(selectedIngredients[4].title !== '')
-    //   editedIngredients[4] = selectedIngredients[4];
+    setEditedIngredients1(selectedIngredients[0]);
+    setEditedIngredients2(selectedIngredients[1]);
+    setEditedIngredients3(selectedIngredients[2]);
+    setEditedIngredients4(selectedIngredients[3]);
+    setEditedIngredients5(selectedIngredients[4]);
    }
 
   //NOTE: Invokes the styling defined in variable useStyle.
@@ -138,6 +150,7 @@ const [editedIngredients5, setEditedIngredients5] = useState({});
                   value={editedRecipe.title || '' }
                   autoComplete="title"
                   htmlFor="text"
+                  onChange={handleRecipeChange}
                   inputRef={register({
                     maxLength: {
                       value: 20,
@@ -159,6 +172,7 @@ const [editedIngredients5, setEditedIngredients5] = useState({});
                   name="description"
                   value={editedRecipe.description || ''}
                   htmlFor="description"
+                  onChange={handleRecipeChange}
                   inputRef={register}
                   />
               </Grid>
@@ -175,6 +189,7 @@ const [editedIngredients5, setEditedIngredients5] = useState({});
                   name="instructions"
                   value={editedRecipe.instructions || ''}
                   htmlFor="instructions"
+                  onChange={handleRecipeChange}
                   inputRef={register({
                     required:
                       "You must provide the instructions to this recipes!"
@@ -196,6 +211,7 @@ const [editedIngredients5, setEditedIngredients5] = useState({});
                   name="meal_type"
                   value={editedRecipe.mealType || ''}
                   htmlFor="meal_type"
+                  onChange={handleRecipeChange}
                   inputRef={register}
                 />
               </Grid>
@@ -207,10 +223,11 @@ const [editedIngredients5, setEditedIngredients5] = useState({});
                   variant="outlined"
                   fullWidth                
                   id="amount1"
-                  label="amount"
-                  name="amount1"
+                  label="quantity"
+                  name="quantity"
                   value={editedIngredients1.quantity || ''}
                   htmlFor="amount1"
+                  onChange={handleIngredientChange1}
                   inputRef={register}
                 />
                 </Grid>
@@ -221,9 +238,10 @@ const [editedIngredients5, setEditedIngredients5] = useState({});
                   fullWidth               
                   id="unit1"
                   label="unit"
-                  name="unit1"
-                  value={editedIngredients1.unit || ''}
+                  name="measurement"
+                  value={editedIngredients1.measurement || ''}
                   htmlFor="unit1"
+                  onChange={handleIngredientChange1}
                   inputRef={register}
                 />
                 </Grid>
@@ -234,9 +252,10 @@ const [editedIngredients5, setEditedIngredients5] = useState({});
                   fullWidth
                   id="ingredient1"
                   label="ingredient"
-                  name="ingredient1"
+                  name="ingredient"
                   value={editedIngredients1.ingredient || ''}
                   htmlFor="ingredient1"
+                  onChange={handleIngredientChange1}
                   inputRef={register}
                 />
                 </Grid>
@@ -249,7 +268,8 @@ const [editedIngredients5, setEditedIngredients5] = useState({});
                   label="notes"
                   name="notes"
                   value={editedIngredients1.notes || ''}
-                  htmlFor="notes"
+                  htmlFor="notes1"
+                  onChange={handleIngredientChange1}
                   inputRef={register}
                 />
               </Grid>
@@ -261,10 +281,11 @@ const [editedIngredients5, setEditedIngredients5] = useState({});
                   variant="outlined"
                   fullWidth                
                   id="amount2"
-                  label="amount"
-                  name="amount2"
+                  label="quantity"
+                  name="quantity"
                   value={editedIngredients2.quantity || ''}
                   htmlFor="amount2"
+                  onChange={handleIngredientChange2}
                   inputRef={register}
                 />
                 </Grid>
@@ -275,9 +296,10 @@ const [editedIngredients5, setEditedIngredients5] = useState({});
                   fullWidth               
                   id="unit2"
                   label="unit"
-                  name="unit2"
-                  value={editedIngredients2.unit || ''}
+                  name="measurement"
+                  value={editedIngredients2.measurement || ''}
                   htmlFor="unit2"
+                  onChange={handleIngredientChange2}
                   inputRef={register}
                 />
                 </Grid>
@@ -288,9 +310,10 @@ const [editedIngredients5, setEditedIngredients5] = useState({});
                   fullWidth
                   id="ingredient2"
                   label="ingredient"
-                  name="ingredient2"
+                  name="ingredient"
                   value={editedIngredients2.ingredient || ''}
                   htmlFor="ingredient2"
+                  onChange={handleIngredientChange2}
                   inputRef={register}
                 />
                 </Grid>
@@ -301,9 +324,10 @@ const [editedIngredients5, setEditedIngredients5] = useState({});
                   fullWidth                  
                   id="notes2"
                   label="notes"
-                  name="notes2"
+                  name="notes"
                   value={editedIngredients2.notes || ''}
                   htmlFor="notes2"
+                  onChange={handleIngredientChange2}
                   inputRef={register}
                 />
               </Grid>
@@ -315,10 +339,11 @@ const [editedIngredients5, setEditedIngredients5] = useState({});
                   variant="outlined"
                   fullWidth                
                   id="amount3"
-                  label="amount"
-                  name="amount3"
+                  label="quantity"
+                  name="quantity"
                   value={editedIngredients3.quantity || ''}
                   htmlFor="amount3"
+                  onChange={handleIngredientChange3}
                   inputRef={register}
                 />
                 </Grid>
@@ -329,9 +354,10 @@ const [editedIngredients5, setEditedIngredients5] = useState({});
                   fullWidth               
                   id="unit3"
                   label="unit"
-                  name="unit3"
-                  value={editedIngredients3.unit || ''}
+                  name="measurement"
+                  value={editedIngredients3.measurement || ''}
                   htmlFor="unit3"
+                  onChange={handleIngredientChange3}
                   inputRef={register}
                 />
                 </Grid>
@@ -342,9 +368,10 @@ const [editedIngredients5, setEditedIngredients5] = useState({});
                   fullWidth
                   id="ingredient3"
                   label="ingredient"
-                  name="ingredient3"
+                  name="ingredient"
                   value={editedIngredients3.ingredient || ''}
                   htmlFor="ingredient3"
+                  onChange={handleIngredientChange3}
                   inputRef={register}
                 />
                 </Grid>
@@ -355,9 +382,10 @@ const [editedIngredients5, setEditedIngredients5] = useState({});
                   fullWidth                  
                   id="notes3"
                   label="notes"
-                  name="notes3"
+                  name="notes"
                   value={editedIngredients3.notes || ''}
                   htmlFor="notes3"
+                  onChange={handleIngredientChange3}
                   inputRef={register}
                 />
               </Grid>
@@ -369,10 +397,11 @@ const [editedIngredients5, setEditedIngredients5] = useState({});
                   variant="outlined"
                   fullWidth                
                   id="amount4"
-                  label="amount"
-                  name="amount4"
+                  label="quantity"
+                  name="quantity"
                   value={editedIngredients4.quantity || ''}
                   htmlFor="amount4"
+                  onChange={handleIngredientChange4}
                   inputRef={register}
                 />
                 </Grid>
@@ -383,9 +412,10 @@ const [editedIngredients5, setEditedIngredients5] = useState({});
                   fullWidth               
                   id="unit4"
                   label="unit"
-                  name="unit4"
-                  value={editedIngredients4.unit || ''}
+                  name="measurement"
+                  value={editedIngredients4.measurement || ''}
                   htmlFor="unit4"
+                  onChange={handleIngredientChange4}
                   inputRef={register}
                 />
                 </Grid>
@@ -396,9 +426,10 @@ const [editedIngredients5, setEditedIngredients5] = useState({});
                   fullWidth
                   id="ingredient4"
                   label="ingredient"
-                  name="ingredient4"
+                  name="ingredient"
                   value={editedIngredients4.ingredient || ''}
                   htmlFor="ingredient4"
+                  onChange={handleIngredientChange4}
                   inputRef={register}
                 />
                 </Grid>
@@ -409,9 +440,10 @@ const [editedIngredients5, setEditedIngredients5] = useState({});
                   fullWidth                  
                   id="notes4"
                   label="notes"
-                  name="notes4"
+                  name="notes"
                   value={editedIngredients4.notes || ''}
                   htmlFor="notes4"
+                  onChange={handleIngredientChange4}
                   inputRef={register}
                 />
               </Grid>
@@ -423,10 +455,11 @@ const [editedIngredients5, setEditedIngredients5] = useState({});
                   variant="outlined"
                   fullWidth                
                   id="amount5"
-                  label="amount"
-                  name="amount5"
+                  label="quantity"
+                  name="quantity"
                   value={editedIngredients5.quantity || ''}
                   htmlFor="amount5"
+                  onChange={handleIngredientChange5}
                   inputRef={register}
                 />
                 </Grid>
@@ -437,9 +470,10 @@ const [editedIngredients5, setEditedIngredients5] = useState({});
                   fullWidth               
                   id="unit5"
                   label="unit"
-                  name="unit5"
-                  value={editedIngredients5.unit || ''}
+                  name="measurement"
+                  value={editedIngredients5.measurement || ''}
                   htmlFor="unit5"
+                  onChange={handleIngredientChange5}
                   inputRef={register}
                 />
                 </Grid>
@@ -450,9 +484,10 @@ const [editedIngredients5, setEditedIngredients5] = useState({});
                   fullWidth
                   id="ingredient5"
                   label="ingredient"
-                  name="ingredient5"
+                  name="ingredient"
                   value={editedIngredients5.ingredient || ''}
                   htmlFor="ingredient5"
+                  onChange={handleIngredientChange5}
                   inputRef={register}
                 />
                 </Grid>
@@ -463,9 +498,10 @@ const [editedIngredients5, setEditedIngredients5] = useState({});
                   fullWidth                  
                   id="notes5"
                   label="notes"
-                  name="notes5"
+                  name="notes"
                   value={editedIngredients5.notes || ''}
                   htmlFor="notes5"
+                  onChange={handleIngredientChange5}
                   inputRef={register}
                 />
               </Grid>
@@ -493,4 +529,4 @@ const mapStateToProps = state => ({
   user: state.userData
 });
 
-export default connect(mapStateToProps, {editRecipe})(EditPost);
+export default connect(mapStateToProps, {editRecipe, editIngredient})(EditPost);

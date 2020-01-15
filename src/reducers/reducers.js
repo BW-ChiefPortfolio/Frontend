@@ -3,7 +3,7 @@ import { INIT_LOCAL_DATA, CHEF_REGISTER, CHEF_LOGIN, CHEF_LOGOUT, FETCH_RECIPE_S
          FETCH_RECIPE_FAILURE, CREATE_RECIPE_START, CREATE_RECIPE_SUCCESS, CREATE_RECIPE_FAILURE,
          EDIT_RECIPE_START, EDIT_RECIPE_SUCCESS, EDIT_RECIPE_FAILURE, DELETE_RECIPE_START, 
          DELETE_RECIPE_SUCCESS, DELETE_RECIPE_FAILURE, CHEF_FETCH_DATA, CHEF_FETCH_DATA_LOGGEDIN,
-         FETCH_RECIPE_SUCCESS_GUEST, CREATE_INGREDIENT_SUCCESS, FETCH_FILTERED_RECIPES } from '../actions/actions';
+         FETCH_RECIPE_SUCCESS_GUEST, CREATE_INGREDIENT_SUCCESS, FETCH_FILTERED_RECIPES, EDIT_INGREDIENT_SUCCESS } from '../actions/actions';
 
          // The user: (The Chef) and the recipes are being stored together in the store.
          // This means that if a Chef is logged in only his recipes are stored in the reciepes object
@@ -102,6 +102,8 @@ function reducer(state = initialState, action) {
         case EDIT_RECIPE_SUCCESS:
             return state;
         case EDIT_RECIPE_FAILURE:
+            return state;
+        case EDIT_INGREDIENT_SUCCESS:
             return state;
         case DELETE_RECIPE_START:
             return state;

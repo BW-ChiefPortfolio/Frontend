@@ -26,6 +26,7 @@ export const EDIT_RECIPE_FAILURE = 'EDIT_RECIPE_FAILURE';
 export const DELETE_RECIPE_START = 'DELETE_RECIPE_START';
 export const DELETE_RECIPE_SUCCESS = 'DELETE_RECIPE_SUCCESS';
 export const DELETE_RECIPE_FAILURE = 'DELETE_RECIPE_FAILURE';
+export const EDIT_INGREDIENT_SUCCESS = 'EDIT_INGREDIENT_SUCCESS';
 //*** END Reducer Types ***//
 
 // Redux actions
@@ -123,8 +124,13 @@ export const createRecipe = (data, props) => dispatch => {
     props.history.push('/chefdashboard');
 }
 
-export const editRecipe = () => dispatch => {
+export const editRecipe = (data) => dispatch => {
     dispatch({type: EDIT_RECIPE_START});
+    dispatch({type: EDIT_RECIPE_SUCCESS, payload: data})
+}
+
+export const editIngredient = (data) => dispatch => {
+    dispatch({type: EDIT_INGREDIENT_SUCCESS, payload: data})
 }
 
 export const deleteRecipe = () => dispatch => {
