@@ -1,9 +1,3 @@
-/*Future updates: 
-
-=> Add Image Selector?
-
-*/
-
 import React from "react";
 import useForm from "react-hook-form";
 

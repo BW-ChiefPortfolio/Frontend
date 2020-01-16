@@ -23,8 +23,6 @@ import LoginFormStyles from "../styles/_LoginStyle";
 import { connect } from "react-redux";
 import { editRecipe, editIngredient, deleteRecipe, deleteIngredient } from '../actions/actions';
 
-import Delete from "./Delete";
-
 const EditPost = (props) => {
   const { register, errors, handleSubmit } = useForm();
   const [editedRecipe, setEditedRecipe] = useState({});
@@ -89,15 +87,9 @@ const EditPost = (props) => {
     temp[name] = value;
     setEditedIngredients5(temp);
   }
-
-  const deleteRecipe = e => {
-    props.deleteRecipe(editedRecipe, props);
-    props.deleteIngredient([editedIngredients1, editedIngredients2, editedIngredients3, editedIngredients4, editedIngredients5], props);
-  }
  
   const handleRecipeLoad =  e => {
     const selectedRecipe = props.filteredRecipes.filter(function (recipe) { return e.target.value === recipe.title});
-    console.log('NL: EditPost.js: handleRecipeLoad: selectedRecipe: ', selectedRecipe);
     setEditedRecipe(selectedRecipe[0]);
 
     const selectedIngredients = props.ingredients.filter(function (ingredient) { return selectedRecipe[0].id === ingredient.recipe_id})
@@ -112,9 +104,6 @@ const EditPost = (props) => {
   //NOTE: Invokes the styling defined in variable useStyle.
   const LoginFormStyle = LoginFormStyles();
   return (
-    /*I am going to copy the CreatePost.js component form into here
-        so it stays consistant with its fields and design.
-        */
 
     <React.Fragment>
       <CssBaseline />
@@ -139,9 +128,6 @@ const EditPost = (props) => {
 
                 )}
               </select>
-
-              {/* This the delete button. Visit Delete.js to work on it.*/}
-              {/*<Delete recipe={editedRecipe} ingredients={[editedIngredients1, editedIngredients2, editedIngredients3, editedIngredients4, editedIngredients5]} />*/}
             <button onClick={onDeleteRecipe}>Delete</button>
             </div>
           </div>

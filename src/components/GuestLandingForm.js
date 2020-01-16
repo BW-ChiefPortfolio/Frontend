@@ -9,10 +9,6 @@ import LandingPageStyles from "../styles/_LandingPageStyles";
 
 const GuestLandingForm = (props) => {
 
-console.log('*****INSIDE GUESTLANDINGFORM*****')
-console.log('NL: GuestLandingForm.js: GuestLandingForm: props: ', props);
-//props.fetchRecipes();
-
   const LandingPageStyle = LandingPageStyles();
   return (
     <React.Fragment>

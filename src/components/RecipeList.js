@@ -6,9 +6,6 @@ import { connect } from "react-redux";
 
 const RecipeList = props => {
   const RecipeListStyle = RecipeListStyles();
- //console.log('NL: RecipeList.js: RecipeList: recipes: ', props.chefRecipes)
- console.log('*****INSIDE RECIPELIST*****')
- console.log('NL: RecipeList.js: RecipeList: ingredients: ', props)
 
  let recipes = [];
 
@@ -23,7 +20,6 @@ const RecipeList = props => {
   return (
     <React.Fragment>
       {recipes.map(recipe => (
-        //Since id wasn't formatted in the server correctly it wont display correctly. Will need to use title, but my TL said that may not work.
         <div className={""} key={recipe.id}>
           <Card className={RecipeListStyle.recipeCardContainer}>
             <CardContent>
@@ -38,7 +34,7 @@ const RecipeList = props => {
                 <div className={""}>
                   <img
                     className={RecipeListStyle.img}                    
-                    src={recipe.image} /*"https://images.pexels.com/photos/461198/pexels-photo-461198.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"*/
+                    src={recipe.image}
                     alt={recipe.title}
                   />
                   <p className={RecipeListStyle.mealType}> {recipe.meal_type} </p>

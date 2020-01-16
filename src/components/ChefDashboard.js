@@ -11,8 +11,6 @@ import { fetchFilteredRecipes } from "../actions/actions";
 
 
 const ChefDashboard = props => {
-  console.log('*****INSIDE CHEFDASHBOARD*****')
-  console.log('nl: ChefDashboard.js: ChefDashboard: UserData: ' , props)
   props.fetchFilteredRecipes();
   const LandingPageStyle = LandingPageStyles();
   return (
@@ -42,8 +40,6 @@ const ChefDashboard = props => {
         </div>
       </Container>
     </React.Fragment>
-    //This is where the delete button will live!
-    //<button>Delete</button>
   );
 };
 

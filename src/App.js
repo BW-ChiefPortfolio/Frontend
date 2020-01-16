@@ -9,23 +9,13 @@ import GuestLandingForm from "./components/GuestLandingForm";
 import Navigation from "./components/Navigation";
 import CreatePost from "./components/CreatePost";
 import EditPost from "./components/EditPost";
+import RecipeDetails from './components/RecipeDetails';
 import { connect } from "react-redux";
 import { fetchRecipes, chefFetchData, initLocalData } from "./actions/actions";
 
 import RecipeList from "./components/RecipeList";
 
 function App(props) {
-    //*** TEST CODE ONLY ***/
-    //const [user, setUser] = useState(userData);
-    //const [recipesArray, setRecipesArray] = useState(recipes)
-    //console.log('nl: index.js: App: userData: ', userData);
-    //console.log('nl: index.js: App: recipes: ', recipesArray);
-    //*** END OF TEST CODE ***/
-      // We need to gather some information here for filtering.
-    // Specifically we need chef names, recipe names (we just need to sort A-Z, Z-A), ingredients, and meal-types
-    // This one will give us our recipe names and meal-types
-    //props.chefFetchData();
-    //props.fetchRecipes(props.recipeIndex);
     props.initLocalData();
   
     return (
@@ -41,7 +31,7 @@ function App(props) {
           <Route path="/create" component={CreatePost} />
           <Route path="/edit" component={EditPost} />
           <Route exact path="/recipes-list" component={RecipeList} />
-        {/* <Route path="/recipes-list/:id" component={RecipeDetailes} /> */}
+        <Route path="/recipes-list/:id" component={RecipeDetails} />
   
           <PrivateRoute exact path="/chefdashboard" component={ChefDashboard} />
         </div>
